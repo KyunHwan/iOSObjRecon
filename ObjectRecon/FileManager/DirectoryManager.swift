@@ -1,0 +1,72 @@
+//
+//  DirectoryManager.swift
+//  ObjectRecon
+//
+//  Created by Kyun Hwan  Kim on 1/24/24.
+//
+
+/*
+ Keeps track of information 
+ */
+
+import Foundation
+
+class DirectoryManager {
+    let dirPath: URL?
+    let filePrefix: String
+    var numPhotos: UInt32
+    var nextImagePath: URL? { dirPath?.appendingPathComponent(String(format: "%@%04d", filePrefix, numPhotos)) }
+    
+    init(filePrefixInDirectory: String) {
+        filePrefix = filePrefixInDirectory
+        numPhotos = 0
+        dirPath = DirectoryManager.createNewDirectory()
+    }
+
+    /// This should be done atomically
+    static func createFile(at path: URL?, contents data: Data?) {
+        if let path = path, let data = data {
+            do { try data.write(to: path, options: .atomic) }
+            catch { print("Couldn't write image data to file") }
+        }
+        else { print("Image path (or data) was nil") }
+    }
+    
+    static func createNewDirectory() -> URL? {
+        if let appCapturesFolder = DirectoryManager.appCapturesFolder() {
+            let directoryPath = appCapturesFolder.appendingPathComponent(DirectoryManager.returnTimeStamp(), isDirectory: true)
+            do {
+                try FileManager.default.createDirectory(atPath: directoryPath.path, withIntermediateDirectories: true)
+                return directoryPath
+            } catch {
+                print("Error \(error.localizedDescription) occurred")
+                fatalError("Image directory could not be created")
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    @MainActor
+    func incrementNumPhotos() { numPhotos += 1 }
+    
+    /// The method returns a URL to the app's documents folder, where it stores all captures.
+    private static func appCapturesFolder() -> URL? {
+        guard let documentsFolder = try? FileManager.default.url(for: .documentDirectory,
+                                                                 in: .userDomainMask,
+                                                                 appropriateFor: nil, create: false) 
+        else {
+            fatalError("App's default folder could not be located")
+        }
+        return documentsFolder.appendingPathComponent("ObjReconCaptures/", isDirectory: true)
+    }
+    
+    private static func returnTimeStamp() -> String {
+        var timestamp = ""
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "yyyy_MMdd_"
+        timestamp += dateFormat.string(from: Date())
+        timestamp += String(Int64(Date().timeIntervalSince1970))
+        return timestamp
+    }
+}
