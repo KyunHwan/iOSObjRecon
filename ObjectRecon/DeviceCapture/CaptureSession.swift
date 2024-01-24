@@ -27,7 +27,6 @@ class CaptureSession: ObservableObject {
         self.outputPhotoCapture = .createConfiguredPhotoOutput()
         self.outputCameraPreview = VideoPreview()
         self.directoryManager = DirectoryManager(filePrefixInDirectory: "IMG_")
-        self.configureSession()
     }
     
     func configureSession() {
@@ -43,15 +42,16 @@ class CaptureSession: ObservableObject {
         self.session.commitConfiguration()
     }
     
-    func startRunning() {
-        Task {
+    func startRunning() async {
+        if !session.isRunning {
+            self.configureSession()
             session.startRunning()
+            setPreviewSession()
         }
-        setPreviewSession()
     }
     
     func stopRunning() {
-        session.stopRunning()
+        if session.isRunning { session.stopRunning() }
     }
 }
 

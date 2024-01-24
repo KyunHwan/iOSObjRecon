@@ -13,15 +13,8 @@ struct ObjectReconApp: App {
     
     var body: some Scene {
         WindowGroup {
-            CameraPreviewView()
-                .onAppear{
-                    captureSession.startRunning()
-                }
-                .onDisappear {
-                    captureSession.stopRunning()
-                }
+            RootView()
                 .environmentObject(captureSession)
-            //ContentView()
         }
     }
 }

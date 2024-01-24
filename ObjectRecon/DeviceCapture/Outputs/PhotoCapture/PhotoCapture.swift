@@ -33,8 +33,8 @@ extension AVCapturePhotoOutput {
             // Setup delegate & AVcapturePhotoSettings
             let photoCaptureSettings = AVCapturePhotoSettings.createConfiguredAVCapturePhotoSettings(format: appropriatePhotoCodecType())
             let photoCaptureDelegate = PhotoCaptureProcessor(with: { photo in
+                // Save Photo to a Document folder with URL of captureDir
                 Task {
-                    // Save Photo to a Document folder with URL of captureDir
                     let photoData = photo.fileDataRepresentation()
                     DirectoryManager.createFile(at: path, contents: photoData)
                 }
