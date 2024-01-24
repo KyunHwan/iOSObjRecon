@@ -14,19 +14,24 @@ import Foundation
 class DirectoryManager {
     let dirPath: URL?
     let filePrefix: String
+    let fileSuffix: String
     var numPhotos: UInt32
-    var nextImagePath: URL? { dirPath?.appendingPathComponent(String(format: "%@%04d", filePrefix, numPhotos)) }
+    var nextImagePath: URL? { dirPath?.appendingPathComponent(String(format: "%@%04d", filePrefix, numPhotos).appending(fileSuffix)) }
     
-    init(filePrefixInDirectory: String) {
+    init(filePrefixInDirectory: String,
+         fileSuffixInDirectory: String) {
         filePrefix = filePrefixInDirectory
         numPhotos = 0
         dirPath = DirectoryManager.createNewDirectory()
+        fileSuffix = fileSuffixInDirectory
     }
 
     /// This should be done atomically
-    static func createFile(at path: URL?, contents data: Data?) {
-        if let path = path, let data = data {
-            do { try data.write(to: path, options: .atomic) }
+    static func createFile(at imageURL: URL?, contents data: Data?) {
+        if let imageURL = imageURL, let data = data {
+            do {
+                try data.write(to: URL(fileURLWithPath: imageURL.path), options: .atomic)
+            }
             catch { print("Couldn't write image data to file") }
         }
         else { print("Image path (or data) was nil") }

@@ -8,6 +8,42 @@
 import Foundation
 import AVFoundation
 
+class PhotoCaptureManager {
+    let photoOutput: AVCapturePhotoOutput
+    
+    private var photoCaptureDelegateContainer: Set<PhotoCaptureProcessor>
+    
+    init() {
+        photoOutput = AVCapturePhotoOutput.createConfiguredPhotoOutput()
+        photoCaptureDelegateContainer = Set<PhotoCaptureProcessor>()
+    }
+    
+    // MARK: Capture & Save Photo
+    func saveFrame(to path: URL?) {
+        // Setup delegate & AVcapturePhotoSettings
+        let photoCaptureSettings = AVCapturePhotoSettings.createConfiguredAVCapturePhotoSettings(format: self.photoOutput.appropriatePhotoCodecType())
+        let photoCaptureDelegate = PhotoCaptureProcessor(with: { [weak self] photo in self?.save(photo, at: path) })
+        photoCaptureDelegate.completionHandler = { [weak self] in self?.updateDelegateContainer(for: photoCaptureDelegate) }
+        
+        // Add photoCaptureDelegate to the container to hold reference so that it doesn't get garbage collected
+        updateDelegateContainer(for: photoCaptureDelegate)
+        Task { self.photoOutput.capturePhoto(with: photoCaptureSettings, delegate: photoCaptureDelegate) }
+    }
+    
+    func save(_ photo: AVCapturePhoto, at path: URL?) {
+        let photoData = photo.fileDataRepresentation()
+        DirectoryManager.createFile(at: path, contents: photoData)
+    }
+    
+    func updateDelegateContainer(for delegate: PhotoCaptureProcessor) {
+        if photoCaptureDelegateContainer.contains(delegate) {
+            photoCaptureDelegateContainer.remove(delegate)
+        } else {
+            photoCaptureDelegateContainer.insert(delegate)
+        }
+    }
+}
+
 // MARK: Create Configured Instance
 extension AVCapturePhotoOutput {
     static func createConfiguredPhotoOutput() -> AVCapturePhotoOutput {
@@ -25,29 +61,9 @@ extension AVCapturePhotoOutput {
     }
 }
 
-// MARK: Capture & Save Photo
-extension AVCapturePhotoOutput {
-    func saveFrame(to path: URL?) {
-        // Creates threads for saving photo when needed
-        Task {
-            // Setup delegate & AVcapturePhotoSettings
-            let photoCaptureSettings = AVCapturePhotoSettings.createConfiguredAVCapturePhotoSettings(format: appropriatePhotoCodecType())
-            let photoCaptureDelegate = PhotoCaptureProcessor(with: { photo in
-                // Save Photo to a Document folder with URL of captureDir
-                Task {
-                    let photoData = photo.fileDataRepresentation()
-                    DirectoryManager.createFile(at: path, contents: photoData)
-                }
-            })
-            // Capture Photo
-            self.capturePhoto(with: photoCaptureSettings, delegate: photoCaptureDelegate)
-        }
-    }
-}
-
 // MARK: Setting Appropriate Photo Codec Type for Saving
 extension AVCapturePhotoOutput {
-    private func appropriatePhotoCodecType() -> [String: Any]? {
+    func appropriatePhotoCodecType() -> [String: Any]? {
         return self.availablePhotoCodecTypes.contains(PhotoCodecTypes.type) ? [AVVideoCodecKey: PhotoCodecTypes.type] : nil
     }
     private struct PhotoCodecTypes {
@@ -85,7 +101,7 @@ extension AVCapturePhotoOutput {
         self.maxPhotoQualityPrioritization = CapturePrioritizationConfig.speedQuality
     }
     private struct CapturePrioritizationConfig {
-        static let speedQuality = AVCapturePhotoOutput.QualityPrioritization.speed
+        static let speedQuality = AVCapturePhotoOutput.QualityPrioritization.quality
     }
 }
 

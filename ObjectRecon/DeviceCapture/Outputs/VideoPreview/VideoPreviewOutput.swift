@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
+@MainActor
 class VideoPreview: UIView {
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {

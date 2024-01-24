@@ -16,7 +16,7 @@
 		D0EB378E2B5DDED400A54AA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0EB378D2B5DDED400A54AA7 /* Preview Assets.xcassets */; };
 		D0EB37962B5DE75100A54AA7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37952B5DE75100A54AA7 /* Camera.swift */; };
 		D0EB37A42B5E5A7800A54AA7 /* CaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37A32B5E5A7800A54AA7 /* CaptureSession.swift */; };
-		D0EB37A62B5E695200A54AA7 /* PhotoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37A52B5E695200A54AA7 /* PhotoCapture.swift */; };
+		D0EB37A62B5E695200A54AA7 /* PhotoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37A52B5E695200A54AA7 /* PhotoCaptureManager.swift */; };
 		D0EB37AA2B5E6B0400A54AA7 /* VideoPreviewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37A92B5E6B0400A54AA7 /* VideoPreviewOutput.swift */; };
 		D0EB37AD2B5E762100A54AA7 /* PhotoCaptureSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */; };
 		D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */; };
@@ -24,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		D0CEEFB52B61272E001B79A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D0D953822B6097F200E9FB71 /* DirectoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryManager.swift; sourceTree = "<group>"; };
 		D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureView.swift; sourceTree = "<group>"; };
 		D0EB37832B5DDED100A54AA7 /* ObjectRecon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjectRecon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,7 +34,7 @@
 		D0EB378D2B5DDED400A54AA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D0EB37952B5DE75100A54AA7 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		D0EB37A32B5E5A7800A54AA7 /* CaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSession.swift; sourceTree = "<group>"; };
-		D0EB37A52B5E695200A54AA7 /* PhotoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCapture.swift; sourceTree = "<group>"; };
+		D0EB37A52B5E695200A54AA7 /* PhotoCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureManager.swift; sourceTree = "<group>"; };
 		D0EB37A92B5E6B0400A54AA7 /* VideoPreviewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreviewOutput.swift; sourceTree = "<group>"; };
 		D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureSettings.swift; sourceTree = "<group>"; };
 		D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureProcessor.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		D0EB37852B5DDED100A54AA7 /* ObjectRecon */ = {
 			isa = PBXGroup;
 			children = (
+				D0CEEFB52B61272E001B79A1 /* Info.plist */,
 				D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */,
 				D0EB37882B5DDED100A54AA7 /* RootView.swift */,
 				D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */,
@@ -135,7 +137,7 @@
 		D0EB37AB2B5E75CD00A54AA7 /* PhotoCapture */ = {
 			isa = PBXGroup;
 			children = (
-				D0EB37A52B5E695200A54AA7 /* PhotoCapture.swift */,
+				D0EB37A52B5E695200A54AA7 /* PhotoCaptureManager.swift */,
 				D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */,
 				D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */,
 			);
@@ -228,7 +230,7 @@
 				D0EB37AD2B5E762100A54AA7 /* PhotoCaptureSettings.swift in Sources */,
 				D0EB37872B5DDED100A54AA7 /* ObjectReconApp.swift in Sources */,
 				D0EB37A42B5E5A7800A54AA7 /* CaptureSession.swift in Sources */,
-				D0EB37A62B5E695200A54AA7 /* PhotoCapture.swift in Sources */,
+				D0EB37A62B5E695200A54AA7 /* PhotoCaptureManager.swift in Sources */,
 				D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */,
 				D0EB37AA2B5E6B0400A54AA7 /* VideoPreviewOutput.swift in Sources */,
 			);
@@ -367,6 +369,10 @@
 				DEVELOPMENT_TEAM = LT7W972XTY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ObjectRecon/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "ObjectRecon camera use";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "ObjectRecon documents folder use";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -396,6 +402,10 @@
 				DEVELOPMENT_TEAM = LT7W972XTY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ObjectRecon/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "ObjectRecon camera use";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "ObjectRecon documents folder use";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
