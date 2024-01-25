@@ -10,27 +10,34 @@ import AVFoundation
 
 class PhotoCaptureManager {
     let photoOutput: AVCapturePhotoOutput
-    
     private var photoCaptureDelegateContainer: Set<PhotoCaptureProcessor>
+    private let directoryManager: DirectoryManager
     
     init() {
         photoOutput = AVCapturePhotoOutput.createConfiguredPhotoOutput()
         photoCaptureDelegateContainer = Set<PhotoCaptureProcessor>()
+        directoryManager = DirectoryManager(filePrefixInDirectory: "IMG_", fileSuffixInDirectory: ".JPG")
     }
     
     // MARK: Capture & Save Photo
-    func saveFrame(to path: URL?) {
-        // Setup delegate & AVcapturePhotoSettings
-        let photoCaptureSettings = AVCapturePhotoSettings.createConfiguredAVCapturePhotoSettings(format: self.photoOutput.appropriatePhotoCodecType())
-        let photoCaptureDelegate = PhotoCaptureProcessor(with: { [weak self] photo in self?.save(photo, at: path) })
-        photoCaptureDelegate.completionHandler = { [weak self] in self?.updateDelegateContainer(for: photoCaptureDelegate) }
-        
-        // Add photoCaptureDelegate to the container to hold reference so that it doesn't get garbage collected
-        updateDelegateContainer(for: photoCaptureDelegate)
-        Task { self.photoOutput.capturePhoto(with: photoCaptureSettings, delegate: photoCaptureDelegate) }
+    @MainActor
+    func saveFrame() {
+        if let path = directoryManager.nextImagePath {
+            // Setup delegate & AVcapturePhotoSettings
+            let photoCaptureSettings = AVCapturePhotoSettings.createConfiguredAVCapturePhotoSettings(format: self.photoOutput.appropriatePhotoCodecType())
+            let photoCaptureDelegate = PhotoCaptureProcessor(with: { [weak self] photo in self?.save(photo, at: path) })
+            photoCaptureDelegate.completionHandler = { [weak self] in self?.updateDelegateContainer(for: photoCaptureDelegate) }
+            
+            // Add photoCaptureDelegate to the container to hold reference so that it doesn't get garbage collected
+            updateDelegateContainer(for: photoCaptureDelegate)
+            Task { self.photoOutput.capturePhoto(with: photoCaptureSettings, delegate: photoCaptureDelegate) }
+            
+            directoryManager.incrementNumPhotos() /// Should be accessed only by one thread each time
+        }
+        else { print("Could not find path for saving image") }
     }
     
-    private func save(_ photo: AVCapturePhoto, at path: URL?) {
+    private func save(_ photo: AVCapturePhoto, at path: URL) {
         let photoData = photo.fileDataRepresentation()
         DirectoryManager.createFile(at: path, contents: photoData)
     }

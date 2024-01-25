@@ -21,9 +21,9 @@ class DirectoryManager {
     init(filePrefixInDirectory: String,
          fileSuffixInDirectory: String) {
         filePrefix = filePrefixInDirectory
+        fileSuffix = fileSuffixInDirectory
         numPhotos = 0
         dirPath = DirectoryManager.createNewDirectory()
-        fileSuffix = fileSuffixInDirectory
     }
 
     /// This should be done atomically

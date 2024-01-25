@@ -18,15 +18,11 @@ class CaptureSession: ObservableObject {
     private let photoCaptureManager: PhotoCaptureManager
     let outputCameraPreview: VideoPreview
     
-    // MARK: File Manager
-    private let directoryManager: DirectoryManager
-    
     init() {
         self.session = AVCaptureSession()
         self.inputCamera = AVCaptureDeviceInput.createObjCaptureInputCamera()
         self.photoCaptureManager = PhotoCaptureManager()
         self.outputCameraPreview = VideoPreview()
-        self.directoryManager = DirectoryManager(filePrefixInDirectory: "IMG_", fileSuffixInDirectory: ".JPG")
     }
     
     func configureSession() {
@@ -68,9 +64,8 @@ extension CaptureSession {
 
 // MARK: Photo Capture Output
 extension CaptureSession {
-    @MainActor 
+    @MainActor
     func captureFrame() {
-        self.photoCaptureManager.saveFrame(to: directoryManager.nextImagePath)
-        self.directoryManager.incrementNumPhotos() /// Should be accessed only by one thread each time
+        self.photoCaptureManager.saveFrame()
     }
 }

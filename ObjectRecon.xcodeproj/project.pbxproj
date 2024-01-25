@@ -51,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D05B6EC52B621627002FCFBA /* PhotoCaptureHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */,
+				D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */,
+			);
+			path = PhotoCaptureHelpers;
+			sourceTree = "<group>";
+		};
 		D0A9E2752B5FC164006B7CA8 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,8 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				D0EB37A52B5E695200A54AA7 /* PhotoCaptureManager.swift */,
-				D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */,
-				D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */,
+				D05B6EC52B621627002FCFBA /* PhotoCaptureHelpers */,
 			);
 			path = PhotoCapture;
 			sourceTree = "<group>";
