@@ -30,12 +30,12 @@ class PhotoCaptureManager {
         Task { self.photoOutput.capturePhoto(with: photoCaptureSettings, delegate: photoCaptureDelegate) }
     }
     
-    func save(_ photo: AVCapturePhoto, at path: URL?) {
+    private func save(_ photo: AVCapturePhoto, at path: URL?) {
         let photoData = photo.fileDataRepresentation()
         DirectoryManager.createFile(at: path, contents: photoData)
     }
     
-    func updateDelegateContainer(for delegate: PhotoCaptureProcessor) {
+    private func updateDelegateContainer(for delegate: PhotoCaptureProcessor) {
         if photoCaptureDelegateContainer.contains(delegate) {
             photoCaptureDelegateContainer.remove(delegate)
         } else {

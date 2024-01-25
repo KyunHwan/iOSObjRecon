@@ -11,10 +11,9 @@ import AVFoundation
 // MARK: Create & Configure Input Device Camera
 extension AVCaptureDeviceInput {
     static func createObjCaptureInputCamera() -> AVCaptureDeviceInput {
-        let inputCamera: AVCaptureDeviceInput
         if let device = AVCaptureDevice.createObjCaptureCamera() {
             do {
-                inputCamera = try AVCaptureDeviceInput(device: device)
+                let inputCamera = try AVCaptureDeviceInput(device: device)
                 inputCamera.device.configureCamera()
                 return inputCamera
             } catch {
