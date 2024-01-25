@@ -14,11 +14,16 @@ struct ObjCaptureView: View {
             CameraPreviewView()
                 .environmentObject(captureSession)
             
-            Text("Capture!")
-                .font(.headline)
-                .onTapGesture {
-                    captureSession.captureFrame()
-                }
+            Button(action: { captureSession.captureFrame() }, label: {
+                Text("Capture!")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.orange)
+                    .cornerRadius(10)
+            })
+            .frame(height: 55)
         }
     }
 }

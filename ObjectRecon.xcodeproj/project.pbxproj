@@ -59,12 +59,12 @@
 			path = FileManager;
 			sourceTree = "<group>";
 		};
-		D0D953842B60F58600E9FB71 /* ObjCaptureHelperViews */ = {
+		D0D953842B60F58600E9FB71 /* ObjCaptureViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
 				D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */,
 			);
-			path = ObjCaptureHelperViews;
+			path = ObjCaptureViewHelpers;
 			sourceTree = "<group>";
 		};
 		D0EB377A2B5DDED100A54AA7 = {
@@ -90,7 +90,7 @@
 				D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */,
 				D0EB37882B5DDED100A54AA7 /* RootView.swift */,
 				D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */,
-				D0D953842B60F58600E9FB71 /* ObjCaptureHelperViews */,
+				D0D953842B60F58600E9FB71 /* ObjCaptureViewHelpers */,
 				D0EB37942B5DE6F200A54AA7 /* DeviceCapture */,
 				D0A9E2752B5FC164006B7CA8 /* FileManager */,
 				D0EB378A2B5DDED400A54AA7 /* Assets.xcassets */,
@@ -178,7 +178,7 @@
 		D0EB377B2B5DDED100A54AA7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {

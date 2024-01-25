@@ -23,21 +23,22 @@ class CaptureSession: ObservableObject {
     
     init() {
         self.session = AVCaptureSession()
-        self.inputCamera = .createObjCaptureInputCamera()
+        self.inputCamera = AVCaptureDeviceInput.createObjCaptureInputCamera()
         self.photoCaptureManager = PhotoCaptureManager()
         self.outputCameraPreview = VideoPreview()
         self.directoryManager = DirectoryManager(filePrefixInDirectory: "IMG_", fileSuffixInDirectory: ".JPG")
     }
     
-    
     func configureSession() {
-        guard self.session.canAddInput(inputCamera), self.session.canAddOutput(photoCaptureManager.photoOutput) else {
-            fatalError("Session could not be configured")
-        }
+        guard self.session.canAddInput(inputCamera), self.session.canAddOutput(photoCaptureManager.photoOutput) 
+        else { fatalError("Session could not be configured") }
+        
         self.session.beginConfiguration()
+        
         
         self.session.addInput(inputCamera)
         self.session.addOutput(photoCaptureManager.photoOutput)
+        self.session.setPhotoPreset()
         
         self.session.commitConfiguration()
     }
@@ -46,32 +47,30 @@ class CaptureSession: ObservableObject {
         if !session.isRunning {
             self.configureSession()
             session.startRunning()
-            await MainActor.run {
-                setPreviewSession()
-            }
+            await MainActor.run { setPreviewSession() }
         }
     }
     
-    func stopRunning() {
-        if session.isRunning { session.stopRunning() }
-    }
+    func stopRunning() { if session.isRunning { session.stopRunning() } }
+}
+
+// MARK: AVCaptureSession Photo Preset
+extension AVCaptureSession {
+    func setPhotoPreset() { self.sessionPreset = .photo }
 }
 
 // MARK: Video Preview Output
-@MainActor
 extension CaptureSession {
-    // This needs to run on Main thread since this updates the UIView
-    func setPreviewSession() {
-        self.outputCameraPreview.session = self.session
-    }
+    /// This needs to run on Main thread since this updates the UIView
+    @MainActor
+    func setPreviewSession() { self.outputCameraPreview.session = self.session }
 }
 
 // MARK: Photo Capture Output
 extension CaptureSession {
     @MainActor 
     func captureFrame() {
-        print("Tapped! Thread: \(Thread.current)")
         self.photoCaptureManager.saveFrame(to: directoryManager.nextImagePath)
-        self.directoryManager.incrementNumPhotos() // Should be accessed only by one thread each time
+        self.directoryManager.incrementNumPhotos() /// Should be accessed only by one thread each time
     }
 }
