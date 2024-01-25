@@ -31,7 +31,6 @@ class CaptureSession: ObservableObject {
         
         self.session.beginConfiguration()
         
-        
         self.session.addInput(inputCamera)
         self.session.addOutput(photoCaptureManager.photoOutput)
         self.session.setPhotoPreset()
@@ -64,6 +63,8 @@ extension CaptureSession {
 
 // MARK: Photo Capture Output
 extension CaptureSession {
+    /// This needs to run on Main thread since it increments numPhotos,
+    /// which should be accessed by one thread at a time
     @MainActor
     func captureFrame() {
         self.photoCaptureManager.saveFrame()
