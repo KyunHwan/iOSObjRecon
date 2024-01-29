@@ -12,18 +12,18 @@
 import Foundation
 
 class DirectoryManager {
-    let dirPath: URL?
+    var dirPath: URL?
     let filePrefix: String
     let fileSuffix: String
     var numPhotos: UInt32
     var nextImagePath: URL? { dirPath?.appendingPathComponent(String(format: "%@%04d", filePrefix, numPhotos).appending(fileSuffix)) }
     
-    init(filePrefixInDirectory: String,
-         fileSuffixInDirectory: String) {
+    init(filePrefixInDirectory: String = "IMG_",
+         fileSuffixInDirectory: String = ".JPG") {
         filePrefix = filePrefixInDirectory
         fileSuffix = fileSuffixInDirectory
         numPhotos = 0
-        dirPath = DirectoryManager.createNewDirectory()
+        dirPath = nil
     }
 
     /// This should be done atomically
@@ -50,6 +50,16 @@ class DirectoryManager {
         } else {
             return nil
         }
+    }
+    
+    func checkCreateNewDirectory() {
+        if let dirPath = self.dirPath { return }
+        else { self.createNewDirectory() }
+    }
+    
+    func createNewDirectory() {
+        numPhotos = 0
+        dirPath = DirectoryManager.createNewDirectory()
     }
     
     @MainActor

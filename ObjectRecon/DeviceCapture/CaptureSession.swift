@@ -14,25 +14,27 @@ class CaptureSession: ObservableObject {
     // MARK: Inputs During the Session
     private let inputCamera: AVCaptureDeviceInput
     
+    // MARK: Connector to Photo Capture Manager
+    private let photoCaptureConnector: PhotoCaptureConnector
+    
     // MARK: Outputs During the Session
-    private let photoCaptureManager: PhotoCaptureManager
     let outputCameraPreview: VideoPreview
     
     init() {
         self.session = AVCaptureSession()
         self.inputCamera = AVCaptureDeviceInput.createObjCaptureInputCamera()
-        self.photoCaptureManager = PhotoCaptureManager()
+        self.photoCaptureConnector = PhotoCaptureConnector()
         self.outputCameraPreview = VideoPreview()
     }
     
     func configureSession() {
-        guard self.session.canAddInput(inputCamera), self.session.canAddOutput(photoCaptureManager.photoOutput) 
+        guard self.session.canAddInput(inputCamera), self.session.canAddOutput(photoCaptureConnector.photoOutput)
         else { fatalError("Session could not be configured") }
         
         self.session.beginConfiguration()
         
         self.session.addInput(inputCamera)
-        self.session.addOutput(photoCaptureManager.photoOutput)
+        self.session.addOutput(photoCaptureConnector.photoOutput)
         self.session.setPhotoPreset()
         
         self.session.commitConfiguration()
@@ -66,7 +68,5 @@ extension CaptureSession {
     /// This needs to run on Main thread since it increments numPhotos,
     /// which should be accessed by one thread at a time
     @MainActor
-    func captureFrame() {
-        self.photoCaptureManager.saveFrame()
-    }
+    func captureFrame() { self.photoCaptureConnector.captureFrame() }
 }
