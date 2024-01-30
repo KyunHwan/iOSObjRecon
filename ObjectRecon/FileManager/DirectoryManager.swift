@@ -53,7 +53,7 @@ class DirectoryManager {
     }
     
     func checkCreateNewDirectory() {
-        if let dirPath = self.dirPath { return }
+        if let _ = self.dirPath { return }
         else { self.createNewDirectory() }
     }
     

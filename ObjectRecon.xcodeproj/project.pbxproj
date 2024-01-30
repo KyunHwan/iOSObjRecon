@@ -77,12 +77,12 @@
 			path = PhotoCaptureHelpers;
 			sourceTree = "<group>";
 		};
-		D0A4D1662B672564007961DA /* CaptureSessionHelpers */ = {
+		D0A4D1662B672564007961DA /* CaptureSessionConnectors */ = {
 			isa = PBXGroup;
 			children = (
 				D0A4D1672B6725B3007961DA /* PhotoCaptureConnector.swift */,
 			);
-			path = CaptureSessionHelpers;
+			path = CaptureSessionConnectors;
 			sourceTree = "<group>";
 		};
 		D0A4D1692B677920007961DA /* AutoCaptureConditionComponents */ = {
@@ -98,19 +98,19 @@
 			isa = PBXGroup;
 			children = (
 				D0A4D16A2B677A2B007961DA /* DeviceMotionProvider.swift */,
-				D0A4D1752B67AAF1007961DA /* DeviceMotionProviderHelpers */,
+				D0A4D1752B67AAF1007961DA /* DeviceMotionProviderComponents */,
 			);
 			path = DeviceMotion;
 			sourceTree = "<group>";
 		};
-		D0A4D1752B67AAF1007961DA /* DeviceMotionProviderHelpers */ = {
+		D0A4D1752B67AAF1007961DA /* DeviceMotionProviderComponents */ = {
 			isa = PBXGroup;
 			children = (
 				D0A4D16D2B677DA4007961DA /* DeviceMotionExtensions.swift */,
 				D0A4D1712B67A9E4007961DA /* DeviceAcceleration.swift */,
 				D0A4D1732B67A9F3007961DA /* DeviceOrientation.swift */,
 			);
-			path = DeviceMotionProviderHelpers;
+			path = DeviceMotionProviderComponents;
 			sourceTree = "<group>";
 		};
 		D0A4D1762B67AB73007961DA /* AutoCaptureModule */ = {
@@ -191,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				D0EB37A32B5E5A7800A54AA7 /* CaptureSession.swift */,
-				D0A4D1662B672564007961DA /* CaptureSessionHelpers */,
+				D0A4D1662B672564007961DA /* CaptureSessionConnectors */,
 				D0EB37A82B5E6AA800A54AA7 /* Inputs */,
 				D0EB37A72B5E6A9B00A54AA7 /* Outputs */,
 			);
