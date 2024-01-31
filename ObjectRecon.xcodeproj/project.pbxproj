@@ -79,6 +79,20 @@
 			path = PhotoCaptureHelpers;
 			sourceTree = "<group>";
 		};
+		D06B83662B69E50C008393A3 /* ObjPresentationPlatformPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ObjPresentationPlatformPage;
+			sourceTree = "<group>";
+		};
+		D06B83672B69E543008393A3 /* AuthenticationPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AuthenticationPage;
+			sourceTree = "<group>";
+		};
 		D08728E22B68C8C400D61CBF /* CameraPreviewView */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,17 +145,19 @@
 			children = (
 				D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */,
 				D0A4D1692B677920007961DA /* AutoCaptureComponents */,
+				D0A9E2752B5FC164006B7CA8 /* FileManager */,
 			);
 			path = AutoCaptureModule;
 			sourceTree = "<group>";
 		};
-		D0A4D1792B67ABD1007961DA /* ObjCaptureView */ = {
+		D0A4D1792B67ABD1007961DA /* ObjCapturePage */ = {
 			isa = PBXGroup;
 			children = (
 				D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */,
 				D0D953842B60F58600E9FB71 /* ObjCaptureViewComponents */,
+				D0A4D1762B67AB73007961DA /* AutoCaptureModule */,
 			);
-			path = ObjCaptureView;
+			path = ObjCapturePage;
 			sourceTree = "<group>";
 		};
 		D0A9E2752B5FC164006B7CA8 /* FileManager */ = {
@@ -182,9 +198,9 @@
 				D0CEEFB52B61272E001B79A1 /* Info.plist */,
 				D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */,
 				D0EB37882B5DDED100A54AA7 /* RootView.swift */,
-				D0A4D1792B67ABD1007961DA /* ObjCaptureView */,
-				D0A4D1762B67AB73007961DA /* AutoCaptureModule */,
-				D0A9E2752B5FC164006B7CA8 /* FileManager */,
+				D06B83672B69E543008393A3 /* AuthenticationPage */,
+				D0A4D1792B67ABD1007961DA /* ObjCapturePage */,
+				D06B83662B69E50C008393A3 /* ObjPresentationPlatformPage */,
 				D0EB378A2B5DDED400A54AA7 /* Assets.xcassets */,
 				D0EB378C2B5DDED400A54AA7 /* Preview Content */,
 			);

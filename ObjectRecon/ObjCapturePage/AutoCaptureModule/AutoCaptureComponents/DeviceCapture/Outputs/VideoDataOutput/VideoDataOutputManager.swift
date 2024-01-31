@@ -12,9 +12,15 @@ class VideoDataOutputManager: NSObject, AVCaptureVideoDataOutputSampleBufferDele
     let videoDataOutput: AVCaptureVideoDataOutput
     private let dataOutputQueue: DispatchQueue
     
-    override init() {
+    // MARK: Output Augmentation
+    private var outputAugmentor: MLDetector?
+    
+    init(with outputAugmentor: MLDetector? = nil) {
         videoDataOutput = AVCaptureVideoDataOutput()
         dataOutputQueue = DispatchQueue(label: "data output queue")
+        self.outputAugmentor = outputAugmentor
+        super.init()
+        self.configure()
     }
     
     private func configure() {
@@ -23,12 +29,26 @@ class VideoDataOutputManager: NSObject, AVCaptureVideoDataOutputSampleBufferDele
     }
 }
 
+extension VideoDataOutputManager {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        if let augmentor = outputAugmentor {
+            let imageRequestHandler = MLDetector.createImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
+            do {
+                try imageRequestHandler.perform(augmentor.mlRequests)
+            } catch {
+                print(error)
+            }
+        }
+    }
+}
 
 // MARK: Configure Video Capture
 extension AVCaptureVideoDataOutput {
     func configureVideoCapture() {
         self.alwaysDiscardsLateVideoFrames = VideoCaptureSettings.alwaysDiscardsLateVideoFrames
     }
+    
     private struct VideoCaptureSettings {
         static let alwaysDiscardsLateVideoFrames = true
     }

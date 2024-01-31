@@ -1,0 +1,129 @@
+//
+//  MLDetector.swift
+//  ObjectRecon
+//
+//  Created by Kyun Hwan  Kim on 1/29/24.
+//
+
+import SwiftUI
+import Foundation
+import Vision
+import CoreML
+
+class MLDetector {
+    private(set) var rootLayer: CALayer?
+    private var detectionOverlay: CALayer
+    
+    private(set) var mlRequests: [VNRequest]
+    private(set) var teethBox: CGRect
+    private(set) var detectionConfidence: Float
+    
+    init() {
+        mlRequests = [VNRequest]()
+        teethBox = CGRect()
+        detectionConfidence = 0.0
+        
+        self.rootLayer = nil
+        self.detectionOverlay = CALayer()
+    }
+    
+    func initRootLayer(with rootLayer: CALayer) {
+        self.rootLayer = rootLayer
+    }
+    
+    func startDetectionSession() {
+        if let rootLayer = self.rootLayer {
+            rootLayer.addSublayer(detectionOverlay)
+        }
+        setupVision()
+    }
+    
+    static func createImageRequestHandler(cvPixelBuffer: CVPixelBuffer,
+                                   orientation: CGImagePropertyOrientation,
+                                   options: [VNImageOption : Any]) -> VNImageRequestHandler {
+        VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer, orientation: orientation, options: options)
+    }
+    
+    @discardableResult
+    private func setupVision() -> NSError? {
+        // Setup Vision parts
+        let error: NSError! = nil
+        
+        guard let modelURL = Bundle.main.url(forResource: "UpperTeethDetector", withExtension: "mlmodelc") else {
+            return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
+        }
+        do {
+            let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
+            let objectRecognition = VNCoreMLRequest(model: visionModel, completionHandler: { (request, error) in
+                DispatchQueue.main.async {
+                    // perform all the UI updates on the main queue
+                    print(request)
+                    if let results = request.results {
+                        if results.isEmpty { print("Results is empty before") }
+                        self.drawVisionRequestResults(results)
+                    }
+                }
+            })
+            self.mlRequests = [objectRecognition]
+        } catch let error as NSError {
+            print("Model loading went wrong: \(error)")
+        }
+        
+        return error
+    }
+    
+    private func drawVisionRequestResults(_ results: [Any]) {
+        if let rootLayer = self.rootLayer {
+            CATransaction.begin()
+            CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
+            
+            let rootLayerBounds = rootLayer.bounds
+            detectionOverlay.sublayers = nil // remove all the old recognized objects
+            
+            if results.isEmpty {
+                print("Results is empty after")
+                self.teethBox = CGRect()
+                self.detectionConfidence = 0.0
+            }
+            else {
+                for observation in results where observation is VNRecognizedObjectObservation {
+                    guard let objectObservation = observation as? VNRecognizedObjectObservation else {
+                        continue
+                    }
+                    self.teethBox = objectObservation.boundingBox // normalized box !
+                    self.detectionConfidence = objectObservation.confidence
+                    
+                    let boundsWidth = rootLayerBounds.size.width
+                    let boundsHeight = rootLayerBounds.size.height
+                    
+                    let objectBounds = CGRect(x: self.teethBox.minX * boundsWidth,
+                                              y: (1 - self.teethBox.minY - self.teethBox.height) * boundsHeight,
+                                              width: self.teethBox.width * boundsWidth,
+                                              height: self.teethBox.height * boundsHeight)
+                    
+                    let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds)
+                    
+                    detectionOverlay.addSublayer(shapeLayer)
+                }
+                
+                detectionOverlay.bounds = CGRect(x: 0.0, y: 0.0, width: rootLayerBounds.size.width, height: rootLayerBounds.size.height)
+                detectionOverlay.position = CGPoint(x: rootLayerBounds.midX, y: rootLayerBounds.midY) // center the layer
+            }
+            CATransaction.commit()
+        }
+        else {
+            print("rootLayer is NIL!!!!")
+        }
+    }
+    
+    private func createRoundedRectLayerWithBounds(_ bounds: CGRect) -> CALayer {
+        let shapeLayer = CALayer()
+        shapeLayer.bounds = bounds
+        shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+        shapeLayer.name = "Found Object"
+        shapeLayer.borderWidth = 2
+        shapeLayer.borderColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])
+        shapeLayer.cornerRadius = 7
+        return shapeLayer
+    }
+}

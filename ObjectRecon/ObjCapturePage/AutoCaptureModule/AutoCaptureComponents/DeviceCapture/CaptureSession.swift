@@ -18,23 +18,26 @@ class CaptureSession {
     private(set) var photoCaptureManager: PhotoCaptureManager
     private(set) var videoDataOutputManager: VideoDataOutputManager
     
-    init() {
+    init(with outputAugmentor: MLDetector? = nil) {
         self.session = AVCaptureSession()
         self.inputCamera = AVCaptureDeviceInput.createObjCaptureInputCamera()
         self.photoCaptureManager = PhotoCaptureManager()
-        self.videoDataOutputManager = VideoDataOutputManager()
+        self.videoDataOutputManager = VideoDataOutputManager(with: outputAugmentor)
+        
     }
     
-    func startRunning() async {
+    func startRunning() {
         if !session.isRunning {
-            self.configureSession()
-            session.startRunning()
+            Task {
+                self.configureSession()
+                session.startRunning()
+            }
         }
     }
     
     func stopRunning() { if session.isRunning { session.stopRunning() } }
     
-    func configureSession() {
+    private func configureSession() {
         self.checkAddInputOutput()
         
         self.session.beginConfiguration()
@@ -53,7 +56,7 @@ extension CaptureSession {
         guard self.session.canAddInput(inputCamera),
               self.session.canAddOutput(photoCaptureManager.photoOutput),
               self.session.canAddOutput(videoDataOutputManager.videoDataOutput)
-        else { fatalError("Session could not be configured") }
+        else { fatalError("Capture session could not be configured") }
     }
     
     private func addInputs() {
