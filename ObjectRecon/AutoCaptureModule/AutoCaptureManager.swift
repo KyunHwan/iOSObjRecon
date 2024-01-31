@@ -77,6 +77,7 @@ extension AutoCaptureManager {
     }
 }
 
+// TODO: Fill this in
 // MARK: Condition-checked Photo Capture
 extension AutoCaptureManager {
     @MainActor
@@ -92,7 +93,7 @@ extension AutoCaptureManager {
     
     /// Lens Position Condition Checker
     private func lensPosConditionSatisfied() -> Bool {
-        
+
     }
     
     /// Acceleration Magnitude Condition Checker
