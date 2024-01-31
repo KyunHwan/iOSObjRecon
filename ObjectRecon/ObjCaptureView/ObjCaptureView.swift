@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct ObjCaptureView: View {
-    @EnvironmentObject var captureSession: CaptureSession
-    @EnvironmentObject var deviceMotionProvider: DeviceMotionProvider
+    @StateObject var captureSession = CaptureSession()
+    @StateObject var deviceMotionProvider = DeviceMotionProvider()
 
     var body: some View {
         ZStack {
             CameraPreviewView()
-                .environmentObject(captureSession)
             VStack {
                 Button(action: { captureSession.captureFrame() }, label: {
                     Text("Capture!")
@@ -32,10 +31,17 @@ struct ObjCaptureView: View {
                 Text("Accel: 0")
             }
         }
+        .task{
+            await captureSession.startRunning()
+            deviceMotionProvider.startMotionUpdate()
+        }
+        .onDisappear {
+            captureSession.stopRunning()
+        }
     }
+    
 }
 
 #Preview {
     ObjCaptureView()
-        .environmentObject(CaptureSession())
 }

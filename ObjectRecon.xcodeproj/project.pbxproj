@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */; };
-		D0A4D1682B6725B3007961DA /* PhotoCaptureConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1672B6725B3007961DA /* PhotoCaptureConnector.swift */; };
+		D08728E62B68D95400D61CBF /* VideoDataOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */; };
+		D08728E82B68F6AA00D61CBF /* UpperTeethDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */; };
+		D0A4D1682B6725B3007961DA /* PhotoCaptureM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1672B6725B3007961DA /* PhotoCaptureM.swift */; };
 		D0A4D16B2B677A2B007961DA /* DeviceMotionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D16A2B677A2B007961DA /* DeviceMotionProvider.swift */; };
 		D0A4D16E2B677DA4007961DA /* DeviceMotionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D16D2B677DA4007961DA /* DeviceMotionExtensions.swift */; };
 		D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D16F2B67A9CE007961DA /* MLDetector.swift */; };
 		D0A4D1722B67A9E4007961DA /* DeviceAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1712B67A9E4007961DA /* DeviceAcceleration.swift */; };
 		D0A4D1742B67A9F3007961DA /* DeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1732B67A9F3007961DA /* DeviceOrientation.swift */; };
-		D0A4D1782B67AB89007961DA /* AutoCaptureModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1772B67AB89007961DA /* AutoCaptureModule.swift */; };
+		D0A4D1782B67AB89007961DA /* AutoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */; };
 		D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */; };
 		D0D953832B6097F200E9FB71 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D953822B6097F200E9FB71 /* DirectoryManager.swift */; };
 		D0D953862B60F5E800E9FB71 /* ObjCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */; };
@@ -25,20 +27,22 @@
 		D0EB37962B5DE75100A54AA7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37952B5DE75100A54AA7 /* Camera.swift */; };
 		D0EB37A42B5E5A7800A54AA7 /* CaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37A32B5E5A7800A54AA7 /* CaptureSession.swift */; };
 		D0EB37A62B5E695200A54AA7 /* PhotoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37A52B5E695200A54AA7 /* PhotoCaptureManager.swift */; };
-		D0EB37AA2B5E6B0400A54AA7 /* VideoPreviewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37A92B5E6B0400A54AA7 /* VideoPreviewOutput.swift */; };
+		D0EB37AA2B5E6B0400A54AA7 /* VideoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37A92B5E6B0400A54AA7 /* VideoPreview.swift */; };
 		D0EB37AD2B5E762100A54AA7 /* PhotoCaptureSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */; };
 		D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureExtensions.swift; sourceTree = "<group>"; };
-		D0A4D1672B6725B3007961DA /* PhotoCaptureConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureConnector.swift; sourceTree = "<group>"; };
+		D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataOutputManager.swift; sourceTree = "<group>"; };
+		D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = UpperTeethDetector.mlmodel; sourceTree = "<group>"; };
+		D0A4D1672B6725B3007961DA /* PhotoCaptureM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureM.swift; sourceTree = "<group>"; };
 		D0A4D16A2B677A2B007961DA /* DeviceMotionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMotionProvider.swift; sourceTree = "<group>"; };
 		D0A4D16D2B677DA4007961DA /* DeviceMotionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMotionExtensions.swift; sourceTree = "<group>"; };
 		D0A4D16F2B67A9CE007961DA /* MLDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDetector.swift; sourceTree = "<group>"; };
 		D0A4D1712B67A9E4007961DA /* DeviceAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAcceleration.swift; sourceTree = "<group>"; };
 		D0A4D1732B67A9F3007961DA /* DeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOrientation.swift; sourceTree = "<group>"; };
-		D0A4D1772B67AB89007961DA /* AutoCaptureModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCaptureModule.swift; sourceTree = "<group>"; };
+		D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCaptureManager.swift; sourceTree = "<group>"; };
 		D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		D0CEEFB52B61272E001B79A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D0D953822B6097F200E9FB71 /* DirectoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryManager.swift; sourceTree = "<group>"; };
@@ -51,7 +55,7 @@
 		D0EB37952B5DE75100A54AA7 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		D0EB37A32B5E5A7800A54AA7 /* CaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSession.swift; sourceTree = "<group>"; };
 		D0EB37A52B5E695200A54AA7 /* PhotoCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureManager.swift; sourceTree = "<group>"; };
-		D0EB37A92B5E6B0400A54AA7 /* VideoPreviewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreviewOutput.swift; sourceTree = "<group>"; };
+		D0EB37A92B5E6B0400A54AA7 /* VideoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreview.swift; sourceTree = "<group>"; };
 		D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureSettings.swift; sourceTree = "<group>"; };
 		D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,21 +81,32 @@
 			path = PhotoCaptureHelpers;
 			sourceTree = "<group>";
 		};
-		D0A4D1662B672564007961DA /* CaptureSessionConnectors */ = {
+		D08728E22B68C8C400D61CBF /* CameraPreviewView */ = {
 			isa = PBXGroup;
 			children = (
-				D0A4D1672B6725B3007961DA /* PhotoCaptureConnector.swift */,
+				D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */,
+				D0EB37A92B5E6B0400A54AA7 /* VideoPreview.swift */,
 			);
-			path = CaptureSessionConnectors;
+			path = CameraPreviewView;
 			sourceTree = "<group>";
 		};
-		D0A4D1692B677920007961DA /* AutoCaptureConditionComponents */ = {
+		D08728E92B68F6BE00D61CBF /* MLDetector */ = {
 			isa = PBXGroup;
 			children = (
 				D0A4D16F2B67A9CE007961DA /* MLDetector.swift */,
+				D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */,
+			);
+			path = MLDetector;
+			sourceTree = "<group>";
+		};
+		D0A4D1692B677920007961DA /* AutoCaptureComponents */ = {
+			isa = PBXGroup;
+			children = (
+				D0EB37942B5DE6F200A54AA7 /* DeviceCapture */,
+				D08728E92B68F6BE00D61CBF /* MLDetector */,
 				D0A4D16C2B677D8A007961DA /* DeviceMotion */,
 			);
-			path = AutoCaptureConditionComponents;
+			path = AutoCaptureComponents;
 			sourceTree = "<group>";
 		};
 		D0A4D16C2B677D8A007961DA /* DeviceMotion */ = {
@@ -116,8 +131,8 @@
 		D0A4D1762B67AB73007961DA /* AutoCaptureModule */ = {
 			isa = PBXGroup;
 			children = (
-				D0A4D1772B67AB89007961DA /* AutoCaptureModule.swift */,
-				D0A4D1692B677920007961DA /* AutoCaptureConditionComponents */,
+				D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */,
+				D0A4D1692B677920007961DA /* AutoCaptureComponents */,
 			);
 			path = AutoCaptureModule;
 			sourceTree = "<group>";
@@ -142,7 +157,7 @@
 		D0D953842B60F58600E9FB71 /* ObjCaptureViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */,
+				D08728E22B68C8C400D61CBF /* CameraPreviewView */,
 			);
 			path = ObjCaptureViewComponents;
 			sourceTree = "<group>";
@@ -171,7 +186,6 @@
 				D0EB37882B5DDED100A54AA7 /* RootView.swift */,
 				D0A4D1792B67ABD1007961DA /* ObjCaptureView */,
 				D0A4D1762B67AB73007961DA /* AutoCaptureModule */,
-				D0EB37942B5DE6F200A54AA7 /* DeviceCapture */,
 				D0A9E2752B5FC164006B7CA8 /* FileManager */,
 				D0EB378A2B5DDED400A54AA7 /* Assets.xcassets */,
 				D0EB378C2B5DDED400A54AA7 /* Preview Content */,
@@ -191,7 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				D0EB37A32B5E5A7800A54AA7 /* CaptureSession.swift */,
-				D0A4D1662B672564007961DA /* CaptureSessionConnectors */,
 				D0EB37A82B5E6AA800A54AA7 /* Inputs */,
 				D0EB37A72B5E6A9B00A54AA7 /* Outputs */,
 			);
@@ -201,8 +214,8 @@
 		D0EB37A72B5E6A9B00A54AA7 /* Outputs */ = {
 			isa = PBXGroup;
 			children = (
-				D0EB37B02B5E76C100A54AA7 /* VideoPreview */,
-				D0EB37AB2B5E75CD00A54AA7 /* PhotoCapture */,
+				D0EB37B02B5E76C100A54AA7 /* VideoDataOutput */,
+				D0EB37AB2B5E75CD00A54AA7 /* PhotoOutput */,
 			);
 			path = Outputs;
 			sourceTree = "<group>";
@@ -215,21 +228,22 @@
 			path = Inputs;
 			sourceTree = "<group>";
 		};
-		D0EB37AB2B5E75CD00A54AA7 /* PhotoCapture */ = {
+		D0EB37AB2B5E75CD00A54AA7 /* PhotoOutput */ = {
 			isa = PBXGroup;
 			children = (
 				D0EB37A52B5E695200A54AA7 /* PhotoCaptureManager.swift */,
+				D0A4D1672B6725B3007961DA /* PhotoCaptureM.swift */,
 				D05B6EC52B621627002FCFBA /* PhotoCaptureHelpers */,
 			);
-			path = PhotoCapture;
+			path = PhotoOutput;
 			sourceTree = "<group>";
 		};
-		D0EB37B02B5E76C100A54AA7 /* VideoPreview */ = {
+		D0EB37B02B5E76C100A54AA7 /* VideoDataOutput */ = {
 			isa = PBXGroup;
 			children = (
-				D0EB37A92B5E6B0400A54AA7 /* VideoPreviewOutput.swift */,
+				D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */,
 			);
-			path = VideoPreview;
+			path = VideoDataOutput;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,11 +317,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0A4D16E2B677DA4007961DA /* DeviceMotionExtensions.swift in Sources */,
-				D0A4D1682B6725B3007961DA /* PhotoCaptureConnector.swift in Sources */,
+				D0A4D1682B6725B3007961DA /* PhotoCaptureM.swift in Sources */,
+				D08728E62B68D95400D61CBF /* VideoDataOutputManager.swift in Sources */,
 				D0EB37962B5DE75100A54AA7 /* Camera.swift in Sources */,
 				D0EB37892B5DDED100A54AA7 /* RootView.swift in Sources */,
-				D0A4D1782B67AB89007961DA /* AutoCaptureModule.swift in Sources */,
+				D0A4D1782B67AB89007961DA /* AutoCaptureManager.swift in Sources */,
 				D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */,
+				D08728E82B68F6AA00D61CBF /* UpperTeethDetector.mlmodel in Sources */,
 				D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */,
 				D0A4D16B2B677A2B007961DA /* DeviceMotionProvider.swift in Sources */,
 				D0D953832B6097F200E9FB71 /* DirectoryManager.swift in Sources */,
@@ -320,7 +336,7 @@
 				D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */,
 				D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */,
 				D0A4D1742B67A9F3007961DA /* DeviceOrientation.swift in Sources */,
-				D0EB37AA2B5E6B0400A54AA7 /* VideoPreviewOutput.swift in Sources */,
+				D0EB37AA2B5E6B0400A54AA7 /* VideoPreview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
