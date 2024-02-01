@@ -131,7 +131,6 @@ extension AutoCaptureManager {
     }
     
     private func detectionConfidenceMet() -> Bool {
-        print("confidence: \(self.detector.detectionConfidence)")
         return self.detector.detectionConfidence > PhotoCaptureConditions.detectionConfidenceTheshold
     }
     
