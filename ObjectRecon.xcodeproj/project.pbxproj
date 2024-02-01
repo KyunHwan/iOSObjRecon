@@ -29,6 +29,9 @@
 		D0EB37AA2B5E6B0400A54AA7 /* VideoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37A92B5E6B0400A54AA7 /* VideoPreview.swift */; };
 		D0EB37AD2B5E762100A54AA7 /* PhotoCaptureSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */; };
 		D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */; };
+		D0FA08F72B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA08F62B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift */; };
+		D0FA08FA2B6B6FE4008FB3C5 /* ObjCaptureInstructionVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D0FA08F92B6B6F0B008FB3C5 /* ObjCaptureInstructionVid.mp4 */; };
+		D0FA08FD2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA08FC2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		D0EB37A92B5E6B0400A54AA7 /* VideoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreview.swift; sourceTree = "<group>"; };
 		D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureSettings.swift; sourceTree = "<group>"; };
 		D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureProcessor.swift; sourceTree = "<group>"; };
+		D0FA08F62B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureInstructionView.swift; sourceTree = "<group>"; };
+		D0FA08F92B6B6F0B008FB3C5 /* ObjCaptureInstructionVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ObjCaptureInstructionVid.mp4; sourceTree = "<group>"; };
+		D0FA08FC2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureInstructionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,7 @@
 				D0CEEFB52B61272E001B79A1 /* Info.plist */,
 				D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */,
 				D0EB37882B5DDED100A54AA7 /* RootView.swift */,
+				D0FA08F52B6B6A3E008FB3C5 /* ObjCaptureInstructionPage */,
 				D06B83672B69E543008393A3 /* AuthenticationPage */,
 				D0A4D1792B67ABD1007961DA /* ObjCapturePage */,
 				D06B83662B69E50C008393A3 /* ObjPresentationPlatformPage */,
@@ -259,6 +266,24 @@
 			path = VideoDataOutput;
 			sourceTree = "<group>";
 		};
+		D0FA08F52B6B6A3E008FB3C5 /* ObjCaptureInstructionPage */ = {
+			isa = PBXGroup;
+			children = (
+				D0FA08F62B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift */,
+				D0FA08FB2B6B7888008FB3C5 /* ObjCaptureInstructionViewComponents */,
+			);
+			path = ObjCaptureInstructionPage;
+			sourceTree = "<group>";
+		};
+		D0FA08FB2B6B7888008FB3C5 /* ObjCaptureInstructionViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				D0FA08F92B6B6F0B008FB3C5 /* ObjCaptureInstructionVid.mp4 */,
+				D0FA08FC2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift */,
+			);
+			path = ObjCaptureInstructionViewComponents;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -317,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0FA08FA2B6B6FE4008FB3C5 /* ObjCaptureInstructionVid.mp4 in Resources */,
 				D0EB378E2B5DDED400A54AA7 /* Preview Assets.xcassets in Resources */,
 				D0EB378B2B5DDED400A54AA7 /* Assets.xcassets in Resources */,
 			);
@@ -331,9 +357,11 @@
 			files = (
 				D0A4D16E2B677DA4007961DA /* DeviceMotionExtensions.swift in Sources */,
 				D08728E62B68D95400D61CBF /* VideoDataOutputManager.swift in Sources */,
+				D0FA08F72B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift in Sources */,
 				D0EB37962B5DE75100A54AA7 /* Camera.swift in Sources */,
 				D0EB37892B5DDED100A54AA7 /* RootView.swift in Sources */,
 				D0A4D1782B67AB89007961DA /* AutoCaptureManager.swift in Sources */,
+				D0FA08FD2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift in Sources */,
 				D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */,
 				D08728E82B68F6AA00D61CBF /* UpperTeethDetector.mlmodel in Sources */,
 				D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */,
