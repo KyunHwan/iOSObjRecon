@@ -7,7 +7,6 @@
 
 import SwiftUI
 import CoreMotion
-import RealityKit
 
 class DeviceMotionProvider: ObservableObject {
     private let motionManager: CMMotionManager

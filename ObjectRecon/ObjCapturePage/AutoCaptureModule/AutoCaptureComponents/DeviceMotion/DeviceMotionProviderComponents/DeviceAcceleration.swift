@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreMotion
-import RealityKit
 
 // MARK: Acceleration
 extension DeviceMotionProvider {

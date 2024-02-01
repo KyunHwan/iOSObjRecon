@@ -8,7 +8,6 @@
 import SwiftUI
 import Foundation
 import Vision
-import CoreML
 
 class MLDetector {
     private(set) var rootLayer: CALayer?

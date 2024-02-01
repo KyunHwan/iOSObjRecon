@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreMotion
 
 // MARK: Orientation
 extension DeviceMotionProvider {
