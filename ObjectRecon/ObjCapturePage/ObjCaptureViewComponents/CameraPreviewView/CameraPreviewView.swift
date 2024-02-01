@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct CameraPreviewView: UIViewRepresentable {
-    @ObservedObject var autoCaptureManager: AutoCaptureManager
+    @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
     
-    init(with autoCaptureManager: AutoCaptureManager) {
-        self.autoCaptureManager = autoCaptureManager
+    init(with objCaptureViewModel: ObjCaptureViewModel) {
+        self.objCaptureViewModel = objCaptureViewModel
     }
     
     func makeUIView(context: Context) -> VideoPreview {
         let view = VideoPreview()
-        view.videoPreviewLayer.session = autoCaptureManager.captureSession.session
+        view.videoPreviewLayer.session = objCaptureViewModel.session
         
         view.backgroundColor = .black
         view.videoPreviewLayer.cornerRadius = 0
         
-        autoCaptureManager.startDetection(with: view.layer)
+        objCaptureViewModel.startDetection(with: view.layer)
         return view
     }
     

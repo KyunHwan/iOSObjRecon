@@ -17,6 +17,7 @@
 		D0A4D1742B67A9F3007961DA /* DeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1732B67A9F3007961DA /* DeviceOrientation.swift */; };
 		D0A4D1782B67AB89007961DA /* AutoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */; };
 		D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */; };
+		D0C85B822B6C5A3300C1BB94 /* ObjCaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B812B6C5A3300C1BB94 /* ObjCaptureViewModel.swift */; };
 		D0D953832B6097F200E9FB71 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D953822B6097F200E9FB71 /* DirectoryManager.swift */; };
 		D0D953862B60F5E800E9FB71 /* ObjCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */; };
 		D0EB37872B5DDED100A54AA7 /* ObjectReconApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */; };
@@ -45,6 +46,7 @@
 		D0A4D1732B67A9F3007961DA /* DeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOrientation.swift; sourceTree = "<group>"; };
 		D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCaptureManager.swift; sourceTree = "<group>"; };
 		D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		D0C85B812B6C5A3300C1BB94 /* ObjCaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureViewModel.swift; sourceTree = "<group>"; };
 		D0CEEFB52B61272E001B79A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D0D953822B6097F200E9FB71 /* DirectoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryManager.swift; sourceTree = "<group>"; };
 		D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */,
+				D0C85B812B6C5A3300C1BB94 /* ObjCaptureViewModel.swift */,
 				D0D953842B60F58600E9FB71 /* ObjCaptureViewComponents */,
 				D0A4D1762B67AB73007961DA /* AutoCaptureModule */,
 			);
@@ -270,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				D0FA08F62B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift */,
+				D0FA08FC2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift */,
 				D0FA08FB2B6B7888008FB3C5 /* ObjCaptureInstructionViewComponents */,
 			);
 			path = ObjCaptureInstructionPage;
@@ -279,7 +283,6 @@
 			isa = PBXGroup;
 			children = (
 				D0FA08F92B6B6F0B008FB3C5 /* ObjCaptureInstructionVid.mp4 */,
-				D0FA08FC2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift */,
 			);
 			path = ObjCaptureInstructionViewComponents;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */,
 				D0A4D1742B67A9F3007961DA /* DeviceOrientation.swift in Sources */,
 				D0EB37AA2B5E6B0400A54AA7 /* VideoPreview.swift in Sources */,
+				D0C85B822B6C5A3300C1BB94 /* ObjCaptureViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

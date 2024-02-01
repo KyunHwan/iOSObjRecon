@@ -15,12 +15,17 @@ class AutoCaptureManager: ObservableObject {
     private let directoryManager: DirectoryManager
     private var photoCaptureMode: PhotoCaptureMode
     private var timer: AnyCancellable?
+    private var lensPos: Float { captureSession.inputCamera.device.lensPosition }
+    var session: AVCaptureSession { captureSession.session }
     
     // MARK: MLDetector
     private(set) var detector: MLDetector
+    private var objBoundingBox: CGRect { detector.teethBox }
+    private var objDetectionConfidence: Float { detector.detectionConfidence }
     
     // MARK: DeviceMotion
-    private let deviceMotion: DeviceMotionProvider
+    private(set) var deviceMotion: DeviceMotionProvider
+    private var accelMag: Double { deviceMotion.accelMag }
     
     init() {
         deviceMotion = DeviceMotionProvider()
@@ -94,7 +99,6 @@ extension AutoCaptureManager {
     }
 }
 
-// TODO: Fill this in
 // MARK: Conditioned Photo Capture
 extension AutoCaptureManager {
     @MainActor
@@ -110,12 +114,12 @@ extension AutoCaptureManager {
     
     /// Lens Position Condition Checker
     private func lensPosConditionMet() -> Bool {
-        self.captureSession.inputCamera.device.lensPosition < PhotoCaptureConditions.lensPosThreshold
+        self.lensPos < PhotoCaptureConditions.lensPosThreshold
     }
     
     /// Acceleration Magnitude Condition Checker
     private func accelMagConditionMet() -> Bool {
-        self.deviceMotion.accelMag < PhotoCaptureConditions.accelMagThreshold
+        self.accelMag < PhotoCaptureConditions.accelMagThreshold
     }
     
     /// Detection Condition Checker
@@ -124,14 +128,14 @@ extension AutoCaptureManager {
     }
     
     private func detectionBoxConditionsMet() -> Bool {
-        self.detector.teethBox.maxY > PhotoCaptureConditions.detectionBoxMaxYThreshold &&
-        self.detector.teethBox.minY < PhotoCaptureConditions.detectionBoxMinYThreshold &&
-        self.detector.teethBox.maxX > PhotoCaptureConditions.detectionBoxMaxXThreshold &&
-        self.detector.teethBox.minX < PhotoCaptureConditions.detectionBoxMinXThreshold
+        self.objBoundingBox.maxY > PhotoCaptureConditions.detectionBoxMaxYThreshold &&
+        self.objBoundingBox.minY < PhotoCaptureConditions.detectionBoxMinYThreshold &&
+        self.objBoundingBox.maxX > PhotoCaptureConditions.detectionBoxMaxXThreshold &&
+        self.objBoundingBox.minX < PhotoCaptureConditions.detectionBoxMinXThreshold
     }
     
     private func detectionConfidenceMet() -> Bool {
-        return self.detector.detectionConfidence > PhotoCaptureConditions.detectionConfidenceTheshold
+        self.objDetectionConfidence > PhotoCaptureConditions.detectionConfidenceTheshold
     }
     
     private struct PhotoCaptureConditions {
