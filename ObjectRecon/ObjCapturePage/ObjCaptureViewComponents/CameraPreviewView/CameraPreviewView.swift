@@ -20,10 +20,8 @@ struct CameraPreviewView: UIViewRepresentable {
         
         view.backgroundColor = .black
         view.videoPreviewLayer.cornerRadius = 0
-        view.videoPreviewLayer.connection?.videoOrientation = .portrait
         
-        autoCaptureManager.initRootLayer(with: view.layer)
-        autoCaptureManager.startDetection()
+        autoCaptureManager.startDetection(with: view.layer)
         return view
     }
     

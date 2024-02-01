@@ -52,11 +52,12 @@ class AutoCaptureManager: ObservableObject {
         deviceMotion.stopMotionUpdate()
     }
     
-    func startDetection() {
+    func startDetection(with previewLayer: CALayer) {
+        initRootLayer(with: previewLayer)
         detector.startDetectionSession()
     }
     
-    func initRootLayer(with rootLayer: CALayer) {
+    private func initRootLayer(with rootLayer: CALayer) {
         detector.initRootLayer(with: rootLayer)
     }
     
@@ -136,11 +137,11 @@ extension AutoCaptureManager {
     
     private struct PhotoCaptureConditions {
         // MARK: Camera & Device Motion Thresholds
-        static let lensPosThreshold: Float = 1.1
-        static let accelMagThreshold: Double = 1
+        static let lensPosThreshold: Float = 0.6
+        static let accelMagThreshold: Double = 0.4
         
         // MARK: Detection Thresholds
-        static let detectionConfidenceTheshold: Float = 0.3
+        static let detectionConfidenceTheshold: Float = 0.5
         static let detectionBoxMaxYThreshold: Double = 0.5
         static let detectionBoxMinYThreshold: Double = 0.5
         static let detectionBoxMaxXThreshold: Double = 0.5

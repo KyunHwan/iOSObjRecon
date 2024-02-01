@@ -57,9 +57,7 @@ class MLDetector {
             let objectRecognition = VNCoreMLRequest(model: visionModel, completionHandler: { (request, error) in
                 DispatchQueue.main.async {
                     // perform all the UI updates on the main queue
-                    print(request)
                     if let results = request.results {
-                        if results.isEmpty { print("Results is empty before") }
                         self.drawVisionRequestResults(results)
                     }
                 }
@@ -81,7 +79,6 @@ class MLDetector {
             detectionOverlay.sublayers = nil // remove all the old recognized objects
             
             if results.isEmpty {
-                print("Results is empty after")
                 self.teethBox = CGRect()
                 self.detectionConfidence = 0.0
             }

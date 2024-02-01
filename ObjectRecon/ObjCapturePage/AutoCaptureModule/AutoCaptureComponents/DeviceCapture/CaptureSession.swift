@@ -23,13 +23,13 @@ class CaptureSession {
         self.inputCamera = AVCaptureDeviceInput.createObjCaptureInputCamera()
         self.photoCaptureManager = PhotoCaptureManager()
         self.videoDataOutputManager = VideoDataOutputManager(with: outputAugmentor)
-        
     }
     
     func startRunning() {
         if !session.isRunning {
             Task {
                 self.configureSession()
+                self.configureOrientations()
                 session.startRunning()
             }
         }
@@ -47,6 +47,13 @@ class CaptureSession {
         self.session.setPhotoPreset()
         
         self.session.commitConfiguration()
+    }
+    
+    private func configureOrientations() {
+        let rotation = self.session.connections[0].videoRotationAngle
+        for connection in self.session.connections {
+            connection.videoRotationAngle = rotation
+        }
     }
 }
 
