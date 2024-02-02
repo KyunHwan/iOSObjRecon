@@ -14,16 +14,22 @@ class MLDetector {
     private var detectionOverlay: CALayer
     
     private(set) var mlRequests: [VNRequest]
-    private(set) var teethBox: CGRect
+    private(set) var objBoundingBox: CGRect
     private(set) var detectionConfidence: Float
     
     init() {
         mlRequests = [VNRequest]()
-        teethBox = CGRect()
+        objBoundingBox = CGRect()
         detectionConfidence = 0.0
         
         self.rootLayer = nil
         self.detectionOverlay = CALayer()
+    }
+    
+    static func createImageRequestHandler(cvPixelBuffer: CVPixelBuffer,
+                                   orientation: CGImagePropertyOrientation,
+                                   options: [VNImageOption : Any]) -> VNImageRequestHandler {
+        VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer, orientation: orientation, options: options)
     }
     
     func initRootLayer(with rootLayer: CALayer) {
@@ -36,16 +42,14 @@ class MLDetector {
         }
         setupVision()
     }
-    
-    static func createImageRequestHandler(cvPixelBuffer: CVPixelBuffer,
-                                   orientation: CGImagePropertyOrientation,
-                                   options: [VNImageOption : Any]) -> VNImageRequestHandler {
-        VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer, orientation: orientation, options: options)
-    }
-    
+}
+
+// MARK: Inference Helper Functions
+extension MLDetector {
+    /// Setup image processing procedure
     @discardableResult
     private func setupVision() -> NSError? {
-        // Setup Vision parts
+        
         let error: NSError! = nil
         
         guard let modelURL = Bundle.main.url(forResource: "UpperTeethDetector", withExtension: "mlmodelc") else {
@@ -69,6 +73,7 @@ class MLDetector {
         return error
     }
     
+    /// Draw bounding boxes inside results
     private func drawVisionRequestResults(_ results: [Any]) {
         if let rootLayer = self.rootLayer {
             CATransaction.begin()
@@ -78,7 +83,7 @@ class MLDetector {
             detectionOverlay.sublayers = nil // remove all the old recognized objects
             
             if results.isEmpty {
-                self.teethBox = CGRect()
+                self.objBoundingBox = CGRect()
                 self.detectionConfidence = 0.0
             }
             else {
@@ -86,16 +91,16 @@ class MLDetector {
                     guard let objectObservation = observation as? VNRecognizedObjectObservation else {
                         continue
                     }
-                    self.teethBox = objectObservation.boundingBox // normalized box !
+                    self.objBoundingBox = objectObservation.boundingBox // normalized box !
                     self.detectionConfidence = objectObservation.confidence
                     
                     let boundsWidth = rootLayerBounds.size.width
                     let boundsHeight = rootLayerBounds.size.height
                     
-                    let objectBounds = CGRect(x: self.teethBox.minX * boundsWidth,
-                                              y: (1 - self.teethBox.minY - self.teethBox.height) * boundsHeight,
-                                              width: self.teethBox.width * boundsWidth,
-                                              height: self.teethBox.height * boundsHeight)
+                    let objectBounds = CGRect(x: self.objBoundingBox.minX * boundsWidth,
+                                              y: (1 - self.objBoundingBox.minY - self.objBoundingBox.height) * boundsHeight,
+                                              width: self.objBoundingBox.width * boundsWidth,
+                                              height: self.objBoundingBox.height * boundsHeight)
                     
                     let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds)
                     
@@ -112,6 +117,7 @@ class MLDetector {
         }
     }
     
+    /// Bounding box drawing helper
     private func createRoundedRectLayerWithBounds(_ bounds: CGRect) -> CALayer {
         let shapeLayer = CALayer()
         shapeLayer.bounds = bounds

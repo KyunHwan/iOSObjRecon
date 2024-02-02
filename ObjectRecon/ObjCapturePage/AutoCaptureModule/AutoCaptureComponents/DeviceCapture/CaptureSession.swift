@@ -37,6 +37,16 @@ class CaptureSession {
     
     func stopRunning() { if session.isRunning { session.stopRunning() } }
     
+    /// This needs to run on Main thread since it increments numPhotos, which should be accessed by one thread at a time
+    @MainActor
+    func captureFrame(with directoryManager: DirectoryManager) {
+        self.photoCaptureManager.saveFrame(with: directoryManager)
+    }
+}
+
+
+// MARK: Configuration Helpers
+extension CaptureSession {
     private func configureSession() {
         self.checkAddInputOutput()
         
@@ -55,10 +65,7 @@ class CaptureSession {
             connection.videoRotationAngle = rotation
         }
     }
-}
-
-// MARK: Adding input and output to session
-extension CaptureSession {
+    
     private func checkAddInputOutput() {
         guard self.session.canAddInput(inputCamera),
               self.session.canAddOutput(photoCaptureManager.photoOutput),
@@ -76,15 +83,7 @@ extension CaptureSession {
     }
 }
 
-// MARK: Photo Capture Output
-extension CaptureSession {
-    /// This needs to run on Main thread since it increments numPhotos,
-    /// which should be accessed by one thread at a time
-    @MainActor
-    func captureFrame(with directoryManager: DirectoryManager) { self.photoCaptureManager.saveFrame(with: directoryManager) }
-}
-
-// MARK: AVCaptureSession Photo Preset
+// MARK: AVCaptureSession Extension
 extension AVCaptureSession {
     func setPhotoPreset() { self.sessionPreset = AVCaptureSessionSettings.sessionPreset }
     

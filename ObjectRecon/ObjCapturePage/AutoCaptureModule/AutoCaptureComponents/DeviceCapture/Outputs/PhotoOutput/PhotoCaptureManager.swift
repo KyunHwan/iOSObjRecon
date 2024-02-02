@@ -34,7 +34,10 @@ class PhotoCaptureManager {
         }
         else { print("Could not find path for saving image") }
     }
-    
+}
+
+// MARK: saveFrame Helper Functions
+extension PhotoCaptureManager {
     private func save(_ photo: AVCapturePhoto, at path: URL) {
         let photoData = photo.fileDataRepresentation()
         DirectoryManager.createFile(at: path, contents: photoData)

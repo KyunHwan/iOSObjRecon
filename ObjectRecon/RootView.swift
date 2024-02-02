@@ -10,6 +10,8 @@ import SwiftUI
 struct RootView: View {
     var body: some View {
         ObjCaptureView()
+            .environmentObject(objCaptureViewModel)
+            .environmentObject(arModelManager)
     }
 }
 

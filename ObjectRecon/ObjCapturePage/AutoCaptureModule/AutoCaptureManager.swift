@@ -15,22 +15,26 @@ class AutoCaptureManager: ObservableObject {
     private let directoryManager: DirectoryManager
     private var photoCaptureMode: PhotoCaptureMode
     private var timer: AnyCancellable?
-    private var lensPos: Float { captureSession.inputCamera.device.lensPosition }
     var session: AVCaptureSession { captureSession.session }
+    var cameraCloseEnough: Bool { lensPosConditionMet() }
     
     // MARK: MLDetector
     private(set) var detector: MLDetector
-    private var objBoundingBox: CGRect { detector.teethBox }
-    private var objDetectionConfidence: Float { detector.detectionConfidence }
+    var objDetected: Bool { detectionConditionMet() }
     
-    // MARK: DeviceMotion
+    // MARK: Device Motion
     private(set) var deviceMotion: DeviceMotionProvider
-    private var accelMag: Double { deviceMotion.accelMag }
+    var motionSlowEnough: Bool { accelMagConditionMet() }
+    var deviceOrientation: simd_quatf { deviceMotion.deviceOrientation }
+    
+    // MARK: Auditory Capture Feedback
+    private let auditoryCaptureFeedbackManager: AuditoryCaptureFeedbackManager
     
     init() {
         deviceMotion = DeviceMotionProvider()
         detector = MLDetector()
         captureSession = CaptureSession(with: detector)
+        auditoryCaptureFeedbackManager = AuditoryCaptureFeedbackManager()
         
         directoryManager = DirectoryManager(filePrefixInDirectory: "IMG_", fileSuffixInDirectory: ".JPG")
         photoCaptureMode = .auto
@@ -50,20 +54,18 @@ class AutoCaptureManager: ObservableObject {
     func startSession() {
         captureSession.startRunning()
         deviceMotion.startMotionUpdate()
+        auditoryCaptureFeedbackManager.prepareToPlay()
     }
     
     func stopSession() {
         captureSession.stopRunning()
         deviceMotion.stopMotionUpdate()
+        auditoryCaptureFeedbackManager.stopSound()
     }
     
     func startDetection(with previewLayer: CALayer) {
-        initRootLayer(with: previewLayer)
+        detector.initRootLayer(with: previewLayer)
         detector.startDetectionSession()
-    }
-    
-    private func initRootLayer(with rootLayer: CALayer) {
-        detector.initRootLayer(with: rootLayer)
     }
     
     private enum PhotoCaptureMode: String {
@@ -103,7 +105,9 @@ extension AutoCaptureManager {
 extension AutoCaptureManager {
     @MainActor
     private func conditionsCheckedPhotoCapture() {
-        if captureConditionsMet() { photoCapture() }
+        if captureConditionsMet() {
+            photoCapture()
+        }
     }
     
     private func captureConditionsMet() -> Bool {
@@ -114,12 +118,12 @@ extension AutoCaptureManager {
     
     /// Lens Position Condition Checker
     private func lensPosConditionMet() -> Bool {
-        self.lensPos < PhotoCaptureConditions.lensPosThreshold
+        captureSession.inputCamera.device.lensPosition < PhotoCaptureConditions.lensPosThreshold
     }
     
     /// Acceleration Magnitude Condition Checker
     private func accelMagConditionMet() -> Bool {
-        self.accelMag < PhotoCaptureConditions.accelMagThreshold
+        deviceMotion.accelMag < PhotoCaptureConditions.accelMagThreshold
     }
     
     /// Detection Condition Checker
@@ -128,14 +132,14 @@ extension AutoCaptureManager {
     }
     
     private func detectionBoxConditionsMet() -> Bool {
-        self.objBoundingBox.maxY > PhotoCaptureConditions.detectionBoxMaxYThreshold &&
-        self.objBoundingBox.minY < PhotoCaptureConditions.detectionBoxMinYThreshold &&
-        self.objBoundingBox.maxX > PhotoCaptureConditions.detectionBoxMaxXThreshold &&
-        self.objBoundingBox.minX < PhotoCaptureConditions.detectionBoxMinXThreshold
+        self.detector.objBoundingBox.maxY > PhotoCaptureConditions.detectionBoxMaxYThreshold &&
+        self.detector.objBoundingBox.minY < PhotoCaptureConditions.detectionBoxMinYThreshold &&
+        self.detector.objBoundingBox.maxX > PhotoCaptureConditions.detectionBoxMaxXThreshold &&
+        self.detector.objBoundingBox.minX < PhotoCaptureConditions.detectionBoxMinXThreshold
     }
     
     private func detectionConfidenceMet() -> Bool {
-        self.objDetectionConfidence > PhotoCaptureConditions.detectionConfidenceTheshold
+        self.detector.detectionConfidence > PhotoCaptureConditions.detectionConfidenceTheshold
     }
     
     private struct PhotoCaptureConditions {

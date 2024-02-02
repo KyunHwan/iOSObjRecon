@@ -64,12 +64,15 @@ class DirectoryManager {
     
     @MainActor
     func incrementNumPhotos() { numPhotos += 1 }
-    
+}
+
+// MARK: Function Helpers
+extension DirectoryManager {
     /// The method returns a URL to the app's documents folder, where it stores all captures.
     private static func appCapturesFolder() -> URL? {
         guard let documentsFolder = try? FileManager.default.url(for: .documentDirectory,
                                                                  in: .userDomainMask,
-                                                                 appropriateFor: nil, create: false) 
+                                                                 appropriateFor: nil, create: false)
         else {
             fatalError("App's default folder could not be located")
         }

@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct CameraPreviewView: UIViewRepresentable {
-    @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
-    
-    init(with objCaptureViewModel: ObjCaptureViewModel) {
-        self.objCaptureViewModel = objCaptureViewModel
-    }
+    @EnvironmentObject var objCaptureViewModel: ObjCaptureViewModel
     
     func makeUIView(context: Context) -> VideoPreview {
         let view = VideoPreview()

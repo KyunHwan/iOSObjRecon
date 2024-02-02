@@ -9,26 +9,12 @@ import SwiftUI
 
 struct ObjCaptureView: View {
     @StateObject var objCaptureViewModel = ObjCaptureViewModel()
-
+    @StateObject var arModelManager = ARModelManager()
+    
     var body: some View {
         ZStack {
-            CameraPreviewView(with: objCaptureViewModel)
-            VStack {
-                Button(action: { objCaptureViewModel.captureFrame() }, label: {
-                    Text("Capture!")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.orange)
-                        .cornerRadius(10)
-                })
-                .frame(height: 55)
-                
-                Spacer()
-                
-                Text("Accel: 0")
-            }
+            CameraPreviewView()
+            
         }
         .task {
             objCaptureViewModel.startAutoSession()
@@ -36,6 +22,9 @@ struct ObjCaptureView: View {
         .onDisappear {
             objCaptureViewModel.stopAutoSession()
         }
+        .environmentObject(objCaptureViewModel)
+        .environmentObject(arModelManager)
+        
     }
     
 }

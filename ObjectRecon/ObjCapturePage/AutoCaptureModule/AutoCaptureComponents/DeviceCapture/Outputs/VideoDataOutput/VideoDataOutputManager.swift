@@ -11,8 +11,6 @@ import AVFoundation
 class VideoDataOutputManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     let videoDataOutput: AVCaptureVideoDataOutput
     private let dataOutputQueue: DispatchQueue
-    
-    // MARK: Output Augmentation
     private var outputAugmentor: MLDetector?
     
     init(with outputAugmentor: MLDetector? = nil) {
@@ -22,13 +20,18 @@ class VideoDataOutputManager: NSObject, AVCaptureVideoDataOutputSampleBufferDele
         super.init()
         self.configure()
     }
-    
+}
+
+
+// MARK: Configure AVCaptureVideoDataOutput
+extension VideoDataOutputManager {
     private func configure() {
         self.videoDataOutput.configureVideoCapture()
         self.videoDataOutput.setSampleBufferDelegate(self, queue: dataOutputQueue)
     }
 }
 
+// MARK: Process Output Image
 extension VideoDataOutputManager {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
