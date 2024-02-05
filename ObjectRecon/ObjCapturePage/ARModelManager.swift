@@ -97,7 +97,7 @@ extension ARModelManager {
     private struct InitialModelConfiguration {
         static let modelFileName: String = "captureObj"
         static let modelFileType: String = "usdz"
-        static let modelScale: Float = 1
+        static let modelScale: Float = 2.5
         static let modelInitPosition: SIMD3<Float> = SIMD3<Float>(0.0, 0.0, -5)
         static let referenceOrientation: simd_quatf = simd_quatf(angle: -.pi/2, axis: SIMD3<Float>(1.0, 0.0, 0.0)).normalized *
                                                       simd_quatf(angle: -.pi/2, axis: SIMD3<Float>(0.0, 0.0, 1.0)).normalized

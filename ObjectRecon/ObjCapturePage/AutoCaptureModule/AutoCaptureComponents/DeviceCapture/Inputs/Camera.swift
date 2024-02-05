@@ -160,7 +160,7 @@ extension AVCaptureDevice {
 // MARK: White Balance Settings
 extension AVCaptureDevice {
     private struct CameraWhiteBalanceSettings {
-        static let whiteBalanceMode = AVCaptureDevice.WhiteBalanceMode.continuousAutoWhiteBalance
+        static let whiteBalanceMode = AVCaptureDevice.WhiteBalanceMode.locked
     }
     private func configureWhiteBalanceSettings() {
         if self.isWhiteBalanceModeSupported(CameraWhiteBalanceSettings.whiteBalanceMode) {

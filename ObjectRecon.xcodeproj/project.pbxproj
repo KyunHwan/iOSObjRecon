@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D77172B7071D50064C4B5 /* ButtonParameters.swift */; };
+		D01D771D2B70DC270064C4B5 /* TopInfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */; };
+		D01D771F2B70DC2F0064C4B5 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D771E2B70DC2F0064C4B5 /* AppLogo.png */; };
 		D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */; };
 		D08728E62B68D95400D61CBF /* VideoDataOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */; };
 		D08728E82B68F6AA00D61CBF /* UpperTeethDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */; };
@@ -51,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		D01D77172B7071D50064C4B5 /* ButtonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParameters.swift; sourceTree = "<group>"; };
+		D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopInfoPanelView.swift; sourceTree = "<group>"; };
+		D01D771E2B70DC2F0064C4B5 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
 		D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureExtensions.swift; sourceTree = "<group>"; };
 		D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataOutputManager.swift; sourceTree = "<group>"; };
 		D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = UpperTeethDetector.mlmodel; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D01D771B2B70DC170064C4B5 /* TopInfoPanelView */ = {
+			isa = PBXGroup;
+			children = (
+				D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */,
+				D01D771E2B70DC2F0064C4B5 /* AppLogo.png */,
+			);
+			path = TopInfoPanelView;
+			sourceTree = "<group>";
+		};
 		D05B6EC52B621627002FCFBA /* PhotoCaptureHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +279,7 @@
 		D0D953842B60F58600E9FB71 /* ObjCaptureViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				D01D771B2B70DC170064C4B5 /* TopInfoPanelView */,
 				D0C85B8C2B6C617200C1BB94 /* ARModelPresentationView */,
 				D0C85B8B2B6C614600C1BB94 /* CaptureButtonPanelView */,
 				D0C85B8A2B6C606100C1BB94 /* BlurView */,
@@ -431,6 +445,7 @@
 				D0C85B9E2B6C68C000C1BB94 /* pororo.mp3 in Resources */,
 				D0EB378E2B5DDED400A54AA7 /* Preview Assets.xcassets in Resources */,
 				D0C85BA22B6C69B300C1BB94 /* captureObj.usdz in Resources */,
+				D01D771F2B70DC2F0064C4B5 /* AppLogo.png in Resources */,
 				D0EB378B2B5DDED400A54AA7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +474,7 @@
 				D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */,
 				D0C85B922B6C668500C1BB94 /* CaptureButtonPanelView.swift in Sources */,
 				D0A4D16B2B677A2B007961DA /* DeviceMotionProvider.swift in Sources */,
+				D01D771D2B70DC270064C4B5 /* TopInfoPanelView.swift in Sources */,
 				D0C85B992B6C679600C1BB94 /* FlashSwitchButton.swift in Sources */,
 				D0D953832B6097F200E9FB71 /* DirectoryManager.swift in Sources */,
 				D0D953862B60F5E800E9FB71 /* ObjCaptureView.swift in Sources */,
