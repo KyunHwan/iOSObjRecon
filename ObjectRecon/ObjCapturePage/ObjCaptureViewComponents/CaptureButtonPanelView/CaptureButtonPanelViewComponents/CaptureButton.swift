@@ -27,14 +27,14 @@ struct ManualCaptureButtonView: View {
     var body: some View {
         ZStack {
             Circle()
-                .strokeBorder(Color.white, lineWidth: ButtonViewParameters.strokeWidth)
-                .frame(width: ButtonViewParameters.outerDiameter,
-                       height: ButtonViewParameters.outerDiameter,
+                .strokeBorder(Color.white, lineWidth: ButtonParameters.strokeWidth)
+                .frame(width: ButtonParameters.outerDiameter,
+                       height: ButtonParameters.outerDiameter,
                        alignment: .center)
             Circle()
                 .foregroundColor(Color.white)
-                .frame(width: ButtonViewParameters.innerDiameter,
-                       height: ButtonViewParameters.innerDiameter,
+                .frame(width: ButtonParameters.innerDiameter,
+                       height: ButtonParameters.innerDiameter,
                        alignment: .center)
         }
     }

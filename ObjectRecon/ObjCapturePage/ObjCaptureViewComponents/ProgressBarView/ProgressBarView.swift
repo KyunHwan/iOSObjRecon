@@ -7,18 +7,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ProgressBarView: View {
     @StateObject private var progressBarViewModel = ProgressBarViewModel()
     @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
     @ObservedObject var arModelManager: ARModelManager
-    @State private var numPhotosTaken: UInt32 {
-        willSet {
-            progressBarViewModel.updateProgressIndicator(ZRotation: arModelManager.relativeZOrientation(using: objCaptureViewModel.deviceOrientation),
-                                                         XRotation: arModelManager.relativeXOrientation(using: objCaptureViewModel.deviceOrientation))
-        }
-    }
-    
+        
     let width: CGFloat
     let height: CGFloat
     let progressBarLocation: ProgressBarViewModel.ProgressBarLocation
@@ -27,7 +22,6 @@ struct ProgressBarView: View {
          width: CGFloat, height: CGFloat, progressBarLocation: ProgressBarViewModel.ProgressBarLocation) {
         self.arModelManager = arModelManager
         self.objCaptureViewModel = objCaptureViewModel
-        self.numPhotosTaken = objCaptureViewModel.numPhotosTaken
         
         self.width = width
         self.height = height
@@ -59,6 +53,10 @@ struct ProgressBarView: View {
                                              height: height,
                                              indicator: indicator,
                                              VPadding: VPadding)
+                }
+                .onChange(of: objCaptureViewModel.numPhotosTaken) {
+                    progressBarViewModel.updateProgressIndicator(ZRotation: arModelManager.relativeZOrientation(using: objCaptureViewModel.deviceOrientation),
+                                                                 XRotation: arModelManager.relativeXOrientation(using: objCaptureViewModel.deviceOrientation))
                 }
             }
         }

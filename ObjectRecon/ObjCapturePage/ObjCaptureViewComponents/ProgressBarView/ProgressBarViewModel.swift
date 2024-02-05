@@ -9,6 +9,7 @@
 import SwiftUI
 import Foundation
 import RealityKit
+import Combine
 
 class ProgressBarViewModel: ObservableObject {
     typealias ProgressElement = ProgressBarModel.ProgressIndicator

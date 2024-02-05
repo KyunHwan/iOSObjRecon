@@ -17,11 +17,12 @@ struct ObjCaptureView: View {
             VStack {
                 Text("\(objCaptureViewModel.deviceOrientation.angle)")
                 //BlurView()
-                ProgressBarView(objCaptureViewModel: objCaptureViewModel, arModelManager: arModelManager,
-                                width: 3, height: 3, progressBarLocation: .top)
                 Spacer()
-                ARModelPresentationView(arModelManager: arModelManager,
-                                        objCaptureViewModel: objCaptureViewModel)
+                ProgressBarView(objCaptureViewModel: objCaptureViewModel, arModelManager: arModelManager,
+                                width: 150, height: 100, progressBarLocation: .center)
+                
+                //ARModelPresentationView(arModelManager: arModelManager,
+                //                        objCaptureViewModel: objCaptureViewModel)
                 Spacer()
                 CaptureButtonPanelView(objCaptureViewModel: objCaptureViewModel,
                                        arModelManager: arModelManager,

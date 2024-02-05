@@ -21,21 +21,21 @@ struct ResetARModelOrientationButton: View {
         }, label: {
             ZStack {
                 Circle()
-                    .frame(width: ButtonViewParameters.backingDiameter,
-                           height: ButtonViewParameters.backingDiameter)
+                    .frame(width: ButtonParameters.backingDiameter,
+                           height: ButtonParameters.backingDiameter)
                     .foregroundColor(Color.white)
-                    .opacity(ButtonViewParameters.buttonBackingOpacity)
+                    .opacity(ButtonParameters.buttonBackingOpacity)
                 Circle()
-                    .frame(width: ButtonViewParameters.toggleDiameter,
-                           height: ButtonViewParameters.toggleDiameter)
+                    .frame(width: ButtonParameters.toggleDiameter,
+                           height: ButtonParameters.toggleDiameter)
                     .foregroundColor(Color.white)
                 Text("R")
                     .foregroundColor(Color.black)
-                    .frame(width: ButtonViewParameters.toggleDiameter,
-                           height: ButtonViewParameters.toggleDiameter,
+                    .frame(width: ButtonParameters.toggleDiameter,
+                           height: ButtonParameters.toggleDiameter,
                            alignment: .center)
             }
         })
-        .frame(width: frameWidth, height: ButtonViewParameters.backingDiameter, alignment: .top)
+        .frame(width: frameWidth, height: ButtonParameters.backingDiameter, alignment: .top)
     }
 }

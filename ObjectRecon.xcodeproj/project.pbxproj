@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D01D77182B7071D50064C4B5 /* ButtonViewParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D77172B7071D50064C4B5 /* ButtonViewParameters.swift */; };
+		D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D77172B7071D50064C4B5 /* ButtonParameters.swift */; };
 		D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */; };
 		D08728E62B68D95400D61CBF /* VideoDataOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */; };
 		D08728E82B68F6AA00D61CBF /* UpperTeethDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */; };
@@ -50,7 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D01D77172B7071D50064C4B5 /* ButtonViewParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewParameters.swift; sourceTree = "<group>"; };
+		D01D77172B7071D50064C4B5 /* ButtonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParameters.swift; sourceTree = "<group>"; };
 		D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureExtensions.swift; sourceTree = "<group>"; };
 		D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataOutputManager.swift; sourceTree = "<group>"; };
 		D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = UpperTeethDetector.mlmodel; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 				D0C85B942B6C673000C1BB94 /* CaptureButton.swift */,
 				D0C85B962B6C675C00C1BB94 /* ResetARModelOrientationButton.swift */,
 				D0C85B982B6C679600C1BB94 /* FlashSwitchButton.swift */,
-				D01D77172B7071D50064C4B5 /* ButtonViewParameters.swift */,
+				D01D77172B7071D50064C4B5 /* ButtonParameters.swift */,
 			);
 			path = CaptureButtonPanelViewComponents;
 			sourceTree = "<group>";
@@ -469,7 +469,7 @@
 				D0C85B8E2B6C660A00C1BB94 /* BlurViewModel.swift in Sources */,
 				D0C85B952B6C673000C1BB94 /* CaptureButton.swift in Sources */,
 				D0EB37A62B5E695200A54AA7 /* PhotoCaptureManager.swift in Sources */,
-				D01D77182B7071D50064C4B5 /* ButtonViewParameters.swift in Sources */,
+				D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */,
 				D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */,
 				D0C85BA82B6C83C000C1BB94 /* ARModelManager.swift in Sources */,
 				D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */,
