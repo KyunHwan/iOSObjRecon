@@ -43,13 +43,14 @@ extension AVCaptureDevice {
     }
 }
 
-// MARK: Camera Configuration
+// MARK: Device Configuration
 extension AVCaptureDevice {
     func configureCamera() {
         configureSetting(for: .focus, PoI: CameraFocusSettings.focusPoI)
         configureSetting(for: .exposure, PoI: CameraExposureSettings.exposurePoI)
         configureSetting(for: .whiteBalance)
         configureSetting(for: .zoom)
+        configureSetting(for: .lighting)
     }
     
     func configureSetting(for settings: SettingsType, PoI: CGPoint = CGPoint(x: 0.5, y: 0.5)) {
@@ -64,6 +65,8 @@ extension AVCaptureDevice {
                     configureWhiteBalanceSettings()
                 case .zoom:
                     configureZoomSettings()
+                case .lighting:
+                    configureLightingSettings()
             }
         } catch {
             print("\(error.localizedDescription) occurred during \(settings.rawValue) configuration")
@@ -76,6 +79,31 @@ extension AVCaptureDevice {
         case whiteBalance = "White Balance"
         case exposure = "Exposure"
         case zoom = "Zoom"
+        case lighting = "Lighting"
+    }
+}
+
+// MARK: Lighting Configuration
+extension AVCaptureDevice {
+    func toggleTorch() {
+        do {
+            try self.lockForConfiguration()
+            if self.hasTorch {
+                if self.torchMode == .on { self.torchMode = .off }
+                else if self.torchMode == .off { self.torchMode = .on }
+            }
+        } catch {
+            print("\(error.localizedDescription) occurred during toggling torch")
+        }
+        self.unlockForConfiguration()
+    }
+    
+    private func configureLightingSettings() {
+        self.torchMode = LightingSettings.initTorchMode
+    }
+    
+    private struct LightingSettings {
+        static let initTorchMode: AVCaptureDevice.TorchMode = .off
     }
 }
 

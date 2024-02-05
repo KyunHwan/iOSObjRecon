@@ -13,20 +13,28 @@ struct ObjCaptureView: View {
     
     var body: some View {
         ZStack {
-            CameraPreviewView()
-            
+            CameraPreviewView(objCaptureViewModel: objCaptureViewModel)
+            VStack {
+                Text("\(objCaptureViewModel.deviceOrientation.angle)")
+                //BlurView()
+                ProgressBarView(objCaptureViewModel: objCaptureViewModel, arModelManager: arModelManager,
+                                width: 3, height: 3, progressBarLocation: .top)
+                Spacer()
+                ARModelPresentationView(arModelManager: arModelManager,
+                                        objCaptureViewModel: objCaptureViewModel)
+                Spacer()
+                CaptureButtonPanelView(objCaptureViewModel: objCaptureViewModel,
+                                       arModelManager: arModelManager,
+                                       width: 3)
+            }
         }
         .task {
             objCaptureViewModel.startAutoSession()
         }
         .onDisappear {
             objCaptureViewModel.stopAutoSession()
-        }
-        .environmentObject(objCaptureViewModel)
-        .environmentObject(arModelManager)
-        
+        }        
     }
-    
 }
 
 #Preview {

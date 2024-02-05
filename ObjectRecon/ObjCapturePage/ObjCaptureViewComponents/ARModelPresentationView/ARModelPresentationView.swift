@@ -9,8 +9,8 @@ import SwiftUI
 import RealityKit
 
 struct ARModelPresentationView: UIViewRepresentable {
-    @EnvironmentObject private var arModelManager: ARModelManager
-    @Binding var deviceOrientation: simd_quatf
+    @ObservedObject var arModelManager: ARModelManager
+    @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
     
     func makeUIView(context: Context) -> ARView {
         arModelManager.initConfigureModel()
@@ -19,8 +19,7 @@ struct ARModelPresentationView: UIViewRepresentable {
     
     func updateUIView(_ uiView: ARView, context: Context) {
         if let model = uiView.scene.anchors[0].children.first as? ModelEntity {
-            
-            model.orientation = arModelManager.modelOrientation(using: deviceOrientation)
+            model.orientation = arModelManager.modelOrientation(using: objCaptureViewModel.deviceOrientation)
         }
     }
 }

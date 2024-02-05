@@ -28,8 +28,8 @@ class CaptureSession {
     func startRunning() {
         if !session.isRunning {
             Task {
-                self.configureSession()
-                self.configureOrientations()
+                configureSession()
+                configureCaptureOrientations()
                 session.startRunning()
             }
         }
@@ -37,13 +37,14 @@ class CaptureSession {
     
     func stopRunning() { if session.isRunning { session.stopRunning() } }
     
+    func toggleTorch() { self.inputCamera.device.toggleTorch() }
+    
     /// This needs to run on Main thread since it increments numPhotos, which should be accessed by one thread at a time
     @MainActor
     func captureFrame(with directoryManager: DirectoryManager) {
         self.photoCaptureManager.saveFrame(with: directoryManager)
     }
 }
-
 
 // MARK: Configuration Helpers
 extension CaptureSession {
@@ -59,11 +60,13 @@ extension CaptureSession {
         self.session.commitConfiguration()
     }
     
-    private func configureOrientations() {
+    private func configureCaptureOrientations() {
+        self.session.beginConfiguration()
         let rotation = self.session.connections[0].videoRotationAngle
         for connection in self.session.connections {
             connection.videoRotationAngle = rotation
         }
+        self.session.commitConfiguration()
     }
     
     private func checkAddInputOutput() {

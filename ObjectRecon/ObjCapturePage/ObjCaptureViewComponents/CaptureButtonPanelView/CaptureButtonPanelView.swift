@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CaptureButtonPanelView: View {
-    @EnvironmentObject var objCaptureViewModel: ObjCaptureViewModel
-    @EnvironmentObject var arModelManager: ARModelManager
+    @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
+    @ObservedObject var arModelManager: ARModelManager
     
     /// This property stores the full width of the bar. The view uses this to place items.
     var width: CGFloat
@@ -18,27 +18,31 @@ struct CaptureButtonPanelView: View {
         // Add the bottom panel, which contains the thumbnail and capture button.
         ZStack(alignment: .center) {
             HStack {
-                FlashSwitchButton()
+                FlashSwitchButton(objCaptureViewModel: objCaptureViewModel)
                     .frame(width: width / 3)
                     .padding(Edge.Set.horizontal)
                 Spacer()
             }
             HStack {
                 Spacer()
-                CaptureButton()
+                CaptureButton(objCaptureViewModel: objCaptureViewModel, arModelManager: arModelManager)
                 Spacer()
             }
             HStack {
                 Spacer()
-                ResetARModelOrientationButton(frameWidth: width / 3)
+                ResetARModelOrientationButton(objCaptureViewModel: objCaptureViewModel,
+                                              arModelManager: arModelManager,
+                                              frameWidth: width / 3)
                     .padding(Edge.Set.horizontal)
             }
         }
     }
 }
 
-/*
- #Preview {
- CaptureButtonPanelView()
- }
- */
+
+#Preview {
+    CaptureButtonPanelView(objCaptureViewModel: ObjCaptureViewModel(),
+                           arModelManager: ARModelManager(),
+                           width: 3)
+}
+

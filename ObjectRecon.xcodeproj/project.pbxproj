@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01D77182B7071D50064C4B5 /* ButtonViewParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D77172B7071D50064C4B5 /* ButtonViewParameters.swift */; };
 		D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */; };
 		D08728E62B68D95400D61CBF /* VideoDataOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */; };
 		D08728E82B68F6AA00D61CBF /* UpperTeethDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */; };
@@ -29,7 +30,6 @@
 		D0C85B9E2B6C68C000C1BB94 /* pororo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0C85B9D2B6C68C000C1BB94 /* pororo.mp3 */; };
 		D0C85BA22B6C69B300C1BB94 /* captureObj.usdz in Resources */ = {isa = PBXBuildFile; fileRef = D0C85BA12B6C69B300C1BB94 /* captureObj.usdz */; };
 		D0C85BA42B6C6C8C00C1BB94 /* ARModelPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BA32B6C6C8C00C1BB94 /* ARModelPresentationView.swift */; };
-		D0C85BA62B6C753F00C1BB94 /* CaptureButtonPanelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BA52B6C753F00C1BB94 /* CaptureButtonPanelViewModel.swift */; };
 		D0C85BA82B6C83C000C1BB94 /* ARModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BA72B6C83C000C1BB94 /* ARModelManager.swift */; };
 		D0C85BAB2B6CA05800C1BB94 /* ProgressBarIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BAA2B6CA05800C1BB94 /* ProgressBarIndicatorView.swift */; };
 		D0D953832B6097F200E9FB71 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D953822B6097F200E9FB71 /* DirectoryManager.swift */; };
@@ -50,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D01D77172B7071D50064C4B5 /* ButtonViewParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewParameters.swift; sourceTree = "<group>"; };
 		D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureExtensions.swift; sourceTree = "<group>"; };
 		D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataOutputManager.swift; sourceTree = "<group>"; };
 		D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = UpperTeethDetector.mlmodel; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		D0C85B9D2B6C68C000C1BB94 /* pororo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pororo.mp3; sourceTree = "<group>"; };
 		D0C85BA12B6C69B300C1BB94 /* captureObj.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = captureObj.usdz; sourceTree = "<group>"; };
 		D0C85BA32B6C6C8C00C1BB94 /* ARModelPresentationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARModelPresentationView.swift; sourceTree = "<group>"; };
-		D0C85BA52B6C753F00C1BB94 /* CaptureButtonPanelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureButtonPanelViewModel.swift; sourceTree = "<group>"; };
 		D0C85BA72B6C83C000C1BB94 /* ARModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelManager.swift; sourceTree = "<group>"; };
 		D0C85BAA2B6CA05800C1BB94 /* ProgressBarIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarIndicatorView.swift; sourceTree = "<group>"; };
 		D0CEEFB52B61272E001B79A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -150,6 +150,7 @@
 		D0A4D1692B677920007961DA /* AutoCaptureComponents */ = {
 			isa = PBXGroup;
 			children = (
+				D0A9E2752B5FC164006B7CA8 /* FileManager */,
 				D0C85B9A2B6C684E00C1BB94 /* AuditoryCaptureFeedback */,
 				D0EB37942B5DE6F200A54AA7 /* DeviceCapture */,
 				D08728E92B68F6BE00D61CBF /* MLDetector */,
@@ -180,7 +181,6 @@
 			children = (
 				D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */,
 				D0A4D1692B677920007961DA /* AutoCaptureComponents */,
-				D0A9E2752B5FC164006B7CA8 /* FileManager */,
 			);
 			path = AutoCaptureModule;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 			path = FileManager;
 			sourceTree = "<group>";
 		};
-		D0C85B832B6C5F9A00C1BB94 /* ObjCaptureProgressBarView */ = {
+		D0C85B832B6C5F9A00C1BB94 /* ProgressBarView */ = {
 			isa = PBXGroup;
 			children = (
 				D0C85B842B6C5FB700C1BB94 /* ProgressBarView.swift */,
@@ -213,7 +213,7 @@
 				D0C85B852B6C5FB700C1BB94 /* ProgressBarViewModel.swift */,
 				D0C85B862B6C5FB700C1BB94 /* ProgressBarModel.swift */,
 			);
-			path = ObjCaptureProgressBarView;
+			path = ProgressBarView;
 			sourceTree = "<group>";
 		};
 		D0C85B8A2B6C606100C1BB94 /* BlurView */ = {
@@ -229,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				D0C85B912B6C668500C1BB94 /* CaptureButtonPanelView.swift */,
-				D0C85BA52B6C753F00C1BB94 /* CaptureButtonPanelViewModel.swift */,
 				D0C85B932B6C668A00C1BB94 /* CaptureButtonPanelViewComponents */,
 			);
 			path = CaptureButtonPanelView;
@@ -250,6 +249,7 @@
 				D0C85B942B6C673000C1BB94 /* CaptureButton.swift */,
 				D0C85B962B6C675C00C1BB94 /* ResetARModelOrientationButton.swift */,
 				D0C85B982B6C679600C1BB94 /* FlashSwitchButton.swift */,
+				D01D77172B7071D50064C4B5 /* ButtonViewParameters.swift */,
 			);
 			path = CaptureButtonPanelViewComponents;
 			sourceTree = "<group>";
@@ -269,7 +269,7 @@
 				D0C85B8C2B6C617200C1BB94 /* ARModelPresentationView */,
 				D0C85B8B2B6C614600C1BB94 /* CaptureButtonPanelView */,
 				D0C85B8A2B6C606100C1BB94 /* BlurView */,
-				D0C85B832B6C5F9A00C1BB94 /* ObjCaptureProgressBarView */,
+				D0C85B832B6C5F9A00C1BB94 /* ProgressBarView */,
 				D08728E22B68C8C400D61CBF /* CameraPreviewView */,
 			);
 			path = ObjCaptureViewComponents;
@@ -460,7 +460,6 @@
 				D0C85B922B6C668500C1BB94 /* CaptureButtonPanelView.swift in Sources */,
 				D0A4D16B2B677A2B007961DA /* DeviceMotionProvider.swift in Sources */,
 				D0C85B992B6C679600C1BB94 /* FlashSwitchButton.swift in Sources */,
-				D0C85BA62B6C753F00C1BB94 /* CaptureButtonPanelViewModel.swift in Sources */,
 				D0D953832B6097F200E9FB71 /* DirectoryManager.swift in Sources */,
 				D0D953862B60F5E800E9FB71 /* ObjCaptureView.swift in Sources */,
 				D0C85B872B6C5FB700C1BB94 /* ProgressBarView.swift in Sources */,
@@ -470,6 +469,7 @@
 				D0C85B8E2B6C660A00C1BB94 /* BlurViewModel.swift in Sources */,
 				D0C85B952B6C673000C1BB94 /* CaptureButton.swift in Sources */,
 				D0EB37A62B5E695200A54AA7 /* PhotoCaptureManager.swift in Sources */,
+				D01D77182B7071D50064C4B5 /* ButtonViewParameters.swift in Sources */,
 				D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */,
 				D0C85BA82B6C83C000C1BB94 /* ARModelManager.swift in Sources */,
 				D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */,

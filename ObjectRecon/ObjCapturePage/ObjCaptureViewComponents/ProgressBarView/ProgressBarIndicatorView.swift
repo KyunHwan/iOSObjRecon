@@ -12,14 +12,15 @@ struct ProgressBarIndicatorView: View {
     
     let width: CGFloat
     let height: CGFloat
-    let priority: Double
     let indicator: ProgressBarModel.ProgressIndicator
-    
-    let cornerRadius: CGFloat
-    let alpha: CGFloat
-    let beta: CGFloat
     let VPadding: Edge.Set
-        
+    
+    // Parameters
+    private let alpha: CGFloat = 3
+    private var beta: CGFloat { 8*((alpha-1)/alpha)*width / ((progressBarViewModel.photoCaptureNumBars + 2)*0.7*alpha) }
+    private let cornerRadius: CGFloat = 2.0
+    
+    
     var body: some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .fill(progressToColor(progress: CGFloat.minimum(indicator.progress, ProgressBarViewModel.numPhotosPerIndicator)))

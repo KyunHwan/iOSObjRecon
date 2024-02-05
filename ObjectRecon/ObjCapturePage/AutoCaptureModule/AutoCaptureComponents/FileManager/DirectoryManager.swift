@@ -12,10 +12,10 @@
 import Foundation
 
 class DirectoryManager {
+    @Published var numPhotos: UInt32
     var dirPath: URL?
     let filePrefix: String
     let fileSuffix: String
-    var numPhotos: UInt32
     var nextImagePath: URL? { dirPath?.appendingPathComponent(String(format: "%@%04d", filePrefix, numPhotos).appending(fileSuffix)) }
     
     init(filePrefixInDirectory: String = "IMG_",

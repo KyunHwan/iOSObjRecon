@@ -9,21 +9,31 @@
 import SwiftUI
 
 struct ProgressBarView: View {
-    @StateObject private var progressBarViewModel: ProgressBarViewModel = ProgressBarViewModel()
-    @EnvironmentObject var objCaptureViewModel: ObjCaptureViewModel
-    @EnvironmentObject var arModelManager: ARModelManager
+    @StateObject private var progressBarViewModel = ProgressBarViewModel()
+    @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
+    @ObservedObject var arModelManager: ARModelManager
+    @State private var numPhotosTaken: UInt32 {
+        willSet {
+            progressBarViewModel.updateProgressIndicator(ZRotation: arModelManager.relativeZOrientation(using: objCaptureViewModel.deviceOrientation),
+                                                         XRotation: arModelManager.relativeXOrientation(using: objCaptureViewModel.deviceOrientation))
+        }
+    }
     
     let width: CGFloat
     let height: CGFloat
-    let priority: Double
     let progressBarLocation: ProgressBarViewModel.ProgressBarLocation
     
-    private let cornerRadius: CGFloat = 2.0
+    init(objCaptureViewModel: ObjCaptureViewModel, arModelManager: ARModelManager,
+         width: CGFloat, height: CGFloat, progressBarLocation: ProgressBarViewModel.ProgressBarLocation) {
+        self.arModelManager = arModelManager
+        self.objCaptureViewModel = objCaptureViewModel
+        self.numPhotosTaken = objCaptureViewModel.numPhotosTaken
+        
+        self.width = width
+        self.height = height
+        self.progressBarLocation = progressBarLocation
+    }
     
-    // Parameters
-    private let alpha: CGFloat = 3
-    private var beta: CGFloat { 8*((alpha-1)/alpha)*width / ((progressBarViewModel.photoCaptureNumBars + 2)*0.7*alpha) }
-
     private var progressBar: Array<ProgressBarModel.ProgressIndicator> {
         switch progressBarLocation {
         case .top: progressBarViewModel.topProgressBar
@@ -31,6 +41,7 @@ struct ProgressBarView: View {
         case .bottom: progressBarViewModel.bottomProgressBar
         }
     }
+    
     private var VPadding: Edge.Set {
         switch progressBarLocation {
         case .top: [.top]
@@ -46,11 +57,7 @@ struct ProgressBarView: View {
                     ProgressBarIndicatorView(progressBarViewModel: progressBarViewModel,
                                              width: width, 
                                              height: height,
-                                             priority: priority,
                                              indicator: indicator,
-                                             cornerRadius: cornerRadius, 
-                                             alpha: alpha,
-                                             beta: beta,
                                              VPadding: VPadding)
                 }
             }

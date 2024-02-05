@@ -9,12 +9,11 @@ import SwiftUI
 import CoreMotion
 import RealityKit
 
-class DeviceMotionProvider: ObservableObject {
+class DeviceMotionProvider {
+    @Published private(set) var deviceOrientation: simd_quatf
     private let motionManager: CMMotionManager
     private let motionQueue: OperationQueue
     private var accel: CMAcceleration
-    
-    private(set) var deviceOrientation: simd_quatf
     var accelMag: Double { magnitude(of: accel) }
     
     init() {
@@ -35,13 +34,13 @@ class DeviceMotionProvider: ObservableObject {
                 print("Could not get motion data")
                 return
             }
-            
-            self.collectData(data)
+            Task { await MainActor.run { self.collectData(data) } }
         }
     }
     
     func stopMotionUpdate() { motionManager.stopDeviceMotionUpdates() }
 
+    @MainActor
     private func collectData(_ data: CMDeviceMotion) {
         /// userAcceleration is in g, not m/s^2
         self.accel = data.userAcceleration

@@ -14,11 +14,12 @@ class ARModelManager: ObservableObject {
     let anchor: AnchorEntity
     
     let referenceOrientation: simd_quatf
-    private(set) var initialModelOrientation: simd_quatf
+    @Published private(set) var initialModelOrientation: simd_quatf
     
     init() {
         arView = ARView(frame: .zero, cameraMode: ARView.CameraMode.nonAR, automaticallyConfigureSession: true)
-        model = try? Entity.loadModel(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "captureObj", ofType: "usdz")!))
+        model = try? Entity.loadModel(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: InitialModelConfiguration.modelFileName,
+                                                                                        ofType: InitialModelConfiguration.modelFileType)!))
         anchor = AnchorEntity(.camera)
         initialModelOrientation = simd_quatf()
         referenceOrientation = InitialModelConfiguration.referenceOrientation
@@ -46,13 +47,17 @@ class ARModelManager: ObservableObject {
         deviceOrientation.inverse.normalized * initialModelOrientation.normalized * referenceOrientation
     }
 
-    func getARModelRelativeZOrientation(using deviceOrientation: simd_quatf) -> Float {
+    func relativeZOrientation(using deviceOrientation: simd_quatf) -> Float {
         return RollFromQuaternion(from: deviceOrientation.inverse.normalized * initialModelOrientation.normalized)
     }
-    func getARModelRelativeXOrientation(using deviceOrientation: simd_quatf) -> Float {
+    func relativeXOrientation(using deviceOrientation: simd_quatf) -> Float {
         return YawFromQuaternion(from: deviceOrientation.inverse.normalized * initialModelOrientation.normalized)
     }
-    
+}
+
+
+// MARK: Helpers
+extension ARModelManager {
     private func RollFromQuaternion(from quaternion: simd_quatf) -> Float {
             let w = quaternion.real
             let x = quaternion.imag.x
@@ -90,7 +95,9 @@ class ARModelManager: ObservableObject {
     }
     
     private struct InitialModelConfiguration {
-        static let modelScale: Float = 2.5
+        static let modelFileName: String = "captureObj"
+        static let modelFileType: String = "usdz"
+        static let modelScale: Float = 1
         static let modelInitPosition: SIMD3<Float> = SIMD3<Float>(0.0, 0.0, -5)
         static let referenceOrientation: simd_quatf = simd_quatf(angle: -.pi/2, axis: SIMD3<Float>(1.0, 0.0, 0.0)).normalized *
                                                       simd_quatf(angle: -.pi/2, axis: SIMD3<Float>(0.0, 0.0, 1.0)).normalized

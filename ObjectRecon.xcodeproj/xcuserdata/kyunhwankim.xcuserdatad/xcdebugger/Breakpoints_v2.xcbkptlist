@@ -30,8 +30,8 @@
             filePath = "ObjectRecon/ObjCapturePage/AutoCaptureModule/AutoCaptureManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "AutoCaptureManager"
             landmarkType = "3">
          </BreakpointContent>

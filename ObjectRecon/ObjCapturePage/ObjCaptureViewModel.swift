@@ -8,21 +8,48 @@
 import Foundation
 import AVFoundation
 import RealityKit
+import Combine
 
 class ObjCaptureViewModel: ObservableObject {
     private let autoCaptureManager: AutoCaptureManager
     var session: AVCaptureSession { autoCaptureManager.session }
-    @Published var cameraCloseEnough: Bool
-    @Published var objDetected: Bool
-    @Published var motionSlowEnough: Bool
+    @Published var isFlashOn: Bool
     @Published var deviceOrientation: simd_quatf
+    @Published var numPhotosTaken: UInt32
+    private var cancellables: Set<AnyCancellable>
     
     init() {
         autoCaptureManager = AutoCaptureManager()
-        cameraCloseEnough = autoCaptureManager.cameraCloseEnough
-        objDetected = autoCaptureManager.objDetected
-        motionSlowEnough = autoCaptureManager.motionSlowEnough
-        deviceOrientation = autoCaptureManager.deviceOrientation
+        deviceOrientation = simd_quatf()
+        numPhotosTaken = 0
+        isFlashOn = false
+        
+        cancellables = Set<AnyCancellable>()
+        addSubscribers()
+    }
+}
+
+// MARK: Subscribers for @Published
+extension ObjCaptureViewModel {
+    private func addSubscribers() {
+        autoCaptureManager.$numPhotosTaken
+            .sink(receiveValue: { [weak self] returnedValue in
+                self?.numPhotosTaken = returnedValue
+            })
+            .store(in: &cancellables)
+        
+        autoCaptureManager.$deviceOrientation
+            .sink(receiveValue:  { [weak self] returnedValue in
+                self?.deviceOrientation = returnedValue
+            })
+            .store(in: &cancellables)
+    }
+}
+
+extension ObjCaptureViewModel {
+    func flashButtonPressed() {
+        isFlashOn.toggle()
+        autoCaptureManager.toggleTorch()
     }
 }
 
@@ -41,7 +68,6 @@ extension ObjCaptureViewModel {
         autoCaptureManager.captureFrame()
     }
 }
-
 
 // MARK: MLDetector
 extension ObjCaptureViewModel {

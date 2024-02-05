@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ResetARModelOrientationButton: View {
-    @EnvironmentObject var arModelManager: ARModelManager
+    @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
+    @ObservedObject var arModelManager: ARModelManager
     
     var frameWidth: CGFloat
     
@@ -20,25 +21,21 @@ struct ResetARModelOrientationButton: View {
         }, label: {
             ZStack {
                 Circle()
-                    .frame(width: CaptureModeButton.backingDiameter,
-                           height: CaptureModeButton.backingDiameter)
+                    .frame(width: ButtonViewParameters.backingDiameter,
+                           height: ButtonViewParameters.backingDiameter)
                     .foregroundColor(Color.white)
-                    .opacity(Double(CameraView.buttonBackingOpacity))
+                    .opacity(ButtonViewParameters.buttonBackingOpacity)
                 Circle()
-                    .frame(width: CaptureModeButton.toggleDiameter,
-                           height: CaptureModeButton.toggleDiameter)
+                    .frame(width: ButtonViewParameters.toggleDiameter,
+                           height: ButtonViewParameters.toggleDiameter)
                     .foregroundColor(Color.white)
                 Text("R")
                     .foregroundColor(Color.black)
-                    .frame(width: CaptureModeButton.toggleDiameter,
-                           height: CaptureModeButton.toggleDiameter,
+                    .frame(width: ButtonViewParameters.toggleDiameter,
+                           height: ButtonViewParameters.toggleDiameter,
                            alignment: .center)
             }
         })
-        .frame(width: frameWidth, height: CaptureModeButton.backingDiameter, alignment: .top)
+        .frame(width: frameWidth, height: ButtonViewParameters.backingDiameter, alignment: .top)
     }
-}
-
-#Preview {
-    ResetARModelOrientationButton()
 }

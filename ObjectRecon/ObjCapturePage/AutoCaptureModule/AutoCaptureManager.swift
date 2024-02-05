@@ -12,23 +12,24 @@ import AVFoundation
 class AutoCaptureManager: ObservableObject {
     // MARK: Camera
     private(set) var captureSession: CaptureSession
-    private let directoryManager: DirectoryManager
     private var photoCaptureMode: PhotoCaptureMode
     private var timer: AnyCancellable?
     var session: AVCaptureSession { captureSession.session }
-    var cameraCloseEnough: Bool { lensPosConditionMet() }
+    
+    private let directoryManager: DirectoryManager
+    @Published var numPhotosTaken: UInt32
+    
+    // MARK: Device Motion
+    private let deviceMotion: DeviceMotionProvider
+    @Published var deviceOrientation: simd_quatf
     
     // MARK: MLDetector
     private(set) var detector: MLDetector
-    var objDetected: Bool { detectionConditionMet() }
-    
-    // MARK: Device Motion
-    private(set) var deviceMotion: DeviceMotionProvider
-    var motionSlowEnough: Bool { accelMagConditionMet() }
-    var deviceOrientation: simd_quatf { deviceMotion.deviceOrientation }
     
     // MARK: Auditory Capture Feedback
     private let auditoryCaptureFeedbackManager: AuditoryCaptureFeedbackManager
+    
+    private var cancellables: Set<AnyCancellable>
     
     init() {
         deviceMotion = DeviceMotionProvider()
@@ -39,16 +40,12 @@ class AutoCaptureManager: ObservableObject {
         directoryManager = DirectoryManager(filePrefixInDirectory: "IMG_", fileSuffixInDirectory: ".JPG")
         photoCaptureMode = .auto
         timer = nil
-    }
-    
-    @MainActor
-    func captureFrame() {
-        switch photoCaptureMode {
-        case .manual:
-            photoCapture()
-        case .auto:
-            autoPhotoCapture()
-        }
+        
+        deviceOrientation = simd_quatf()
+        numPhotosTaken = 0
+        
+        cancellables = Set<AnyCancellable>()
+        addSubscribers()
     }
     
     func startSession() {
@@ -68,11 +65,39 @@ class AutoCaptureManager: ObservableObject {
         detector.startDetectionSession()
     }
     
+    func toggleTorch() { captureSession.toggleTorch() }
+    
+    @MainActor
+    func captureFrame() {
+        switch photoCaptureMode {
+            case .manual: photoCapture()
+            case .auto: autoPhotoCapture()
+        }
+    }
+    
     private enum PhotoCaptureMode: String {
         case manual
         case auto
     }
 }
+
+// MARK: Subscribers for @published
+extension AutoCaptureManager {
+    private func addSubscribers() {
+        directoryManager.$numPhotos
+            .sink(receiveValue: { [weak self] returnedValue in
+                self?.numPhotosTaken = returnedValue
+            })
+            .store(in: &cancellables)
+        
+        deviceMotion.$deviceOrientation
+            .sink(receiveValue:  { [weak self] returnedValue in
+                self?.deviceOrientation = returnedValue
+            })
+            .store(in: &cancellables)
+    }
+}
+
 
 // MARK: Automatic Photo Capture
 extension AutoCaptureManager {
@@ -149,6 +174,7 @@ extension AutoCaptureManager {
         
         // MARK: Detection Thresholds
         static let detectionConfidenceTheshold: Float = 0.5
+        
         static let detectionBoxMaxYThreshold: Double = 0.5
         static let detectionBoxMinYThreshold: Double = 0.5
         static let detectionBoxMaxXThreshold: Double = 0.5

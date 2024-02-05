@@ -54,6 +54,7 @@ class ProgressBarViewModel: ObservableObject {
     }
 }
 
+// Updating the progress bar
 extension ProgressBarViewModel {
     // Function to update the progress of a bar based on the angle at which a photo was taken
     func updateProgressIndicator(ZRotation: Float, XRotation: Float) {
