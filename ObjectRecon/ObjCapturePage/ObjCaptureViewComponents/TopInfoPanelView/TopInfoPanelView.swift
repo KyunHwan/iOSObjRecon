@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TopInfoPanelView: View {
     var body: some View {
-        Image("AppLogo.png")
+        Text("What Will This Name Be?")
+        //Image("AppLogo.png")
     }
 }
