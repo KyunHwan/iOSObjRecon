@@ -11,6 +11,10 @@ struct ObjCaptureView: View {
     @StateObject var viewModel = ObjCaptureViewModel()
     @StateObject var arModelManager = ARModelManager()
     
+    init() {
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -31,7 +35,7 @@ struct ObjCaptureView: View {
                     
                     ZStack {
                         cameraPreviewSection(geometry: geometry)
-                        VStack { blurViewWithARSection(geometry: geometry) }
+                        //VStack { blurViewWithARSection(geometry: geometry) }
                         VStack { progressBarViewSection(geometry: geometry) }
                     }
                     .clipped()

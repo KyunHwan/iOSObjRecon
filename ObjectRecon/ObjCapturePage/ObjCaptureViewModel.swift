@@ -24,7 +24,9 @@ final class ObjCaptureViewModel: ObservableObject {
     @Published private(set) var detectionBox: CGRect {
         willSet(newBox) {
             // Update Focus Position
-            autoCaptureManager.updateFocusLocation(x: newBox.midX, y: newBox.midY)
+            if !(newBox == CGRect()) {
+                autoCaptureManager.updateFocusLocation(focusPoint: CGPoint(x: newBox.midX, y: newBox.midY))
+            }
         }
     }
     @Published private(set) var detectionConfidence: Float

@@ -82,8 +82,8 @@ class AutoCaptureManager {
 
 // MARK: Update Focus Position
 extension AutoCaptureManager {
-    func updateFocusLocation(x: CGFloat, y: CGFloat) {
-        captureSession.updateFocusLocation(x: x, y: y)
+    func updateFocusLocation(focusPoint: CGPoint) {
+        captureSession.updateFocusLocation(focusPoint: focusPoint)
     }
 }
 

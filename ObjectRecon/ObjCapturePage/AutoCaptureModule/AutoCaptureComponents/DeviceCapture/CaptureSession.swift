@@ -53,8 +53,8 @@ class CaptureSession: NSObject {
 
 // MARK: Update Focus Position
 extension CaptureSession {
-    func updateFocusLocation(x: CGFloat, y: CGFloat) {
-        self.inputCamera.device.configureSetting(for: .focus, PoI: CGPoint(x: x, y: y))
+    func updateFocusLocation(focusPoint: CGPoint) {
+        self.inputCamera.device.configureSetting(for: .focus, PoI: focusPoint)
     }
 }
 
