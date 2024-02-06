@@ -21,7 +21,12 @@ final class ObjCaptureViewModel: ObservableObject {
     
     @Published private(set) var lensPos: Float
     @Published private(set) var accelMag: Double
-    @Published private(set) var detectionBox: CGRect
+    @Published private(set) var detectionBox: CGRect {
+        willSet(newBox) {
+            // Update Focus Position
+            autoCaptureManager.updateFocusLocation(x: newBox.midX, y: newBox.midY)
+        }
+    }
     @Published private(set) var detectionConfidence: Float
     
     private var cancellables: Set<AnyCancellable>

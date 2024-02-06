@@ -28,15 +28,7 @@ class CaptureSession: NSObject {
         self.lensPos = 0
         
         super.init()
-        // For passing the lens position value to a Publisher property
-        lensPosObservation = observe(
-            \.inputCamera.device.lensPosition,
-             options: [.new]
-        ) { object, change in
-            if let newValue = change.newValue {
-                self.lensPos = newValue
-            }
-        }
+        configurePublishers()
     }
     
     func startRunning() {
@@ -59,8 +51,27 @@ class CaptureSession: NSObject {
     }
 }
 
+// MARK: Update Focus Position
+extension CaptureSession {
+    func updateFocusLocation(x: CGFloat, y: CGFloat) {
+        self.inputCamera.device.configureSetting(for: .focus, PoI: CGPoint(x: x, y: y))
+    }
+}
+
 // MARK: Configuration Helpers
 extension CaptureSession {
+    private func configurePublishers() {
+        // For passing the lens position value to a Publisher property
+        lensPosObservation = observe(
+            \.inputCamera.device.lensPosition,
+             options: [.new]
+        ) { object, change in
+            if let newValue = change.newValue {
+                self.lensPos = newValue
+            }
+        }
+    }
+    
     private func configureSession() {
         self.checkAddInputOutput()
         

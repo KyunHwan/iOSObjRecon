@@ -80,6 +80,14 @@ class AutoCaptureManager {
     }
 }
 
+// MARK: Update Focus Position
+extension AutoCaptureManager {
+    func updateFocusLocation(x: CGFloat, y: CGFloat) {
+        captureSession.updateFocusLocation(x: x, y: y)
+    }
+}
+
+
 // MARK: Automatic Photo Capture
 extension AutoCaptureManager {
     @MainActor
@@ -121,7 +129,7 @@ extension AutoCaptureManager {
     }
     
     private func captureConditionsMet() -> Bool {
-        lensPosConditionMet(for: self.captureSession.inputCamera.device.lensPosition) &&
+        lensPosConditionMet(for: self.captureSession.lensPos) &&
         accelMagConditionMet(for: self.deviceMotion.accelMag) &&
         detectionConditionMet()
     }

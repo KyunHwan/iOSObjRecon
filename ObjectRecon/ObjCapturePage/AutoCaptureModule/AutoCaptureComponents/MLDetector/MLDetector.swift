@@ -131,17 +131,14 @@ extension MLDetector {
     }
 }
 
-// MARK: Constants
-extension MLDetector {
-    private struct MLDetectorConstants {
-        // MARK: Detector
-        static let modelFileName: String = "UpperTeethDetector"
-        static let modelFileExtension: String = "mlmodelc"
-        
-        // MARK: Bounding Box Constants
-        static let boundingBoxName: String = "Found Object"
-        static let boundingBoxBorderWidth: CGFloat = 2
-        static let boundingBoxBorderColor: CGColor? = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])
-        static let cornerRadius: CGFloat = 7
-    }
+private struct MLDetectorConstants {
+    // MARK: Detector
+    static let modelFileName: String = "UpperTeethDetector"
+    static let modelFileExtension: String = "mlmodelc"
+    
+    // MARK: Bounding Box Constants
+    static let boundingBoxName: String = "Found Object"
+    static let boundingBoxBorderWidth: CGFloat = 2
+    static let boundingBoxBorderColor: CGColor? = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])
+    static let cornerRadius: CGFloat = 7
 }
