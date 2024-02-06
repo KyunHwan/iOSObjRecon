@@ -11,15 +11,15 @@ import RealityKit
 
 class DeviceMotionProvider {
     @Published private(set) var deviceOrientation: simd_quatf
+    @Published private(set) var accelMag: Double
     private let motionManager: CMMotionManager
     private let motionQueue: OperationQueue
-    private var accel: CMAcceleration
-    var accelMag: Double { magnitude(of: accel) }
+    
     
     init() {
         motionQueue = OperationQueue()
         motionManager = CMMotionManager()
-        accel = CMAcceleration()
+        accelMag = 0
         deviceOrientation = simd_quatf()
     }
     
@@ -43,12 +43,8 @@ class DeviceMotionProvider {
     @MainActor
     private func collectData(_ data: CMDeviceMotion) {
         /// userAcceleration is in g, not m/s^2
-        self.accel = data.userAcceleration
+        self.accelMag = magnitude(of: data.userAcceleration)
         self.deviceOrientation = simd_quatf(data.attitude.quaternion)
-    }
-    
-    private struct MotionProviderConstants {
-        static let deviceMotionUpdateInterval: TimeInterval = 1/60
     }
 }
 
@@ -61,8 +57,15 @@ extension DeviceMotionProvider {
             pow(val.y,2) +
             pow(val.z,2),0.5)
     }
-    
+}
+
+// MARK: Constants
+extension DeviceMotionProvider {
     private struct DeviceMotionAccelConstants {
         static let motionDataAccelConverter = 9.81
+    }
+    
+    private struct MotionProviderConstants {
+        static let deviceMotionUpdateInterval: TimeInterval = 1/60
     }
 }

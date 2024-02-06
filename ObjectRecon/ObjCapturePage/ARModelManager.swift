@@ -8,7 +8,8 @@
 import SwiftUI
 import RealityKit
 
-class ARModelManager: ObservableObject {
+@MainActor
+final class ARModelManager: ObservableObject {
     let arView: ARView
     let model: ModelEntity?
     let anchor: AnchorEntity

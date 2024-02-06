@@ -14,8 +14,8 @@ class MLDetector {
     private var detectionOverlay: CALayer
     
     private(set) var mlRequests: [VNRequest]
-    private(set) var objBoundingBox: CGRect
-    private(set) var detectionConfidence: Float
+    @Published private(set) var objBoundingBox: CGRect
+    @Published private(set) var detectionConfidence: Float
     
     init() {
         mlRequests = [VNRequest]()
@@ -52,7 +52,8 @@ extension MLDetector {
         
         let error: NSError! = nil
         
-        guard let modelURL = Bundle.main.url(forResource: "UpperTeethDetector", withExtension: "mlmodelc") else {
+        guard let modelURL = Bundle.main.url(forResource: MLDetectorConstants.modelFileName,
+                                             withExtension: MLDetectorConstants.modelFileExtension) else {
             return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
         }
         do {
@@ -122,10 +123,25 @@ extension MLDetector {
         let shapeLayer = CALayer()
         shapeLayer.bounds = bounds
         shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
-        shapeLayer.name = "Found Object"
-        shapeLayer.borderWidth = 2
-        shapeLayer.borderColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])
-        shapeLayer.cornerRadius = 7
+        shapeLayer.name = MLDetectorConstants.boundingBoxName
+        shapeLayer.borderWidth = MLDetectorConstants.boundingBoxBorderWidth
+        shapeLayer.borderColor = MLDetectorConstants.boundingBoxBorderColor
+        shapeLayer.cornerRadius = MLDetectorConstants.cornerRadius
         return shapeLayer
+    }
+}
+
+// MARK: Constants
+extension MLDetector {
+    private struct MLDetectorConstants {
+        // MARK: Detector
+        static let modelFileName: String = "UpperTeethDetector"
+        static let modelFileExtension: String = "mlmodelc"
+        
+        // MARK: Bounding Box Constants
+        static let boundingBoxName: String = "Found Object"
+        static let boundingBoxBorderWidth: CGFloat = 2
+        static let boundingBoxBorderColor: CGColor? = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])
+        static let cornerRadius: CGFloat = 7
     }
 }

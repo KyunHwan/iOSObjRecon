@@ -14,7 +14,6 @@ extension AVCaptureDeviceInput {
         if let device = AVCaptureDevice.createObjCaptureCamera() {
             do {
                 let inputCamera = try AVCaptureDeviceInput(device: device)
-                inputCamera.device.configureCamera()
                 return inputCamera
             } catch {
                 fatalError("Error: \(error.localizedDescription) occurred during input device initialization")
@@ -53,7 +52,8 @@ extension AVCaptureDevice {
         configureSetting(for: .lighting)
     }
     
-    func configureSetting(for settings: SettingsType, PoI: CGPoint = CGPoint(x: 0.5, y: 0.5)) {
+    func configureSetting(for settings: SettingsType, 
+                          PoI: CGPoint = CGPoint(x: 0.5, y: 0.5)) {
         do {
             try self.lockForConfiguration()
             switch settings {

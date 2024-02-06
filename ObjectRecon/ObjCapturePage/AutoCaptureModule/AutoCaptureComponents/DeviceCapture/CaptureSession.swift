@@ -8,11 +8,13 @@
 import Foundation
 import AVFoundation
 
-class CaptureSession {
+class CaptureSession: NSObject {
     private(set) var session: AVCaptureSession
     
     // MARK: Inputs to Session
-    private(set) var inputCamera: AVCaptureDeviceInput
+    @objc private(set) var inputCamera: AVCaptureDeviceInput
+    private var lensPosObservation: NSKeyValueObservation?
+    @Published private(set) var lensPos: Float
     
     // MARK: Outputs to Session
     private(set) var photoCaptureManager: PhotoCaptureManager
@@ -23,13 +25,23 @@ class CaptureSession {
         self.inputCamera = AVCaptureDeviceInput.createObjCaptureInputCamera()
         self.photoCaptureManager = PhotoCaptureManager()
         self.videoDataOutputManager = VideoDataOutputManager(with: outputAugmentor)
+        self.lensPos = 0
+        
+        super.init()
+        lensPosObservation = observe(
+            \.inputCamera.device.lensPosition,
+             options: [.new]
+        ) { object, change in
+            if let newValue = change.newValue {
+                self.lensPos = newValue
+            }
+        }
     }
     
     func startRunning() {
         if !session.isRunning {
             Task {
                 configureSession()
-                configureCaptureOrientations()
                 session.startRunning()
             }
         }
@@ -56,17 +68,21 @@ extension CaptureSession {
         self.addInputs()
         self.addOutputs()
         self.session.setPhotoPreset()
+        self.configureCamera()
+        self.configureCaptureOrientations()
         
         self.session.commitConfiguration()
     }
     
+    private func configureCamera() {
+        self.inputCamera.device.configureCamera()
+    }
+    
     private func configureCaptureOrientations() {
-        self.session.beginConfiguration()
         let rotation = self.session.connections[0].videoRotationAngle
         for connection in self.session.connections {
             connection.videoRotationAngle = rotation
         }
-        self.session.commitConfiguration()
     }
     
     private func checkAddInputOutput() {

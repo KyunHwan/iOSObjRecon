@@ -9,20 +9,33 @@ import Foundation
 import AVFoundation
 import RealityKit
 import Combine
+import UIKit
 
-class ObjCaptureViewModel: ObservableObject {
+@MainActor
+final class ObjCaptureViewModel: ObservableObject {
     private let autoCaptureManager: AutoCaptureManager
     var session: AVCaptureSession { autoCaptureManager.session }
-    @Published var isFlashOn: Bool
-    @Published var deviceOrientation: simd_quatf
-    @Published var numPhotosTaken: UInt32
+    @Published private(set) var isFlashOn: Bool
+    @Published private(set) var deviceOrientation: simd_quatf
+    @Published private(set) var numPhotosTaken: UInt32
+    
+    @Published private(set) var lensPos: Float
+    @Published private(set) var accelMag: Double
+    @Published private(set) var detectionBox: CGRect
+    @Published private(set) var detectionConfidence: Float
+    
     private var cancellables: Set<AnyCancellable>
     
     init() {
         autoCaptureManager = AutoCaptureManager()
+        
+        isFlashOn = false
         deviceOrientation = simd_quatf()
         numPhotosTaken = 0
-        isFlashOn = false
+        lensPos = 0
+        accelMag = 0
+        detectionBox = CGRect()
+        detectionConfidence = 0
         
         cancellables = Set<AnyCancellable>()
         addSubscribers()
@@ -32,20 +45,58 @@ class ObjCaptureViewModel: ObservableObject {
 // MARK: Subscribers for @Published
 extension ObjCaptureViewModel {
     private func addSubscribers() {
-        autoCaptureManager.$numPhotosTaken
+        addSubscribersDirectoryManager()
+        addSubscribersDetector()
+        addSubscribersCaptureSession()
+        addSubscribersDeviceMotion()
+    }
+    
+    private func addSubscribersDirectoryManager() {
+        autoCaptureManager.directoryManager.$numPhotos
             .sink(receiveValue: { [weak self] returnedValue in
                 self?.numPhotosTaken = returnedValue
             })
             .store(in: &cancellables)
+    }
+    
+    private func addSubscribersDetector() {
+        autoCaptureManager.detector.$objBoundingBox
+            .sink(receiveValue: { [weak self] returnedValue in
+                self?.detectionBox = returnedValue
+            })
+            .store(in: &cancellables)
         
-        autoCaptureManager.$deviceOrientation
+        autoCaptureManager.detector.$detectionConfidence
+            .sink(receiveValue: { [weak self] returnedValue in
+                self?.detectionConfidence = returnedValue
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func addSubscribersCaptureSession() {
+        autoCaptureManager.captureSession.$lensPos
+            .sink(receiveValue: { [weak self] returnedValue in
+                self?.lensPos = returnedValue
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func addSubscribersDeviceMotion() {
+        autoCaptureManager.deviceMotion.$deviceOrientation
             .sink(receiveValue:  { [weak self] returnedValue in
                 self?.deviceOrientation = returnedValue
+            })
+            .store(in: &cancellables)
+        
+        autoCaptureManager.deviceMotion.$accelMag
+            .sink(receiveValue: { [weak self] returnedValue in
+                self?.accelMag = returnedValue
             })
             .store(in: &cancellables)
     }
 }
 
+// MARK: Controlling Flashlight
 extension ObjCaptureViewModel {
     func flashButtonPressed() {
         isFlashOn.toggle()
@@ -53,8 +104,21 @@ extension ObjCaptureViewModel {
     }
 }
 
-// MARK: Auto Capture Session
+// MARK: Auto Capture
 extension ObjCaptureViewModel {
+    
+    func captureConditionsMet(lensPos: Float, accelMag: Double, box: CGRect, confidence: Float) -> Bool {
+        autoCaptureManager.captureConditionsMet(lensPos: lensPos, accelMag: accelMag, box: box, confidence: confidence)
+    }
+    
+    func playMusic() {
+        autoCaptureManager.playMusic()
+    }
+    
+    func pauseMusic() {
+        autoCaptureManager.pauseMusic()
+    }
+    
     func startAutoSession() {
         autoCaptureManager.startSession()
     }
@@ -63,7 +127,6 @@ extension ObjCaptureViewModel {
         autoCaptureManager.stopSession()
     }
     
-    @MainActor
     func captureFrame() {
         autoCaptureManager.captureFrame()
     }

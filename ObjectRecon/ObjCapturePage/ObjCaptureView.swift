@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct ObjCaptureView: View {
-    @StateObject var objCaptureViewModel = ObjCaptureViewModel()
+    @StateObject var viewModel = ObjCaptureViewModel()
     @StateObject var arModelManager = ARModelManager()
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                background
+                    .background(viewModel.captureConditionsMet(
+                        lensPos: viewModel.lensPos,
+                        accelMag: viewModel.accelMag,
+                        box: viewModel.detectionBox,
+                        confidence: viewModel.detectionConfidence) ?
+                                Color(uiColor: backgroundColor(with: 1)) :
+                                    Color(uiColor: backgroundColor(with: 0)))
+                    .opacity(0.65)
+                    
                 VStack {
-                    TopInfoPanelView()
+                    TopInfoPanelView(lensPos: viewModel.lensPos)
                     
                     Spacer()
                     
@@ -32,19 +42,33 @@ struct ObjCaptureView: View {
                 }
             }
             .task {
-                objCaptureViewModel.startAutoSession()
+                viewModel.startAutoSession()
             }
             .onDisappear {
-                objCaptureViewModel.stopAutoSession()
+                viewModel.stopAutoSession()
             }
         }
+    }
+}
+
+// MARK: View Color Modifier
+extension ObjCaptureView {
+    private var background: some View {
+        Color.init(UIColor(red: 255.0/255.0, green: 15.0/255.0, blue: 133.0/255.0, alpha: 0.0)).edgesIgnoringSafeArea(.all)
+    }
+    
+    private func backgroundColor(with val: CGFloat) -> UIColor {
+        UIColor(hue: val / 3,
+                saturation: 1.0,
+                brightness: 1.0,
+                alpha: 1.0)
     }
 }
 
 // MARK: Capture Button Panel Section
 extension ObjCaptureView {
     private func captureButtonPanelSection(geometry: GeometryProxy) -> some View {
-        CaptureButtonPanelView(objCaptureViewModel: objCaptureViewModel,
+        CaptureButtonPanelView(objCaptureViewModel: viewModel,
                                arModelManager: arModelManager,
                                width: geometry.size.width)
     }
@@ -53,7 +77,7 @@ extension ObjCaptureView {
 // MARK: Camera Preview Section
 extension ObjCaptureView {
     private func cameraPreviewSection(geometry: GeometryProxy) -> some View {
-        fitToPage(CameraPreviewView(objCaptureViewModel: objCaptureViewModel),
+        fitToPage(CameraPreviewView(objCaptureViewModel: viewModel),
                   geometry: geometry,
                   aspectRatio: ViewParameter.aspectRatio,
                   alignment: .center,
@@ -65,7 +89,7 @@ extension ObjCaptureView {
 extension ObjCaptureView {
     private func progressBar(geometry: GeometryProxy, 
                              location: ProgressBarViewModel.ProgressBarLocation) -> some View {
-        ProgressBarView(objCaptureViewModel: objCaptureViewModel, arModelManager: arModelManager,
+        ProgressBarView(objCaptureViewModel: viewModel, arModelManager: arModelManager,
                         width: geometry.size.width / 2,
                         height: geometry.size.width * (ViewParameter.aspectRatio/4),
                         progressBarLocation: location)
@@ -99,7 +123,7 @@ extension ObjCaptureView {
         Spacer()
         ZStack {
             blurView(geometry: geometry)
-            fitToPage(ARModelPresentationView(arModelManager: arModelManager, objCaptureViewModel: objCaptureViewModel),
+            fitToPage(ARModelPresentationView(arModelManager: arModelManager, objCaptureViewModel: viewModel),
                       geometry: geometry, aspectRatio: ViewParameter.aspectRatio/4, alignment: .bottom, priority: 1.0)
         }
     }

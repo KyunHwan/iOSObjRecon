@@ -13,13 +13,14 @@ struct CaptureButtonPanelView: View {
     
     /// This property stores the full width of the bar. The view uses this to place items.
     var width: CGFloat
+    private var thirdWidth: CGFloat { width / 3 }
     
     var body: some View {
         // Add the bottom panel, which contains the thumbnail and capture button.
         ZStack(alignment: .center) {
             HStack {
                 FlashSwitchButton(objCaptureViewModel: objCaptureViewModel)
-                    .frame(width: width / 3)
+                    .frame(width: thirdWidth)
                     .padding(Edge.Set.horizontal)
                 Spacer()
             }
@@ -32,17 +33,9 @@ struct CaptureButtonPanelView: View {
                 Spacer()
                 ResetARModelOrientationButton(objCaptureViewModel: objCaptureViewModel,
                                               arModelManager: arModelManager,
-                                              frameWidth: width / 3)
+                                              frameWidth: thirdWidth)
                     .padding(Edge.Set.horizontal)
             }
         }
     }
 }
-
-
-#Preview {
-    CaptureButtonPanelView(objCaptureViewModel: ObjCaptureViewModel(),
-                           arModelManager: ARModelManager(),
-                           width: 3)
-}
-

@@ -9,19 +9,17 @@ import Foundation
 import Combine
 import AVFoundation
 
-class AutoCaptureManager: ObservableObject {
+class AutoCaptureManager {
     // MARK: Camera
     private(set) var captureSession: CaptureSession
     private var photoCaptureMode: PhotoCaptureMode
     private var timer: AnyCancellable?
     var session: AVCaptureSession { captureSession.session }
     
-    private let directoryManager: DirectoryManager
-    @Published var numPhotosTaken: UInt32
+    private(set) var directoryManager: DirectoryManager
     
     // MARK: Device Motion
-    private let deviceMotion: DeviceMotionProvider
-    @Published var deviceOrientation: simd_quatf
+    private(set) var deviceMotion: DeviceMotionProvider
     
     // MARK: MLDetector
     private(set) var detector: MLDetector
@@ -29,23 +27,16 @@ class AutoCaptureManager: ObservableObject {
     // MARK: Auditory Capture Feedback
     private let auditoryCaptureFeedbackManager: AuditoryCaptureFeedbackManager
     
-    private var cancellables: Set<AnyCancellable>
-    
     init() {
         deviceMotion = DeviceMotionProvider()
         detector = MLDetector()
         captureSession = CaptureSession(with: detector)
         auditoryCaptureFeedbackManager = AuditoryCaptureFeedbackManager()
         
-        directoryManager = DirectoryManager(filePrefixInDirectory: "IMG_", fileSuffixInDirectory: ".JPG")
-        photoCaptureMode = .auto
+        directoryManager = DirectoryManager(filePrefixInDirectory: AutoCaptureConstants.imagePrefix,
+                                            fileSuffixInDirectory: AutoCaptureConstants.imageSuffix)
+        photoCaptureMode = AutoCaptureConstants.captureMode
         timer = nil
-        
-        deviceOrientation = simd_quatf()
-        numPhotosTaken = 0
-        
-        cancellables = Set<AnyCancellable>()
-        addSubscribers()
     }
     
     func startSession() {
@@ -58,6 +49,14 @@ class AutoCaptureManager: ObservableObject {
         captureSession.stopRunning()
         deviceMotion.stopMotionUpdate()
         auditoryCaptureFeedbackManager.stopSound()
+    }
+    
+    func playMusic() {
+        auditoryCaptureFeedbackManager.playSound()
+    }
+    
+    func pauseMusic() {
+        auditoryCaptureFeedbackManager.pauseSound()
     }
     
     func startDetection(with previewLayer: CALayer) {
@@ -81,24 +80,6 @@ class AutoCaptureManager: ObservableObject {
     }
 }
 
-// MARK: Subscribers for @published
-extension AutoCaptureManager {
-    private func addSubscribers() {
-        directoryManager.$numPhotos
-            .sink(receiveValue: { [weak self] returnedValue in
-                self?.numPhotosTaken = returnedValue
-            })
-            .store(in: &cancellables)
-        
-        deviceMotion.$deviceOrientation
-            .sink(receiveValue:  { [weak self] returnedValue in
-                self?.deviceOrientation = returnedValue
-            })
-            .store(in: &cancellables)
-    }
-}
-
-
 // MARK: Automatic Photo Capture
 extension AutoCaptureManager {
     @MainActor
@@ -120,10 +101,6 @@ extension AutoCaptureManager {
         self.timer?.cancel()
         self.timer = nil
     }
-    
-    private struct AutoCaptureConstants {
-        static let updateEverySecs: Double = 0.25
-    }
 }
 
 // MARK: Conditioned Photo Capture
@@ -135,39 +112,60 @@ extension AutoCaptureManager {
         }
     }
     
+    @MainActor
+    func captureConditionsMet(lensPos: Float, accelMag: Double, box: CGRect, confidence: Float) -> Bool {
+        lensPosConditionMet(for: lensPos) &&
+        accelMagConditionMet(for: accelMag) &&
+        detectionBoxConditionsMet(for: box) &&
+        detectionConfidenceMet(for: confidence)
+    }
+    
     private func captureConditionsMet() -> Bool {
-        lensPosConditionMet() &&
-        accelMagConditionMet() &&
+        lensPosConditionMet(for: self.captureSession.inputCamera.device.lensPosition) &&
+        accelMagConditionMet(for: self.deviceMotion.accelMag) &&
         detectionConditionMet()
-    }
-    
-    /// Lens Position Condition Checker
-    private func lensPosConditionMet() -> Bool {
-        captureSession.inputCamera.device.lensPosition < PhotoCaptureConditions.lensPosThreshold
-    }
-    
-    /// Acceleration Magnitude Condition Checker
-    private func accelMagConditionMet() -> Bool {
-        deviceMotion.accelMag < PhotoCaptureConditions.accelMagThreshold
     }
     
     /// Detection Condition Checker
     private func detectionConditionMet() -> Bool {
-        detectionConfidenceMet() && detectionBoxConditionsMet()
+        detectionConfidenceMet(for: self.detector.detectionConfidence) &&
+        detectionBoxConditionsMet(for: self.detector.objBoundingBox)
     }
     
-    private func detectionBoxConditionsMet() -> Bool {
-        self.detector.objBoundingBox.maxY > PhotoCaptureConditions.detectionBoxMaxYThreshold &&
-        self.detector.objBoundingBox.minY < PhotoCaptureConditions.detectionBoxMinYThreshold &&
-        self.detector.objBoundingBox.maxX > PhotoCaptureConditions.detectionBoxMaxXThreshold &&
-        self.detector.objBoundingBox.minX < PhotoCaptureConditions.detectionBoxMinXThreshold
+    /// Lens Position Condition Checker
+    private func lensPosConditionMet(for lensPos: Float) -> Bool {
+        lensPos < AutoCaptureConditions.lensPosThreshold
     }
     
-    private func detectionConfidenceMet() -> Bool {
-        self.detector.detectionConfidence > PhotoCaptureConditions.detectionConfidenceTheshold
+    /// Acceleration Magnitude Condition Checker
+    private func accelMagConditionMet(for accelMag: Double) -> Bool {
+        accelMag < AutoCaptureConditions.accelMagThreshold
     }
     
-    private struct PhotoCaptureConditions {
+    private func detectionBoxConditionsMet(for box: CGRect) -> Bool {
+        box.maxY > AutoCaptureConditions.detectionBoxMaxYThreshold &&
+        box.minY < AutoCaptureConditions.detectionBoxMinYThreshold &&
+        box.maxX > AutoCaptureConditions.detectionBoxMaxXThreshold &&
+        box.minX < AutoCaptureConditions.detectionBoxMinXThreshold
+    }
+    
+    private func detectionConfidenceMet(for confidence: Float) -> Bool {
+        confidence > AutoCaptureConditions.detectionConfidenceTheshold
+    }
+}
+
+// MARK: Photo Capture
+extension AutoCaptureManager {
+    @MainActor
+    private func photoCapture() {
+        directoryManager.checkCreateNewDirectory()
+        captureSession.captureFrame(with: directoryManager)
+    }
+}
+
+// MARK: Constants
+extension AutoCaptureManager {
+    private struct AutoCaptureConditions {
         // MARK: Camera & Device Motion Thresholds
         static let lensPosThreshold: Float = 0.6
         static let accelMagThreshold: Double = 0.4
@@ -180,13 +178,11 @@ extension AutoCaptureManager {
         static let detectionBoxMaxXThreshold: Double = 0.5
         static let detectionBoxMinXThreshold: Double = 0.5
     }
-}
-
-// MARK: Photo Capture
-extension AutoCaptureManager {
-    @MainActor
-    private func photoCapture() {
-        directoryManager.checkCreateNewDirectory()
-        captureSession.captureFrame(with: directoryManager)
+    
+    private struct AutoCaptureConstants {
+        static let updateEverySecs: Double = 0.25
+        static let captureMode: PhotoCaptureMode = .auto
+        static let imagePrefix: String = "IMG_"
+        static let imageSuffix: String = ".JPG"
     }
 }
