@@ -29,7 +29,10 @@ struct ObjCaptureView: View {
                     .opacity(0.65)
                     
                 VStack {
-                    TopInfoPanelView(lensPos: viewModel.lensPos)
+                    VStack {
+                        TopInfoPanelView(lensPos: viewModel.lensPos)
+                        CaptureModeMenu(objCaptureViewModel: viewModel)
+                    }
                     
                     Spacer()
                     

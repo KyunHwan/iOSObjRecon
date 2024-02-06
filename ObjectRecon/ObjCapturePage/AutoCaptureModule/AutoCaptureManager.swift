@@ -69,7 +69,7 @@ class AutoCaptureManager {
     @MainActor
     func captureFrame() {
         switch photoCaptureMode {
-            case .manual: photoCapture()
+            case .manual: manualPhotoCapture()
             case .auto: autoPhotoCapture()
         }
     }
@@ -87,25 +87,45 @@ extension AutoCaptureManager {
     }
 }
 
-
 // MARK: Automatic Photo Capture
 extension AutoCaptureManager {
+    func setAutoCaptureMode() {
+        photoCaptureMode = .auto
+    }
+    func setManualCaptureMode() {
+        photoCaptureMode = .manual
+    }
+    
     @MainActor
     private func autoPhotoCapture() {
-        if let _ = self.timer { stopAutoPhotoCapture() }
+        if let _ = self.timer { stopPhotoCapture() }
         else { startAutoPhotoCapture() }
+    }
+    
+    @MainActor
+    private func manualPhotoCapture() {
+        if let _ = self.timer { stopPhotoCapture() }
+        else { startManualPhotoCapture() }
+    }
+    
+    @MainActor
+    private func startManualPhotoCapture() {
+        directoryManager.createNewDirectory()
+        self.timer = Timer.publish(every: AutoCaptureConstants.updateEverySecs, on: .main, in: .common)
+            .autoconnect()
+            .sink(receiveValue: { _ in self.photoCapture() })
     }
     
     @MainActor
     private func startAutoPhotoCapture() {
         directoryManager.createNewDirectory()
         self.timer = Timer.publish(every: AutoCaptureConstants.updateEverySecs, on: .main, in: .common)
-                                .autoconnect()
-                                .sink(receiveValue: { _ in self.conditionsCheckedPhotoCapture() })
+            .autoconnect()
+            .sink(receiveValue: { _ in self.conditionsCheckedPhotoCapture() })
     }
     
     @MainActor
-    private func stopAutoPhotoCapture() {
+    private func stopPhotoCapture() {
         self.timer?.cancel()
         self.timer = nil
     }

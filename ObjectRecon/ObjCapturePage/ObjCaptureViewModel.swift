@@ -116,6 +116,14 @@ extension ObjCaptureViewModel {
 // MARK: Auto Capture
 extension ObjCaptureViewModel {
     
+    func setAutoCaptureMode() {
+        autoCaptureManager.setAutoCaptureMode()
+    }
+    
+    func setManualCaptureMode() {
+        autoCaptureManager.setManualCaptureMode()
+    }
+    
     func captureConditionsMet(lensPos: Float, accelMag: Double, box: CGRect, confidence: Float) -> Bool {
         autoCaptureManager.captureConditionsMet(lensPos: lensPos, accelMag: accelMag, box: box, confidence: confidence)
     }
