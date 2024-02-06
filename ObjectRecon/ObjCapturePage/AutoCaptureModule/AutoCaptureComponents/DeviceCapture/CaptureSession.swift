@@ -28,6 +28,7 @@ class CaptureSession: NSObject {
         self.lensPos = 0
         
         super.init()
+        // For passing the lens position value to a Publisher property
         lensPosObservation = observe(
             \.inputCamera.device.lensPosition,
              options: [.new]
