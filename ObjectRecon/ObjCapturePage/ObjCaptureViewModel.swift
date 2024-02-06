@@ -26,6 +26,8 @@ final class ObjCaptureViewModel: ObservableObject {
             // Update Focus Position
             if !(newBox == CGRect()) {
                 autoCaptureManager.updateFocusLocation(focusPoint: CGPoint(x: newBox.midX, y: newBox.midY))
+            } else {
+                autoCaptureManager.updateFocusLocation(focusPoint: CGPoint(x: 0.5, y: 0.5))
             }
         }
     }
