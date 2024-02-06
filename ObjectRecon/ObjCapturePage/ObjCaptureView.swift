@@ -35,7 +35,7 @@ struct ObjCaptureView: View {
                     
                     ZStack {
                         cameraPreviewSection(geometry: geometry)
-                        //VStack { blurViewWithARSection(geometry: geometry) }
+                        VStack { blurViewWithARSection(geometry: geometry) }
                         VStack { progressBarViewSection(geometry: geometry) }
                     }
                     .clipped()
