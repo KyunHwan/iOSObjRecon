@@ -54,9 +54,14 @@ struct ProgressBarView: View {
                                              indicator: indicator,
                                              VPadding: VPadding)
                 }
-                .onChange(of: objCaptureViewModel.numPhotosTaken) {
-                    progressBarViewModel.updateProgressIndicator(ZRotation: arModelManager.relativeZOrientation(using: objCaptureViewModel.deviceOrientation),
-                                                                 XRotation: arModelManager.relativeXOrientation(using: objCaptureViewModel.deviceOrientation))
+                .onChange(of: objCaptureViewModel.numPhotosTaken) 
+                {
+                    if objCaptureViewModel.numPhotosTaken == 0 {
+                        progressBarViewModel.refreshProgressBars()
+                    } else {
+                        progressBarViewModel.updateProgressIndicator(ZRotation: arModelManager.relativeZOrientation(using: objCaptureViewModel.deviceOrientation),
+                                                                     XRotation: arModelManager.relativeXOrientation(using: objCaptureViewModel.deviceOrientation))
+                    }
                 }
             }
         }

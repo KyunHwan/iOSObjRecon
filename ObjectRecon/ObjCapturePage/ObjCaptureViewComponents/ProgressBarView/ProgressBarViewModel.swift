@@ -20,12 +20,13 @@ class ProgressBarViewModel: ObservableObject {
     
     static let numPhotosPerIndicator: CGFloat = 2
     
-    let photoCaptureNumBars: CGFloat = 20
-    private let photoCaptureHRegionRange: Float = 60 // in degrees
+    let photoCaptureNumBars: CGFloat = Constants.photoCaptureNumBars
+    private let photoCaptureHRegionRange: Float = Constants.photoCaptureHRegionRange // in degrees
     private var photoCaptureHProgressIndicatorRange: Float { photoCaptureHRegionRange / Float(photoCaptureNumBars) }
+    var halfPhotoCaptureNumBars: CGFloat { photoCaptureNumBars / 2 }
     
-    private let numPhotoCaptureVRegions: CGFloat = 3
-    private let photoCaptureVRegionRange: Float = 9 // in degrees
+    private let numPhotoCaptureVRegions: CGFloat = Constants.numPhotoCaptureVRegions
+    private let photoCaptureVRegionRange: Float = Constants.photoCaptureVRegionRange // in degrees
     private var photoCaptureVProgressIndicatorRange: Float { photoCaptureVRegionRange / Float(numPhotoCaptureVRegions) }
     
     var topProgressBar: Array<ProgressElement> { photoCaptureTopProgressBar.progressIndicators }
@@ -57,41 +58,66 @@ class ProgressBarViewModel: ObservableObject {
 
 // Updating the progress bar
 extension ProgressBarViewModel {
+    
+    func refreshProgressBars() {
+        self.photoCaptureTopProgressBar.refreshProgressBar()
+        self.photoCaptureCenterProgressBar.refreshProgressBar()
+        self.photoCaptureBottomProgressBar.refreshProgressBar()
+        self.setupProgressBar()
+    }
+    
     // Function to update the progress of a bar based on the angle at which a photo was taken
     func updateProgressIndicator(ZRotation: Float, XRotation: Float) {
         // Only get the rotation around the z-axis (ie. vertical axis)
+        var id = findHorizontalRegion(ZRotation: ZRotation)
         
+        if Constants.numCaptureBars == 2 {
+            updateTopBottom(XRotation: XRotation, id: id)
+        } else {
+            updateTopCenterBottom(XRotation: XRotation, id: id)
+        }
+    }
+    
+    private func findHorizontalRegion(ZRotation: Float) -> Float {
         var halfHRange: Float { (photoCaptureHRegionRange/2) }
         
         var id = ((ZRotation - 90 + halfHRange) / photoCaptureHProgressIndicatorRange).rounded(.down)
         if ZRotation < 90 - halfHRange { id = 0 }
         else if ZRotation > 90 + halfHRange { id = Float(photoCaptureNumBars) - 1 }
-        // Calculate Yaw
-        //print("XRotation: \(XRotation)")
-        //var halfVRange: Float { (photoCaptureVRegionRange/2) }
-        //if XRotation < 90 - halfVRange || XRotation > 90 + halfVRange { return }
-        //let location = Int(((XRotation - 90 + halfVRange) / photoCaptureVProgressIndicatorRange).rounded(.down))
         
+        return id
+    }
+    
+    private func updateTopBottom(XRotation: Float, id: Float) {
+        if XRotation > 90 {
+            photoCaptureTopProgressBar.incrementProgress(for: Int(id))
+        }
+        else if 90 > XRotation {
+            photoCaptureBottomProgressBar.incrementProgress(for: Int(id))
+        }
+    }
+    
+    private func updateTopCenterBottom(XRotation: Float, id: Float) {
         if XRotation >= 95 {
             photoCaptureTopProgressBar.incrementProgress(for: Int(id))
         }
-        
         else if 85 < XRotation && XRotation < 95 {
             photoCaptureCenterProgressBar.incrementProgress(for: Int(id))
         }
         else if 85 >= XRotation {
             photoCaptureBottomProgressBar.incrementProgress(for: Int(id))
         }
-        /*
-         if XRotation > 90 + photoCaptureVProgressIndicatorRange {
-             photoCaptureTopProgressBar.incrementProgress(for: Int(id))
-         }
-        else if 90 - photoCaptureVProgressIndicatorRange <= XRotation && XRotation <= 90 + photoCaptureVProgressIndicatorRange {
-            photoCaptureCenterProgressBar.incrementProgress(for: Int(id))
-        }
+    }
+}
+
+extension ProgressBarViewModel {
+    private struct Constants {
+        static let numCaptureBars: Int = 2
         
-        else if 90 - photoCaptureVProgressIndicatorRange > XRotation {
-            photoCaptureBottomProgressBar.incrementProgress(for: Int(id))
-        }*/
+        static let numPhotosPerIndicator: CGFloat = 2
+        static let photoCaptureNumBars: CGFloat = 20
+        static let photoCaptureHRegionRange: Float = 60 // in degrees
+        static let numPhotoCaptureVRegions: CGFloat = 3
+        static let photoCaptureVRegionRange: Float = 9 // in degrees
     }
 }

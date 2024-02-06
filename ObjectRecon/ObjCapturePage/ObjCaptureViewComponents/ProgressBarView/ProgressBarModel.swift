@@ -16,6 +16,10 @@ struct ProgressBarModel {
         progressIndicators = []
     }
     
+    mutating func refreshProgressBar() {
+        progressIndicators.removeAll()
+    }
+    
     mutating func incrementProgress(for id: Int) { progressIndicators[id].progress += 1 }
     
     mutating func addProgressIndicator(id: Int, progress: CGFloat) {

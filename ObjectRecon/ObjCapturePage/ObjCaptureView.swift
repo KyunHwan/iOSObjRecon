@@ -58,6 +58,7 @@ struct ObjCaptureView: View {
     }
 }
 
+
 // MARK: View Color Modifier
 extension ObjCaptureView {
     private var background: some View {
@@ -106,8 +107,6 @@ extension ObjCaptureView {
     private func progressBarViewSection(geometry: GeometryProxy) -> some View {
         Spacer(minLength: geometry.size.width * ViewParameter.aspectRatio/4)
         progressBar(geometry: geometry, location: .top)
-        Spacer()
-        progressBar(geometry: geometry, location: .center)
         Spacer()
         progressBar(geometry: geometry, location: .bottom)
         Spacer(minLength: geometry.size.width * ViewParameter.aspectRatio/4)

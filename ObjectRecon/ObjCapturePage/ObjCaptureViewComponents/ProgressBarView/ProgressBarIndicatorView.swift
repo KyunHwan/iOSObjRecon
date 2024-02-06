@@ -42,16 +42,16 @@ struct ProgressBarIndicatorView: View {
     }
     // Pick horizontal padding direction depending on the index of the progress bar
     private func paddingHDirection(indicatorId: CGFloat) -> Edge.Set {
-        if indicatorId <= progressBarViewModel.photoCaptureNumBars/2 { return Edge.Set.trailing }
+        if indicatorId <= progressBarViewModel.halfPhotoCaptureNumBars { return Edge.Set.trailing }
         else { return Edge.Set.leading }
     }
     // Calculate the horizontal padding length for each progress bar
     private func eachIndicatorHPaddingLength(indicatorId: CGFloat) -> CGFloat {
-        if indicatorId == progressBarViewModel.photoCaptureNumBars/2 || 
-           indicatorId - 1 == progressBarViewModel.photoCaptureNumBars/2 {
+        if indicatorId == progressBarViewModel.halfPhotoCaptureNumBars ||
+           indicatorId - 1 == progressBarViewModel.halfPhotoCaptureNumBars {
             return 0.5 * beta * indicatorId / progressBarViewModel.photoCaptureNumBars
         }
-        else if indicatorId <= progressBarViewModel.photoCaptureNumBars/2 {
+        else if indicatorId <= progressBarViewModel.halfPhotoCaptureNumBars {
             return beta * indicatorId / progressBarViewModel.photoCaptureNumBars
         }
         else {
@@ -60,7 +60,7 @@ struct ProgressBarIndicatorView: View {
     }
     // Calculate the vertical padding length for each progress bar
     private func eachIndicatorVPaddingLength(indicatorId: CGFloat) -> CGFloat {
-        if indicatorId <= progressBarViewModel.photoCaptureNumBars/2 {
+        if indicatorId <= progressBarViewModel.halfPhotoCaptureNumBars {
             return beta*(progressBarViewModel.photoCaptureNumBars - indicatorId + 1)/progressBarViewModel.photoCaptureNumBars
         }
         else {
