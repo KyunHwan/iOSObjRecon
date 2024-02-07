@@ -20,7 +20,6 @@
 		D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D16F2B67A9CE007961DA /* MLDetector.swift */; };
 		D0A4D1782B67AB89007961DA /* AutoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */; };
 		D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */; };
-		D0B4B1482B72F57F0098CB3B /* ObjPresentationPlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */; };
 		D0C85B822B6C5A3300C1BB94 /* ObjCaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B812B6C5A3300C1BB94 /* ObjCaptureViewModel.swift */; };
 		D0C85B872B6C5FB700C1BB94 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B842B6C5FB700C1BB94 /* ProgressBarView.swift */; };
 		D0C85B882B6C5FB700C1BB94 /* ProgressBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B852B6C5FB700C1BB94 /* ProgressBarViewModel.swift */; };
@@ -67,7 +66,6 @@
 		D0A4D16F2B67A9CE007961DA /* MLDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDetector.swift; sourceTree = "<group>"; };
 		D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCaptureManager.swift; sourceTree = "<group>"; };
 		D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
-		D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformView.swift; sourceTree = "<group>"; };
 		D0C85B812B6C5A3300C1BB94 /* ObjCaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureViewModel.swift; sourceTree = "<group>"; };
 		D0C85B842B6C5FB700C1BB94 /* ProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		D0C85B852B6C5FB700C1BB94 /* ProgressBarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarViewModel.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 		D06B83662B69E50C008393A3 /* ObjPresentationPlatformPage */ = {
 			isa = PBXGroup;
 			children = (
-				D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */,
 			);
 			path = ObjPresentationPlatformPage;
 			sourceTree = "<group>";
@@ -514,7 +511,6 @@
 				D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */,
 				D0C85B972B6C675C00C1BB94 /* ResetARModelOrientationButton.swift in Sources */,
 				D0EB37AA2B5E6B0400A54AA7 /* VideoPreview.swift in Sources */,
-				D0B4B1482B72F57F0098CB3B /* ObjPresentationPlatformView.swift in Sources */,
 				D0C85B822B6C5A3300C1BB94 /* ObjCaptureViewModel.swift in Sources */,
 				D0C85B9C2B6C687800C1BB94 /* AuditoryCaptureFeedbackManager.swift in Sources */,
 			);
