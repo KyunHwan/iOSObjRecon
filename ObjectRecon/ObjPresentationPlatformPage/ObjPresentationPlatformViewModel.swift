@@ -8,5 +8,8 @@
 import Foundation
 
 class ObjPresentationPlatformViewModel: ObservableObject {
-    
+    private var platformModel: ObjPresentationPlatformModel<URL>
+    init() {
+        platformModel = ObjPresentationPlatformModel()
+    }
 }

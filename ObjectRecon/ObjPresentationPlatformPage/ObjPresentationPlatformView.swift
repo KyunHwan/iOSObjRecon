@@ -11,8 +11,16 @@ struct ObjPresentationPlatformView: View {
     @StateObject private var viewModel = ObjPresentationPlatformViewModel()
     
     var body: some View {
-        ScrollView([.vertical]) {
+        GeometryReader { geoemtry in
+            let columnGridItems = [GridItem(.flexible()), GridItem(.flexible())]
             
+            ScrollView([.vertical]) {
+                LazyVGrid(columns: columnGridItems, alignment: .center) {
+                    ForEach(viewModel.objModelPaths) { path in
+                        ObjContainerView(objModelPath: path)
+                    }
+                }
+            }
         }
     }
 }
