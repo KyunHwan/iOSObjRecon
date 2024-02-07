@@ -196,17 +196,17 @@
 			isa = PBXGroup;
 			children = (
 				D0A4D16A2B677A2B007961DA /* DeviceMotionProvider.swift */,
-				D0A4D1752B67AAF1007961DA /* DeviceMotionProviderComponents */,
+				D0A4D1752B67AAF1007961DA /* DeviceMotionProviderHelpers */,
 			);
 			path = DeviceMotion;
 			sourceTree = "<group>";
 		};
-		D0A4D1752B67AAF1007961DA /* DeviceMotionProviderComponents */ = {
+		D0A4D1752B67AAF1007961DA /* DeviceMotionProviderHelpers */ = {
 			isa = PBXGroup;
 			children = (
 				D0A4D16D2B677DA4007961DA /* DeviceMotionExtensions.swift */,
 			);
-			path = DeviceMotionProviderComponents;
+			path = DeviceMotionProviderHelpers;
 			sourceTree = "<group>";
 		};
 		D0A4D1762B67AB73007961DA /* AutoCaptureModule */ = {
