@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct ProgressBarIndicatorView: View {
-    @ObservedObject var progressBarViewModel: ProgressBarViewModel
+struct CaptureProgressBarIndicatorView: View {
+    @ObservedObject var progressBarViewModel: CaptureProgressBarViewModel
     
     let width: CGFloat
     let height: CGFloat
-    let indicator: ProgressBarModel.ProgressIndicator
+    let indicator: CaptureProgressBarModel.ProgressIndicator
     let VPadding: Edge.Set
     
     // Parameters
@@ -23,9 +23,9 @@ struct ProgressBarIndicatorView: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: cornerRadius)
-            .fill(progressToColor(progress: CGFloat.minimum(indicator.progress, ProgressBarViewModel.numPhotosPerIndicator)))
+            .fill(progressToColor(progress: CGFloat.minimum(indicator.progress, CaptureProgressBarViewModel.numPhotosPerIndicator)))
             .frame(width: width/CGFloat(progressBarViewModel.photoCaptureNumBars*alpha),
-                   height: height * (1 + CGFloat.minimum(indicator.progress, ProgressBarViewModel.numPhotosPerIndicator)/3) / 12,
+                   height: height * (1 + CGFloat.minimum(indicator.progress, CaptureProgressBarViewModel.numPhotosPerIndicator)/3) / 12,
                    alignment: .bottom)
             .padding([paddingHDirection(indicatorId: CGFloat(indicator.id))], 
                      eachIndicatorHPaddingLength(indicatorId: CGFloat(indicator.id)))
@@ -37,7 +37,7 @@ struct ProgressBarIndicatorView: View {
     // Map progress value to color value
     private func progressToColor(progress: CGFloat) -> Color {
         Color(hue: 0.33, 
-              saturation: progress/ProgressBarViewModel.numPhotosPerIndicator,
+              saturation: progress/CaptureProgressBarViewModel.numPhotosPerIndicator,
               brightness: 1.0)
     }
     // Pick horizontal padding direction depending on the index of the progress bar

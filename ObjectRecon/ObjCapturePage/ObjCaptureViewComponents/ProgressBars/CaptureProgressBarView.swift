@@ -9,17 +9,17 @@
 import SwiftUI
 import Combine
 
-struct ProgressBarView: View {
-    @StateObject private var progressBarViewModel = ProgressBarViewModel()
+struct CaptureProgressBarView: View {
+    @StateObject private var progressBarViewModel = CaptureProgressBarViewModel()
     @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
     @ObservedObject var arModelManager: ARModelManager
         
     let width: CGFloat
     let height: CGFloat
-    let progressBarLocation: ProgressBarViewModel.ProgressBarLocation
+    let progressBarLocation: CaptureProgressBarViewModel.ProgressBarLocation
     
     init(objCaptureViewModel: ObjCaptureViewModel, arModelManager: ARModelManager,
-         width: CGFloat, height: CGFloat, progressBarLocation: ProgressBarViewModel.ProgressBarLocation) {
+         width: CGFloat, height: CGFloat, progressBarLocation: CaptureProgressBarViewModel.ProgressBarLocation) {
         self.arModelManager = arModelManager
         self.objCaptureViewModel = objCaptureViewModel
         
@@ -28,7 +28,7 @@ struct ProgressBarView: View {
         self.progressBarLocation = progressBarLocation
     }
     
-    private var progressBar: Array<ProgressBarModel.ProgressIndicator> {
+    private var progressBar: Array<CaptureProgressBarModel.ProgressIndicator> {
         switch progressBarLocation {
         case .top: progressBarViewModel.topProgressBar
         case .center: progressBarViewModel.centerProgressBar
@@ -48,7 +48,7 @@ struct ProgressBarView: View {
         HStack(spacing:0.0){
             ForEach(progressBar) { indicator in
                 VStack{
-                    ProgressBarIndicatorView(progressBarViewModel: progressBarViewModel,
+                    CaptureProgressBarIndicatorView(progressBarViewModel: progressBarViewModel,
                                              width: width, 
                                              height: height,
                                              indicator: indicator,

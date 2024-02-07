@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProgressBarModel {
+struct CaptureProgressBarModel {
     // Array of objects that each indicate the degree of photo capture completion
     private(set) var progressIndicators: Array<ProgressIndicator>
     

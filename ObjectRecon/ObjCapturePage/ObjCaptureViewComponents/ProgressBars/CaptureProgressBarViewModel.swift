@@ -11,12 +11,12 @@ import Foundation
 import RealityKit
 import Combine
 
-class ProgressBarViewModel: ObservableObject {
-    typealias ProgressElement = ProgressBarModel.ProgressIndicator
+class CaptureProgressBarViewModel: ObservableObject {
+    typealias ProgressElement = CaptureProgressBarModel.ProgressIndicator
     
-    @Published private var photoCaptureTopProgressBar: ProgressBarModel
-    @Published private var photoCaptureCenterProgressBar: ProgressBarModel
-    @Published private var photoCaptureBottomProgressBar: ProgressBarModel
+    @Published private var photoCaptureTopProgressBar: CaptureProgressBarModel
+    @Published private var photoCaptureCenterProgressBar: CaptureProgressBarModel
+    @Published private var photoCaptureBottomProgressBar: CaptureProgressBarModel
     
     static let numPhotosPerIndicator: CGFloat = 2
     
@@ -34,9 +34,9 @@ class ProgressBarViewModel: ObservableObject {
     var bottomProgressBar: Array<ProgressElement> { photoCaptureBottomProgressBar.progressIndicators }
     
     init(){
-        self.photoCaptureTopProgressBar = ProgressBarModel()
-        self.photoCaptureCenterProgressBar = ProgressBarModel()
-        self.photoCaptureBottomProgressBar = ProgressBarModel()
+        self.photoCaptureTopProgressBar = CaptureProgressBarModel()
+        self.photoCaptureCenterProgressBar = CaptureProgressBarModel()
+        self.photoCaptureBottomProgressBar = CaptureProgressBarModel()
         setupProgressBar()
     }
     
@@ -57,7 +57,7 @@ class ProgressBarViewModel: ObservableObject {
 }
 
 // Updating the progress bar
-extension ProgressBarViewModel {
+extension CaptureProgressBarViewModel {
     
     func refreshProgressBars() {
         self.photoCaptureTopProgressBar.refreshProgressBar()
@@ -110,7 +110,7 @@ extension ProgressBarViewModel {
     }
 }
 
-extension ProgressBarViewModel {
+extension CaptureProgressBarViewModel {
     private struct Constants {
         static let numCaptureBars: Int = 2
         

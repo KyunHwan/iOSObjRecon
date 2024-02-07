@@ -11,9 +11,10 @@ struct CaptureModeMenu: View {
     @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
     
     var body: some View {
-        Menu("Capture Modes") {
+        Menu("\(Image(systemName: "camera.fill"))") {
             Button("Manual") { objCaptureViewModel.setManualCaptureMode() }
             Button("Auto") { objCaptureViewModel.setAutoCaptureMode() }
         }
     }
 }
+

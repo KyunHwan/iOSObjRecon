@@ -29,17 +29,14 @@ struct ObjCaptureView: View {
                     .opacity(0.65)
                 
                 VStack {
-                    VStack {
-                        TopInfoPanelView(lensPos: viewModel.lensPos)
-                        CaptureModeMenu(objCaptureViewModel: viewModel)
-                    }
+                    TopPanelView(viewModel: viewModel, width: geometry.size.width)
                     
                     Spacer()
                     
                     ZStack {
                         cameraPreviewSection(geometry: geometry)
                         blurViewWithARSection(geometry: geometry)
-                        progressBarViewSection(geometry: geometry)
+                        captureProgressBarViewSection(geometry: geometry)
                     }
                     .clipped()
                     
@@ -48,16 +45,7 @@ struct ObjCaptureView: View {
                     captureButtonPanelSection(geometry: geometry)
                 }
                 
-                if viewModel.isUploading {
-                    ZStack {
-                        ProgressCircleView(progress: viewModel.uploadProgress)
-                        Text("\(viewModel.uploadProgress * 100, specifier: "%.0f")")
-                            .font(.largeTitle)
-                            .bold()
-                            .foregroundColor(.white)
-                    }
-                    .frame(width: 200, height: 200)
-                }
+                if viewModel.isUploading { uploadProgressViewSection() }
             }
             .task {
                 viewModel.startAutoSession()
@@ -68,6 +56,22 @@ struct ObjCaptureView: View {
         }
     }
 
+}
+
+// MARK: Upload Progress View
+extension ObjCaptureView {
+    @ViewBuilder
+    private func uploadProgressViewSection() -> some View {
+        ZStack {
+            UploadProgressCircleView(progress: viewModel.uploadProgress)
+            Text("\(viewModel.uploadProgress * 100, specifier: "%.0f")")
+                .font(.largeTitle)
+                .bold()
+                .foregroundColor(.white)
+        }
+        .frame(width: 200, height: 200)
+        
+    }
 }
 
 // MARK: View Color Modifier
@@ -106,21 +110,21 @@ extension ObjCaptureView {
 
 // MARK: Progress Bar View Section
 extension ObjCaptureView {
-    private func progressBar(geometry: GeometryProxy, 
-                             location: ProgressBarViewModel.ProgressBarLocation) -> some View {
-        ProgressBarView(objCaptureViewModel: viewModel, arModelManager: arModelManager,
+    private func captureProgressBar(geometry: GeometryProxy,
+                             location: CaptureProgressBarViewModel.ProgressBarLocation) -> some View {
+        CaptureProgressBarView(objCaptureViewModel: viewModel, arModelManager: arModelManager,
                         width: geometry.size.width / 2,
                         height: geometry.size.width * (ViewParameter.aspectRatio/4),
                         progressBarLocation: location)
     }
     
     @ViewBuilder
-    private func progressBarViewSection(geometry: GeometryProxy) -> some View {
+    private func captureProgressBarViewSection(geometry: GeometryProxy) -> some View {
         VStack {
             Spacer(minLength: geometry.size.width * ViewParameter.aspectRatio/4)
-            progressBar(geometry: geometry, location: .top)
+            captureProgressBar(geometry: geometry, location: .top)
             Spacer()
-            progressBar(geometry: geometry, location: .bottom)
+            captureProgressBar(geometry: geometry, location: .bottom)
             Spacer(minLength: geometry.size.width * ViewParameter.aspectRatio/4)
         }
     }

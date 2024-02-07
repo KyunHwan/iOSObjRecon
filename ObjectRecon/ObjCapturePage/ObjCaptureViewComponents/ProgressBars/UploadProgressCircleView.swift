@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressCircleView: View {
+struct UploadProgressCircleView: View {
     let progress: Double
     
     var body: some View {
@@ -35,5 +35,5 @@ struct ProgressCircleView: View {
 }
 
 #Preview {
-    ProgressCircleView(progress: 0.5)
+    UploadProgressCircleView(progress: 0.5)
 }

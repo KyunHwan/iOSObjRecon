@@ -17,7 +17,6 @@ struct UploadButton: View {
             Label("Record", systemImage: objCaptureViewModel.isUploading ? "square.and.arrow.up.fill" : "square.and.arrow.up")
                 .labelStyle(.iconOnly)
                 .foregroundColor(objCaptureViewModel.isUploading ? .red : .yellow)
-                .scaleEffect(3)
         })
     }
 }
