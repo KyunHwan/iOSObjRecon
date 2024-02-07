@@ -51,7 +51,7 @@ class DeviceMotionProvider {
 // MARK: Acceleration
 extension DeviceMotionProvider {
     // Calculating acceleration magnitude in m/s^2
-    func magnitude(of val: CMAcceleration) -> Double {
+    private func magnitude(of val: CMAcceleration) -> Double {
         DeviceMotionAccelConstants.motionDataAccelConverter *
         pow(pow(val.x,2) +
             pow(val.y,2) +
