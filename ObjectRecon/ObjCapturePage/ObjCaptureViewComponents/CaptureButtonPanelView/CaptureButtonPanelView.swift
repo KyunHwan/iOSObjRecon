@@ -34,7 +34,10 @@ struct CaptureButtonPanelView: View {
                 ResetARModelOrientationButton(objCaptureViewModel: objCaptureViewModel,
                                               arModelManager: arModelManager,
                                               frameWidth: thirdWidth)
-                    .padding(Edge.Set.horizontal)
+                    //.padding(Edge.Set.horizontal)
+                
+                UploadButton(objCaptureViewModel: objCaptureViewModel)
+                    .padding(.trailing)
             }
         }
     }

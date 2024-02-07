@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import AVFoundation
+import ZIPFoundation
 
 class AutoCaptureManager {
     // MARK: Camera
@@ -189,6 +190,48 @@ extension AutoCaptureManager {
     private func photoCapture() {
         directoryManager.checkCreateNewDirectory()
         captureSession.captureFrame(with: directoryManager)
+    }
+}
+
+// MARK: Firebase Upload
+extension AutoCaptureManager {
+    
+    func uploadCapFolderToFirebase(progressHandler: @escaping (Double) -> Void, completionHandler: @escaping (String) -> Void) {
+        
+        guard let lastCapFolder = directoryManager.dirPath else {
+            print("There's no capture folder to upload !")
+            return
+        }
+        
+        let zipURL = lastCapFolder
+            .deletingLastPathComponent()
+            .appendingPathComponent(lastCapFolder.lastPathComponent)
+            .appendingPathExtension("zip")
+                    
+        if FileManager.default.fileExists(atPath: zipURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: zipURL.path)
+                print("Old file removed : \(zipURL)")
+            } catch {
+                print("Cannot remove file \(zipURL), error :\(error)")
+            }
+        }
+        
+        do {
+            try FileManager.default.zipItem(
+                at: lastCapFolder,
+                to: zipURL,
+                shouldKeepParent: false,
+                compressionMethod: .none,
+                progress: nil
+            )
+            print("New file created : \(zipURL)")
+            
+            FireStorageHelper.writeFileToFireStorage(to: zipURL, progressHandler: progressHandler, completionHandler: completionHandler)
+            
+        } catch {
+            print("Creation of ZIP archive failed with error:\(error)")
+        }
     }
 }
 

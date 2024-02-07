@@ -47,6 +47,17 @@ struct ObjCaptureView: View {
                     
                     captureButtonPanelSection(geometry: geometry)
                 }
+                
+                if viewModel.isUploading {
+                    ZStack {
+                        ProgressCircleView(progress: viewModel.uploadProgress)
+                        Text("\(viewModel.uploadProgress * 100, specifier: "%.0f")")
+                            .font(.largeTitle)
+                            .bold()
+                            .foregroundColor(.white)
+                    }
+                    .frame(width: 200, height: 200)
+                }
             }
             .task {
                 viewModel.startAutoSession()
@@ -56,8 +67,8 @@ struct ObjCaptureView: View {
             }
         }
     }
-}
 
+}
 
 // MARK: View Color Modifier
 extension ObjCaptureView {

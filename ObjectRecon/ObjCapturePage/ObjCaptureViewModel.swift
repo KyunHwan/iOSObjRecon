@@ -32,6 +32,8 @@ final class ObjCaptureViewModel: ObservableObject {
         }
     }
     @Published private(set) var detectionConfidence: Float
+    @Published private(set) var isUploading: Bool
+    @Published private(set) var uploadProgress: Double
     
     private var cancellables: Set<AnyCancellable>
     
@@ -45,6 +47,8 @@ final class ObjCaptureViewModel: ObservableObject {
         accelMag = 0
         detectionBox = CGRect()
         detectionConfidence = 0
+        isUploading = false
+        uploadProgress = 0
         
         cancellables = Set<AnyCancellable>()
         addSubscribers()
@@ -153,5 +157,24 @@ extension ObjCaptureViewModel {
 extension ObjCaptureViewModel {
     func startDetection(with layer: CALayer) {
         autoCaptureManager.startDetection(with: layer)
+    }
+}
+
+// MARK: Firebase Storage Upload
+extension ObjCaptureViewModel {
+        
+    func uploadButtonPressed() {
+        isUploading = true
+              
+        autoCaptureManager.uploadCapFolderToFirebase { progress in
+            DispatchQueue.main.async {
+                self.uploadProgress = progress
+            }
+        } completionHandler: { fileName in
+            print("Upload completed successfully to fire stroage ! : \(fileName)")
+            DispatchQueue.main.async {
+                self.isUploading = false
+            }
+        }
     }
 }
