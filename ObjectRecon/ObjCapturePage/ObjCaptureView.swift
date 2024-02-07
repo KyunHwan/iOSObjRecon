@@ -27,7 +27,7 @@ struct ObjCaptureView: View {
                                 Color(uiColor: backgroundColor(with: 1)) :
                                     Color(uiColor: backgroundColor(with: 0)))
                     .opacity(0.65)
-                    
+                
                 VStack {
                     VStack {
                         TopInfoPanelView(lensPos: viewModel.lensPos)
@@ -38,8 +38,8 @@ struct ObjCaptureView: View {
                     
                     ZStack {
                         cameraPreviewSection(geometry: geometry)
-                        VStack { blurViewWithARSection(geometry: geometry) }
-                        VStack { progressBarViewSection(geometry: geometry) }
+                        blurViewWithARSection(geometry: geometry)
+                        progressBarViewSection(geometry: geometry)
                     }
                     .clipped()
                     
@@ -105,11 +105,13 @@ extension ObjCaptureView {
     
     @ViewBuilder
     private func progressBarViewSection(geometry: GeometryProxy) -> some View {
-        Spacer(minLength: geometry.size.width * ViewParameter.aspectRatio/4)
-        progressBar(geometry: geometry, location: .top)
-        Spacer()
-        progressBar(geometry: geometry, location: .bottom)
-        Spacer(minLength: geometry.size.width * ViewParameter.aspectRatio/4)
+        VStack {
+            Spacer(minLength: geometry.size.width * ViewParameter.aspectRatio/4)
+            progressBar(geometry: geometry, location: .top)
+            Spacer()
+            progressBar(geometry: geometry, location: .bottom)
+            Spacer(minLength: geometry.size.width * ViewParameter.aspectRatio/4)
+        }
     }
 }
 
@@ -123,14 +125,16 @@ extension ObjCaptureView {
     
     @ViewBuilder
     private func blurViewWithARSection(geometry: GeometryProxy) -> some View {
-        ZStack {
-            blurView(geometry: geometry)
-        }
-        Spacer()
-        ZStack {
-            blurView(geometry: geometry)
-            fitToPage(ARModelPresentationView(arModelManager: arModelManager, objCaptureViewModel: viewModel),
-                      geometry: geometry, aspectRatio: ViewParameter.aspectRatio/4, alignment: .bottom, priority: 1.0)
+        VStack {
+            ZStack {
+                blurView(geometry: geometry)
+            }
+            Spacer()
+            ZStack {
+                blurView(geometry: geometry)
+                fitToPage(ARModelPresentationView(arModelManager: arModelManager, objCaptureViewModel: viewModel),
+                          geometry: geometry, aspectRatio: ViewParameter.aspectRatio/4, alignment: .bottom, priority: 1.0)
+            }
         }
     }
 }

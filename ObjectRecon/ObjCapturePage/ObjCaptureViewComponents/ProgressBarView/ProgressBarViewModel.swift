@@ -92,7 +92,7 @@ extension ProgressBarViewModel {
         if XRotation > 90 {
             photoCaptureTopProgressBar.incrementProgress(for: Int(id))
         }
-        else if 90 > XRotation {
+        else if 90 >= XRotation {
             photoCaptureBottomProgressBar.incrementProgress(for: Int(id))
         }
     }

@@ -133,12 +133,6 @@ extension AutoCaptureManager {
 
 // MARK: Conditioned Photo Capture
 extension AutoCaptureManager {
-    @MainActor
-    private func conditionsCheckedPhotoCapture() {
-        if captureConditionsMet() {
-            photoCapture()
-        }
-    }
     
     @MainActor
     func captureConditionsMet(lensPos: Float, accelMag: Double, box: CGRect, confidence: Float) -> Bool {
@@ -146,6 +140,13 @@ extension AutoCaptureManager {
         accelMagConditionMet(for: accelMag) &&
         detectionBoxConditionsMet(for: box) &&
         detectionConfidenceMet(for: confidence)
+    }
+    
+    @MainActor
+    private func conditionsCheckedPhotoCapture() {
+        if captureConditionsMet() {
+            photoCapture()
+        }
     }
     
     private func captureConditionsMet() -> Bool {
@@ -195,11 +196,11 @@ extension AutoCaptureManager {
 extension AutoCaptureManager {
     private struct AutoCaptureConditions {
         // MARK: Camera & Device Motion Thresholds
-        static let lensPosThreshold: Float = 0.6
-        static let accelMagThreshold: Double = 0.4
+        static let lensPosThreshold: Float = 0.75
+        static let accelMagThreshold: Double = 0.7
         
         // MARK: Detection Thresholds
-        static let detectionConfidenceTheshold: Float = 0.5
+        static let detectionConfidenceTheshold: Float = 0.3
         
         static let detectionBoxMaxYThreshold: Double = 0.5
         static let detectionBoxMinYThreshold: Double = 0.5

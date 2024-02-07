@@ -12,6 +12,7 @@
 		D01D771F2B70DC2F0064C4B5 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D771E2B70DC2F0064C4B5 /* AppLogo.png */; };
 		D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */; };
 		D0822F572B7201DC00E081C1 /* CaptureModeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */; };
+		D0822F5D2B723DC800E081C1 /* ObjCaptureInstructionVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D0822F5C2B723DC100E081C1 /* ObjCaptureInstructionVid.mp4 */; };
 		D08728E62B68D95400D61CBF /* VideoDataOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */; };
 		D08728E82B68F6AA00D61CBF /* UpperTeethDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */; };
 		D0A4D16B2B677A2B007961DA /* DeviceMotionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D16A2B677A2B007961DA /* DeviceMotionProvider.swift */; };
@@ -19,6 +20,7 @@
 		D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D16F2B67A9CE007961DA /* MLDetector.swift */; };
 		D0A4D1782B67AB89007961DA /* AutoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */; };
 		D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */; };
+		D0B4B1482B72F57F0098CB3B /* ObjPresentationPlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */; };
 		D0C85B822B6C5A3300C1BB94 /* ObjCaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B812B6C5A3300C1BB94 /* ObjCaptureViewModel.swift */; };
 		D0C85B872B6C5FB700C1BB94 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B842B6C5FB700C1BB94 /* ProgressBarView.swift */; };
 		D0C85B882B6C5FB700C1BB94 /* ProgressBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B852B6C5FB700C1BB94 /* ProgressBarViewModel.swift */; };
@@ -48,7 +50,6 @@
 		D0EB37AD2B5E762100A54AA7 /* PhotoCaptureSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */; };
 		D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */; };
 		D0FA08F72B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA08F62B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift */; };
-		D0FA08FA2B6B6FE4008FB3C5 /* ObjCaptureInstructionVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D0FA08F92B6B6F0B008FB3C5 /* ObjCaptureInstructionVid.mp4 */; };
 		D0FA08FD2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA08FC2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		D01D771E2B70DC2F0064C4B5 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
 		D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureExtensions.swift; sourceTree = "<group>"; };
 		D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureModeMenu.swift; sourceTree = "<group>"; };
+		D0822F5C2B723DC100E081C1 /* ObjCaptureInstructionVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ObjCaptureInstructionVid.mp4; sourceTree = "<group>"; };
 		D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataOutputManager.swift; sourceTree = "<group>"; };
 		D08728E72B68F6AA00D61CBF /* UpperTeethDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = UpperTeethDetector.mlmodel; sourceTree = "<group>"; };
 		D0A4D16A2B677A2B007961DA /* DeviceMotionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMotionProvider.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 		D0A4D16F2B67A9CE007961DA /* MLDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDetector.swift; sourceTree = "<group>"; };
 		D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCaptureManager.swift; sourceTree = "<group>"; };
 		D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformView.swift; sourceTree = "<group>"; };
 		D0C85B812B6C5A3300C1BB94 /* ObjCaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureViewModel.swift; sourceTree = "<group>"; };
 		D0C85B842B6C5FB700C1BB94 /* ProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		D0C85B852B6C5FB700C1BB94 /* ProgressBarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarViewModel.swift; sourceTree = "<group>"; };
@@ -96,7 +99,6 @@
 		D0EB37AC2B5E762100A54AA7 /* PhotoCaptureSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureSettings.swift; sourceTree = "<group>"; };
 		D0EB37AE2B5E763700A54AA7 /* PhotoCaptureProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureProcessor.swift; sourceTree = "<group>"; };
 		D0FA08F62B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureInstructionView.swift; sourceTree = "<group>"; };
-		D0FA08F92B6B6F0B008FB3C5 /* ObjCaptureInstructionVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ObjCaptureInstructionVid.mp4; sourceTree = "<group>"; };
 		D0FA08FC2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureInstructionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 		D06B83662B69E50C008393A3 /* ObjPresentationPlatformPage */ = {
 			isa = PBXGroup;
 			children = (
+				D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */,
 			);
 			path = ObjPresentationPlatformPage;
 			sourceTree = "<group>";
@@ -180,11 +183,11 @@
 		D0A4D1692B677920007961DA /* AutoCaptureComponents */ = {
 			isa = PBXGroup;
 			children = (
-				D0A9E2752B5FC164006B7CA8 /* FileManager */,
-				D0C85B9A2B6C684E00C1BB94 /* AuditoryCaptureFeedback */,
 				D0EB37942B5DE6F200A54AA7 /* DeviceCapture */,
-				D08728E92B68F6BE00D61CBF /* MLDetector */,
 				D0A4D16C2B677D8A007961DA /* DeviceMotion */,
+				D08728E92B68F6BE00D61CBF /* MLDetector */,
+				D0C85B9A2B6C684E00C1BB94 /* AuditoryCaptureFeedback */,
+				D0A9E2752B5FC164006B7CA8 /* FileManager */,
 			);
 			path = AutoCaptureComponents;
 			sourceTree = "<group>";
@@ -397,7 +400,7 @@
 			children = (
 				D0FA08F62B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift */,
 				D0FA08FC2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift */,
-				D0FA08F92B6B6F0B008FB3C5 /* ObjCaptureInstructionVid.mp4 */,
+				D0822F5C2B723DC100E081C1 /* ObjCaptureInstructionVid.mp4 */,
 			);
 			path = ObjCaptureInstructionPage;
 			sourceTree = "<group>";
@@ -460,7 +463,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0FA08FA2B6B6FE4008FB3C5 /* ObjCaptureInstructionVid.mp4 in Resources */,
+				D0822F5D2B723DC800E081C1 /* ObjCaptureInstructionVid.mp4 in Resources */,
 				D0C85B9E2B6C68C000C1BB94 /* pororo.mp3 in Resources */,
 				D0EB378E2B5DDED400A54AA7 /* Preview Assets.xcassets in Resources */,
 				D0C85BA22B6C69B300C1BB94 /* captureObj.usdz in Resources */,
@@ -511,6 +514,7 @@
 				D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */,
 				D0C85B972B6C675C00C1BB94 /* ResetARModelOrientationButton.swift in Sources */,
 				D0EB37AA2B5E6B0400A54AA7 /* VideoPreview.swift in Sources */,
+				D0B4B1482B72F57F0098CB3B /* ObjPresentationPlatformView.swift in Sources */,
 				D0C85B822B6C5A3300C1BB94 /* ObjCaptureViewModel.swift in Sources */,
 				D0C85B9C2B6C687800C1BB94 /* AuditoryCaptureFeedbackManager.swift in Sources */,
 			);

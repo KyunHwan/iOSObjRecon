@@ -16,7 +16,7 @@ final class ARModelManager: ObservableObject {
     
     let referenceOrientation: simd_quatf
     @Published private(set) var initialModelOrientation: simd_quatf
-    
+     
     init() {
         arView = ARView(frame: .zero, cameraMode: ARView.CameraMode.nonAR, automaticallyConfigureSession: true)
         model = try? Entity.loadModel(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: InitialModelConfiguration.modelFileName,

@@ -21,7 +21,3 @@ struct ObjCaptureInstructionView: View {
             }
     }
 }
-
-#Preview {
-    ObjCaptureInstructionView()
-}
