@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ObjCaptureView: View {
-    @StateObject var viewModel = ObjCaptureViewModel()
-    @StateObject var arModelManager = ARModelManager()
+    @StateObject private var viewModel = ObjCaptureViewModel()
+    @StateObject private var arModelManager = ARModelManager()
     
     init() {
         UIApplication.shared.isIdleTimerDisabled = true

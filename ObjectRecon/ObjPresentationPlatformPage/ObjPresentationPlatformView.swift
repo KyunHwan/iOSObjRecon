@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ObjPresentationPlatformView: View {
+    @StateObject private var viewModel = ObjPresentationPlatformViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView([.vertical]) {
+            
+        }
     }
-}
-
-
-struct ObjViewingCard {
-    let obj: URL
 }
 
 #Preview {
