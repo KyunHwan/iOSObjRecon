@@ -156,13 +156,6 @@
 			path = AuthenticationPage;
 			sourceTree = "<group>";
 		};
-		D0822F542B71C8AC00E081C1 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Firebase;
-			sourceTree = "<group>";
-		};
 		D0822F552B7201C300E081C1 /* CaptureModeMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,7 +342,6 @@
 				D0CEEFB52B61272E001B79A1 /* Info.plist */,
 				D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */,
 				D0EB37882B5DDED100A54AA7 /* RootView.swift */,
-				D0822F542B71C8AC00E081C1 /* Firebase */,
 				D0FA08F52B6B6A3E008FB3C5 /* ObjCaptureInstructionPage */,
 				D06B83672B69E543008393A3 /* AuthenticationPage */,
 				D0A4D1792B67ABD1007961DA /* ObjCapturePage */,
