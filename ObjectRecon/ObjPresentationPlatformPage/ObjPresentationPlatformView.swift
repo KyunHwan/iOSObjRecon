@@ -11,16 +11,25 @@ struct ObjPresentationPlatformView: View {
     @StateObject private var viewModel = ObjPresentationPlatformViewModel()
     
     var body: some View {
-        GeometryReader { geoemtry in
-            let columnGridItems = [GridItem(.flexible()), GridItem(.flexible())]
+        GeometryReader { geometry in
+            let columnGridItems = [GridItem(.flexible())]
             
-            ScrollView([.vertical]) {
-                LazyVGrid(columns: columnGridItems, alignment: .center) {
-                    ForEach(viewModel.objModelPaths) { path in
-                        ObjContainerView(objModelPath: path)
+            NavigationStack {
+                ScrollView([.vertical]) {
+                    LazyVGrid(columns: columnGridItems, alignment: .center, spacing: 5) {
+                        ForEach(viewModel.objInfoList) { objInfo in
+                            NavigationLink {
+                                ObjContainerView(objInfo: objInfo)
+                            } label: {
+                                ObjInfoView(objInfo: objInfo)
+                            }
+                            .navigationBarTitleDisplayMode(.inline)
+                            .navigationTitle("Recon Models")
+                        }
                     }
                 }
             }
+            
         }
     }
 }

@@ -9,12 +9,23 @@ import Foundation
 
 /// ObjModelPath, which will be used to fetch object model from a remote storage,
 /// should be Identifiable since it will be used inside a ForEach
-struct ObjPresentationPlatformModel<ObjModelPath> where ObjModelPath: Identifiable  {
-    private(set) var objModelPaths: Array<ObjModelPath>
+struct ObjPresentationPlatformModel<ObjModelPath>  {
+    private(set) var objModelPaths: Array<ObjInfo>
     
-    mutating func addToArray(element: ObjModelPath) {
+    init() {
+        objModelPaths = Array<ObjInfo>()
+    }
+    
+    mutating func addToArray(element: ObjInfo) {
         objModelPaths.append(element)
     }
     
-    mutating private func removeFromArray(element: ObjModelPath) {}
+    mutating func removeFromArray(element: ObjInfo) {}
+    
+    /// Where the path to the reconstructed model will be stored
+    struct ObjInfo: Identifiable {
+        let id: Int
+        let filePath: ObjModelPath
+        let name: String
+    }
 }

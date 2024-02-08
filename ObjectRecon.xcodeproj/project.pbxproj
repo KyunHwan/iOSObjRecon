@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D008F6CA2B7362AD002D8179 /* ObjARModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D008F6C92B7362AD002D8179 /* ObjARModelView.swift */; };
+		D008F6CC2B7363B4002D8179 /* mouse_preview.usdz in Resources */ = {isa = PBXBuildFile; fileRef = D008F6CB2B7363B4002D8179 /* mouse_preview.usdz */; };
+		D008F6CE2B7363EA002D8179 /* Rock36_reduced.usdz in Resources */ = {isa = PBXBuildFile; fileRef = D008F6CD2B7363EA002D8179 /* Rock36_reduced.usdz */; };
+		D008F6D02B7363F2002D8179 /* cup_preview.usdz in Resources */ = {isa = PBXBuildFile; fileRef = D008F6CF2B7363F2002D8179 /* cup_preview.usdz */; };
+		D00F49392B7443DD00E856A9 /* ObjARModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F49382B7443DD00E856A9 /* ObjARModelViewModel.swift */; };
+		D00F493C2B74449A00E856A9 /* ObjInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F493B2B74449A00E856A9 /* ObjInfoView.swift */; };
 		D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D77172B7071D50064C4B5 /* ButtonParameters.swift */; };
 		D01D771D2B70DC270064C4B5 /* TopInfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */; };
 		D01D771F2B70DC2F0064C4B5 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D771E2B70DC2F0064C4B5 /* AppLogo.png */; };
@@ -57,6 +63,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D008F6C92B7362AD002D8179 /* ObjARModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjARModelView.swift; sourceTree = "<group>"; };
+		D008F6CB2B7363B4002D8179 /* mouse_preview.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = mouse_preview.usdz; sourceTree = "<group>"; };
+		D008F6CD2B7363EA002D8179 /* Rock36_reduced.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Rock36_reduced.usdz; sourceTree = "<group>"; };
+		D008F6CF2B7363F2002D8179 /* cup_preview.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cup_preview.usdz; sourceTree = "<group>"; };
+		D00F49382B7443DD00E856A9 /* ObjARModelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjARModelViewModel.swift; sourceTree = "<group>"; };
+		D00F493B2B74449A00E856A9 /* ObjInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjInfoView.swift; sourceTree = "<group>"; };
 		D01D77172B7071D50064C4B5 /* ButtonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParameters.swift; sourceTree = "<group>"; };
 		D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopInfoPanelView.swift; sourceTree = "<group>"; };
 		D01D771E2B70DC2F0064C4B5 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
@@ -119,6 +131,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D00F49372B7443B200E856A9 /* ObjContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */,
+				D00F493A2B74441D00E856A9 /* ObjContainerViewComponents */,
+			);
+			path = ObjContainerView;
+			sourceTree = "<group>";
+		};
+		D00F493A2B74441D00E856A9 /* ObjContainerViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				D008F6C92B7362AD002D8179 /* ObjARModelView.swift */,
+				D00F49382B7443DD00E856A9 /* ObjARModelViewModel.swift */,
+			);
+			path = ObjContainerViewComponents;
+			sourceTree = "<group>";
+		};
 		D01D771B2B70DC170064C4B5 /* TopInfoPanelView */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,7 +273,11 @@
 		D0B4B1492B7311440098CB3B /* ObjPresentationPlatformViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */,
+				D008F6CB2B7363B4002D8179 /* mouse_preview.usdz */,
+				D008F6CD2B7363EA002D8179 /* Rock36_reduced.usdz */,
+				D008F6CF2B7363F2002D8179 /* cup_preview.usdz */,
+				D00F493B2B74449A00E856A9 /* ObjInfoView.swift */,
+				D00F49372B7443B200E856A9 /* ObjContainerView */,
 			);
 			path = ObjPresentationPlatformViewComponents;
 			sourceTree = "<group>";
@@ -474,10 +508,13 @@
 			files = (
 				D0822F5D2B723DC800E081C1 /* ObjCaptureInstructionVid.mp4 in Resources */,
 				D0C85B9E2B6C68C000C1BB94 /* pororo.mp3 in Resources */,
+				D008F6CE2B7363EA002D8179 /* Rock36_reduced.usdz in Resources */,
+				D008F6CC2B7363B4002D8179 /* mouse_preview.usdz in Resources */,
 				D0EB378E2B5DDED400A54AA7 /* Preview Assets.xcassets in Resources */,
 				D0C85BA22B6C69B300C1BB94 /* captureObj.usdz in Resources */,
 				D01D771F2B70DC2F0064C4B5 /* AppLogo.png in Resources */,
 				D0EB378B2B5DDED400A54AA7 /* Assets.xcassets in Resources */,
+				D008F6D02B7363F2002D8179 /* cup_preview.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +550,7 @@
 				D0D953862B60F5E800E9FB71 /* ObjCaptureView.swift in Sources */,
 				D0C85B872B6C5FB700C1BB94 /* ProgressBarView.swift in Sources */,
 				D0EB37AD2B5E762100A54AA7 /* PhotoCaptureSettings.swift in Sources */,
+				D00F49392B7443DD00E856A9 /* ObjARModelViewModel.swift in Sources */,
 				D0EB37872B5DDED100A54AA7 /* ObjectReconApp.swift in Sources */,
 				D0EB37A42B5E5A7800A54AA7 /* CaptureSession.swift in Sources */,
 				D0C85B8E2B6C660A00C1BB94 /* BlurViewModel.swift in Sources */,
@@ -529,6 +567,8 @@
 				D0B4B1482B72F57F0098CB3B /* ObjPresentationPlatformView.swift in Sources */,
 				D0C85B822B6C5A3300C1BB94 /* ObjCaptureViewModel.swift in Sources */,
 				D0C85B9C2B6C687800C1BB94 /* AuditoryCaptureFeedbackManager.swift in Sources */,
+				D00F493C2B74449A00E856A9 /* ObjInfoView.swift in Sources */,
+				D008F6CA2B7362AD002D8179 /* ObjARModelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
