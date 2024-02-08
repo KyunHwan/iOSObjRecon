@@ -15,7 +15,6 @@ class DeviceMotionProvider {
     private let motionManager: CMMotionManager
     private let motionQueue: OperationQueue
     
-    
     init() {
         motionQueue = OperationQueue()
         motionManager = CMMotionManager()
