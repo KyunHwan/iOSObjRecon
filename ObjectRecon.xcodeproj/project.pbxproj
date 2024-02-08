@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
 		741DE1D92B7308BD009EBF08 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 741DE1D82B7308BD009EBF08 /* ZIPFoundation */; };
 		741DE20E2B730946009EBF08 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 741DE20D2B730946009EBF08 /* FirebaseStorage */; };
 		741DE2122B730A1B009EBF08 /* UploadProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741DE2112B730A1B009EBF08 /* UploadProgressCircleView.swift */; };
@@ -15,14 +14,12 @@
 		741DE2162B730F7E009EBF08 /* UploadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741DE2152B730F7E009EBF08 /* UploadButton.swift */; };
 		741DE2182B731814009EBF08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 741DE2172B731814009EBF08 /* GoogleService-Info.plist */; };
 		D008F6C82B734346002D8179 /* TopPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D008F6C72B734346002D8179 /* TopPanelView.swift */; };
-
 		D008F6CA2B7362AD002D8179 /* ObjARModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D008F6C92B7362AD002D8179 /* ObjARModelView.swift */; };
 		D008F6CC2B7363B4002D8179 /* mouse_preview.usdz in Resources */ = {isa = PBXBuildFile; fileRef = D008F6CB2B7363B4002D8179 /* mouse_preview.usdz */; };
 		D008F6CE2B7363EA002D8179 /* Rock36_reduced.usdz in Resources */ = {isa = PBXBuildFile; fileRef = D008F6CD2B7363EA002D8179 /* Rock36_reduced.usdz */; };
 		D008F6D02B7363F2002D8179 /* cup_preview.usdz in Resources */ = {isa = PBXBuildFile; fileRef = D008F6CF2B7363F2002D8179 /* cup_preview.usdz */; };
 		D00F49392B7443DD00E856A9 /* ObjARModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F49382B7443DD00E856A9 /* ObjARModelViewModel.swift */; };
 		D00F493C2B74449A00E856A9 /* ObjInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F493B2B74449A00E856A9 /* ObjInfoView.swift */; };
-
 		D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D77172B7071D50064C4B5 /* ButtonParameters.swift */; };
 		D01D771D2B70DC270064C4B5 /* TopInfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */; };
 		D01D771F2B70DC2F0064C4B5 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D771E2B70DC2F0064C4B5 /* AppLogo.png */; };
@@ -36,12 +33,9 @@
 		D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D16F2B67A9CE007961DA /* MLDetector.swift */; };
 		D0A4D1782B67AB89007961DA /* AutoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */; };
 		D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */; };
-
-		D0B4B1482B72F57F0098CB3B /* ObjPresentationPlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */; };
 		D0B4B14B2B7311630098CB3B /* ObjContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */; };
 		D0B4B14D2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14C2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift */; };
 		D0B4B14F2B7311FA0098CB3B /* ObjPresentationPlatformModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14E2B7311FA0098CB3B /* ObjPresentationPlatformModel.swift */; };
-
 		D0C85B822B6C5A3300C1BB94 /* ObjCaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B812B6C5A3300C1BB94 /* ObjCaptureViewModel.swift */; };
 		D0C85B872B6C5FB700C1BB94 /* CaptureProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B842B6C5FB700C1BB94 /* CaptureProgressBarView.swift */; };
 		D0C85B882B6C5FB700C1BB94 /* CaptureProgressBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85B852B6C5FB700C1BB94 /* CaptureProgressBarViewModel.swift */; };
@@ -75,20 +69,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-
 		741DE2112B730A1B009EBF08 /* UploadProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProgressCircleView.swift; sourceTree = "<group>"; };
 		741DE2132B730AF2009EBF08 /* FireStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FireStorageHelper.swift; path = ObjectRecon/Firebase/FireStorageHelper.swift; sourceTree = SOURCE_ROOT; };
 		741DE2152B730F7E009EBF08 /* UploadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButton.swift; sourceTree = "<group>"; };
 		741DE2172B731814009EBF08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D008F6C72B734346002D8179 /* TopPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPanelView.swift; sourceTree = "<group>"; };
-
 		D008F6C92B7362AD002D8179 /* ObjARModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjARModelView.swift; sourceTree = "<group>"; };
 		D008F6CB2B7363B4002D8179 /* mouse_preview.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = mouse_preview.usdz; sourceTree = "<group>"; };
 		D008F6CD2B7363EA002D8179 /* Rock36_reduced.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Rock36_reduced.usdz; sourceTree = "<group>"; };
 		D008F6CF2B7363F2002D8179 /* cup_preview.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cup_preview.usdz; sourceTree = "<group>"; };
 		D00F49382B7443DD00E856A9 /* ObjARModelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjARModelViewModel.swift; sourceTree = "<group>"; };
 		D00F493B2B74449A00E856A9 /* ObjInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjInfoView.swift; sourceTree = "<group>"; };
-
 		D01D77172B7071D50064C4B5 /* ButtonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParameters.swift; sourceTree = "<group>"; };
 		D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopInfoPanelView.swift; sourceTree = "<group>"; };
 		D01D771E2B70DC2F0064C4B5 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
@@ -102,12 +93,10 @@
 		D0A4D16F2B67A9CE007961DA /* MLDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDetector.swift; sourceTree = "<group>"; };
 		D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCaptureManager.swift; sourceTree = "<group>"; };
 		D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
-
 		D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformView.swift; sourceTree = "<group>"; };
 		D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjContainerView.swift; sourceTree = "<group>"; };
 		D0B4B14C2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformViewModel.swift; sourceTree = "<group>"; };
 		D0B4B14E2B7311FA0098CB3B /* ObjPresentationPlatformModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformModel.swift; sourceTree = "<group>"; };
-
 		D0C85B812B6C5A3300C1BB94 /* ObjCaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureViewModel.swift; sourceTree = "<group>"; };
 		D0C85B842B6C5FB700C1BB94 /* CaptureProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureProgressBarView.swift; sourceTree = "<group>"; };
 		D0C85B852B6C5FB700C1BB94 /* CaptureProgressBarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureProgressBarViewModel.swift; sourceTree = "<group>"; };
@@ -155,16 +144,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-
 		741DE2192B731E78009EBF08 /* Firebase */ = {
-            isa = PBXGroup;
-            children = (
-                741DE2132B730AF2009EBF08 /* FireStorageHelper.swift */,
-            );
-            path = Firebase;
-            sourceTree = "<group>";
-        };
-
+			isa = PBXGroup;
+			children = (
+				741DE2132B730AF2009EBF08 /* FireStorageHelper.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		D008F6C62B7342F2002D8179 /* TopPanelViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				741DE2152B730F7E009EBF08 /* UploadButton.swift */,
+				D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */,
+				D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */,
+				D01D771E2B70DC2F0064C4B5 /* AppLogo.png */,
+			);
+			path = TopPanelViewComponents;
+			sourceTree = "<group>";
+		};
 		D00F49372B7443B200E856A9 /* ObjContainerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,19 +181,6 @@
 			path = ObjContainerViewComponents;
 			sourceTree = "<group>";
 		};
-			
-		D008F6C62B7342F2002D8179 /* TopPanelViewComponents */ = {
-			isa = PBXGroup;
-			children = (
-				741DE2152B730F7E009EBF08 /* UploadButton.swift */,
-				D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */,
-				D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */,
-				D01D771E2B70DC2F0064C4B5 /* AppLogo.png */,
-			);
-			path = TopPanelViewComponents;
-			sourceTree = "<group>";
-		};
-        
 		D01D771B2B70DC170064C4B5 /* TopPanelView */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +190,6 @@
 			path = TopPanelView;
 			sourceTree = "<group>";
 		};
-        
 		D05B6EC52B621627002FCFBA /* PhotoCaptureHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,7 +200,6 @@
 			path = PhotoCaptureHelpers;
 			sourceTree = "<group>";
 		};
-
 		D06B83662B69E50C008393A3 /* ObjPresentationPlatformPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,24 +211,6 @@
 			path = ObjPresentationPlatformPage;
 			sourceTree = "<group>";
 		};
-        
-		D06B83672B69E543008393A3 /* AuthenticationPage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AuthenticationPage;
-			sourceTree = "<group>";
-		};
-        
-		D0822F552B7201C300E081C1 /* CaptureModeMenu */ = {
-			isa = PBXGroup;
-			children = (
-				D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */,
-			);
-			path = CaptureModeMenu;
-			sourceTree = "<group>";
-		};
-
 		D08728E22B68C8C400D61CBF /* CameraPreviewView */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,7 +220,6 @@
 			path = CameraPreviewView;
 			sourceTree = "<group>";
 		};
-        
 		D08728E92B68F6BE00D61CBF /* MLDetector */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,7 +287,6 @@
 			path = FileManager;
 			sourceTree = "<group>";
 		};
-
 		D0B4B1492B7311440098CB3B /* ObjPresentationPlatformViewComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,7 +299,6 @@
 			path = ObjPresentationPlatformViewComponents;
 			sourceTree = "<group>";
 		};
-        
 		D0C85B832B6C5F9A00C1BB94 /* ProgressBars */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,7 +311,6 @@
 			path = ProgressBars;
 			sourceTree = "<group>";
 		};
-        
 		D0C85B8A2B6C606100C1BB94 /* BlurView */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,7 +320,6 @@
 			path = BlurView;
 			sourceTree = "<group>";
 		};
-        
 		D0C85B8B2B6C614600C1BB94 /* CaptureButtonPanelView */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,7 +329,6 @@
 			path = CaptureButtonPanelView;
 			sourceTree = "<group>";
 		};
-        
 		D0C85B8C2B6C617200C1BB94 /* ARModelPresentationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,7 +338,6 @@
 			path = ARModelPresentationView;
 			sourceTree = "<group>";
 		};
-        
 		D0C85B932B6C668A00C1BB94 /* CaptureButtonPanelViewComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,7 +349,6 @@
 			path = CaptureButtonPanelViewComponents;
 			sourceTree = "<group>";
 		};
-        
 		D0C85B9A2B6C684E00C1BB94 /* AuditoryCaptureFeedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,9 +395,9 @@
 				D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */,
 				D0EB37882B5DDED100A54AA7 /* RootView.swift */,
 				741DE2192B731E78009EBF08 /* Firebase */,
-                D06B83662B69E50C008393A3 /* ObjPresentationPlatformPage */,
 				D0FA08F52B6B6A3E008FB3C5 /* ObjCaptureInstructionPage */,
 				D0A4D1792B67ABD1007961DA /* ObjCapturePage */,
+				D06B83662B69E50C008393A3 /* ObjPresentationPlatformPage */,
 				D0EB378A2B5DDED400A54AA7 /* Assets.xcassets */,
 				D0EB378C2B5DDED400A54AA7 /* Preview Content */,
 			);
