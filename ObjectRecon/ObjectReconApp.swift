@@ -14,6 +14,8 @@ struct ObjectReconApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    init() { UIApplication.shared.isIdleTimerDisabled = true }
+    
     var body: some Scene {
         WindowGroup {
             RootView()

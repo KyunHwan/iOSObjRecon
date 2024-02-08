@@ -10,10 +10,6 @@ import SwiftUI
 struct TopInfoPanelView: View {
     var lensPos: Float
     var body: some View {
-        VStack {
-            Text("What Will This Name Be?")
-            Text("Lens Position: \(lensPos)")
-            //Image("AppLogo.png")
-        }
+        Image("AppLogo")
     }
 }

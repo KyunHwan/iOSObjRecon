@@ -10,10 +10,7 @@ import SwiftUI
 struct ObjCaptureView: View {
     @StateObject private var viewModel = ObjCaptureViewModel()
     @StateObject private var arModelManager = ARModelManager()
-    
-    init() {
-        UIApplication.shared.isIdleTimerDisabled = true
-    }
+    var page: AppPage
     
     var body: some View {
         GeometryReader { geometry in
@@ -29,7 +26,9 @@ struct ObjCaptureView: View {
                     .opacity(0.65)
                 
                 VStack {
-                    TopPanelView(viewModel: viewModel, width: geometry.size.width)
+                    TopPanelView(viewModel: viewModel, 
+                                 page: page,
+                                 width: geometry.size.width)
                     
                     Spacer()
                     
@@ -168,10 +167,6 @@ extension ObjCaptureView {
     private struct ViewParameter {
         static let aspectRatio: CGFloat = 4.0 / 3.0
     }
-}
-
-#Preview {
-    ObjCaptureView()
 }
 
 

@@ -22,7 +22,6 @@
 		D00F493C2B74449A00E856A9 /* ObjInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F493B2B74449A00E856A9 /* ObjInfoView.swift */; };
 		D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D77172B7071D50064C4B5 /* ButtonParameters.swift */; };
 		D01D771D2B70DC270064C4B5 /* TopInfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */; };
-		D01D771F2B70DC2F0064C4B5 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D771E2B70DC2F0064C4B5 /* AppLogo.png */; };
 		D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */; };
 		D0822F572B7201DC00E081C1 /* CaptureModeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */; };
 		D0822F5D2B723DC800E081C1 /* ObjCaptureInstructionVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D0822F5C2B723DC100E081C1 /* ObjCaptureInstructionVid.mp4 */; };
@@ -33,6 +32,10 @@
 		D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D16F2B67A9CE007961DA /* MLDetector.swift */; };
 		D0A4D1782B67AB89007961DA /* AutoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */; };
 		D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */; };
+		D0AB95C72B74B1EB007740E7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95C62B74B1EB007740E7 /* RootView.swift */; };
+		D0AB95C82B74B28F007740E7 /* ObjPresentationPlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */; };
+		D0AB95D02B74BEA7007740E7 /* PageNavigationControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */; };
+		D0AB95D22B74C431007740E7 /* GoToModelPlatformButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95D12B74C431007740E7 /* GoToModelPlatformButton.swift */; };
 		D0B4B14B2B7311630098CB3B /* ObjContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */; };
 		D0B4B14D2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14C2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift */; };
 		D0B4B14F2B7311FA0098CB3B /* ObjPresentationPlatformModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14E2B7311FA0098CB3B /* ObjPresentationPlatformModel.swift */; };
@@ -55,7 +58,6 @@
 		D0D953832B6097F200E9FB71 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D953822B6097F200E9FB71 /* DirectoryManager.swift */; };
 		D0D953862B60F5E800E9FB71 /* ObjCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */; };
 		D0EB37872B5DDED100A54AA7 /* ObjectReconApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */; };
-		D0EB37892B5DDED100A54AA7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37882B5DDED100A54AA7 /* RootView.swift */; };
 		D0EB378B2B5DDED400A54AA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0EB378A2B5DDED400A54AA7 /* Assets.xcassets */; };
 		D0EB378E2B5DDED400A54AA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0EB378D2B5DDED400A54AA7 /* Preview Assets.xcassets */; };
 		D0EB37962B5DE75100A54AA7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37952B5DE75100A54AA7 /* Camera.swift */; };
@@ -82,7 +84,6 @@
 		D00F493B2B74449A00E856A9 /* ObjInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjInfoView.swift; sourceTree = "<group>"; };
 		D01D77172B7071D50064C4B5 /* ButtonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParameters.swift; sourceTree = "<group>"; };
 		D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopInfoPanelView.swift; sourceTree = "<group>"; };
-		D01D771E2B70DC2F0064C4B5 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
 		D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureExtensions.swift; sourceTree = "<group>"; };
 		D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureModeMenu.swift; sourceTree = "<group>"; };
 		D0822F5C2B723DC100E081C1 /* ObjCaptureInstructionVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ObjCaptureInstructionVid.mp4; sourceTree = "<group>"; };
@@ -93,6 +94,9 @@
 		D0A4D16F2B67A9CE007961DA /* MLDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDetector.swift; sourceTree = "<group>"; };
 		D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCaptureManager.swift; sourceTree = "<group>"; };
 		D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		D0AB95C62B74B1EB007740E7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNavigationControllerView.swift; sourceTree = "<group>"; };
+		D0AB95D12B74C431007740E7 /* GoToModelPlatformButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToModelPlatformButton.swift; sourceTree = "<group>"; };
 		D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformView.swift; sourceTree = "<group>"; };
 		D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjContainerView.swift; sourceTree = "<group>"; };
 		D0B4B14C2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformViewModel.swift; sourceTree = "<group>"; };
@@ -118,7 +122,6 @@
 		D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureView.swift; sourceTree = "<group>"; };
 		D0EB37832B5DDED100A54AA7 /* ObjectRecon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjectRecon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectReconApp.swift; sourceTree = "<group>"; };
-		D0EB37882B5DDED100A54AA7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D0EB378A2B5DDED400A54AA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0EB378D2B5DDED400A54AA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D0EB37952B5DE75100A54AA7 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -158,7 +161,7 @@
 				741DE2152B730F7E009EBF08 /* UploadButton.swift */,
 				D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */,
 				D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */,
-				D01D771E2B70DC2F0064C4B5 /* AppLogo.png */,
+				D0AB95D12B74C431007740E7 /* GoToModelPlatformButton.swift */,
 			);
 			path = TopPanelViewComponents;
 			sourceTree = "<group>";
@@ -393,7 +396,8 @@
 				D0CEEFB52B61272E001B79A1 /* Info.plist */,
 				741DE2172B731814009EBF08 /* GoogleService-Info.plist */,
 				D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */,
-				D0EB37882B5DDED100A54AA7 /* RootView.swift */,
+				D0AB95C62B74B1EB007740E7 /* RootView.swift */,
+				D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */,
 				741DE2192B731E78009EBF08 /* Firebase */,
 				D0FA08F52B6B6A3E008FB3C5 /* ObjCaptureInstructionPage */,
 				D0A4D1792B67ABD1007961DA /* ObjCapturePage */,
@@ -538,7 +542,6 @@
 				D008F6CC2B7363B4002D8179 /* mouse_preview.usdz in Resources */,
 				D0EB378E2B5DDED400A54AA7 /* Preview Assets.xcassets in Resources */,
 				D0C85BA22B6C69B300C1BB94 /* captureObj.usdz in Resources */,
-				D01D771F2B70DC2F0064C4B5 /* AppLogo.png in Resources */,
 				D0EB378B2B5DDED400A54AA7 /* Assets.xcassets in Resources */,
 				741DE2182B731814009EBF08 /* GoogleService-Info.plist in Resources */,
 				D008F6D02B7363F2002D8179 /* cup_preview.usdz in Resources */,
@@ -552,6 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0AB95C82B74B28F007740E7 /* ObjPresentationPlatformView.swift in Sources */,
 				D0C85BA42B6C6C8C00C1BB94 /* ARModelPresentationView.swift in Sources */,
 				D0B4B14D2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift in Sources */,
 				D0A4D16E2B677DA4007961DA /* DeviceMotionExtensions.swift in Sources */,
@@ -562,13 +566,14 @@
 				741DE2142B730AF2009EBF08 /* FireStorageHelper.swift in Sources */,
 				D0FA08F72B6B6A5E008FB3C5 /* ObjCaptureInstructionView.swift in Sources */,
 				D0EB37962B5DE75100A54AA7 /* Camera.swift in Sources */,
-				D0EB37892B5DDED100A54AA7 /* RootView.swift in Sources */,
 				D0A4D1782B67AB89007961DA /* AutoCaptureManager.swift in Sources */,
 				D0FA08FD2B6B78C2008FB3C5 /* ObjCaptureInstructionViewModel.swift in Sources */,
 				741DE2122B730A1B009EBF08 /* UploadProgressCircleView.swift in Sources */,
 				D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */,
+				D0AB95D22B74C431007740E7 /* GoToModelPlatformButton.swift in Sources */,
 				D0B4B14B2B7311630098CB3B /* ObjContainerView.swift in Sources */,
 				D08728E82B68F6AA00D61CBF /* UpperTeethDetector.mlmodel in Sources */,
+				D0AB95C72B74B1EB007740E7 /* RootView.swift in Sources */,
 				741DE2162B730F7E009EBF08 /* UploadButton.swift in Sources */,
 				D0C85BAB2B6CA05800C1BB94 /* CaptureProgressBarIndicatorView.swift in Sources */,
 				D0C85B882B6C5FB700C1BB94 /* CaptureProgressBarViewModel.swift in Sources */,
@@ -589,6 +594,7 @@
 				D0EB37A62B5E695200A54AA7 /* PhotoCaptureManager.swift in Sources */,
 				D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */,
 				D0822F572B7201DC00E081C1 /* CaptureModeMenu.swift in Sources */,
+				D0AB95D02B74BEA7007740E7 /* PageNavigationControllerView.swift in Sources */,
 				D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */,
 				D0C85BA82B6C83C000C1BB94 /* ARModelManager.swift in Sources */,
 				D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */,
@@ -729,6 +735,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ObjectRecon/Preview Content\"";
@@ -762,6 +769,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ObjectRecon/Preview Content\"";

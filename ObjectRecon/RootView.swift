@@ -2,17 +2,18 @@
 //  RootView.swift
 //  ObjectRecon
 //
-//  Created by Kyun Hwan  Kim on 1/22/24.
+//  Created by Kyun Hwan  Kim on 2/8/24.
 //
 
 import SwiftUI
 
 struct RootView: View {
+    //@State private var navigationPath: [AppPage] = []
+    
     var body: some View {
-        ObjPresentationPlatformView()
+        NavigationStack() {//path: $navigationPath) {
+            PageNavigationControllerView(page: .instruction)
+        }
+        
     }
-}
-
-#Preview {
-    RootView()
 }

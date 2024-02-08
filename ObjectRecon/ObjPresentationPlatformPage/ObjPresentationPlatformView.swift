@@ -14,7 +14,7 @@ struct ObjPresentationPlatformView: View {
         GeometryReader { geometry in
             let columnGridItems = [GridItem(.flexible())]
             
-            NavigationStack {
+            //NavigationStack {
                 ScrollView([.vertical]) {
                     LazyVGrid(columns: columnGridItems, alignment: .center, spacing: 5) {
                         ForEach(viewModel.objInfoList) { objInfo in
@@ -28,12 +28,8 @@ struct ObjPresentationPlatformView: View {
                         }
                     }
                 }
-            }
+            //}
             
         }
     }
-}
-
-#Preview {
-    ObjPresentationPlatformView()
 }

@@ -9,31 +9,42 @@ import SwiftUI
 
 struct TopPanelView: View {
     @ObservedObject var viewModel: ObjCaptureViewModel
-    
+    //@Binding var path: [AppPage]
+    var page: AppPage
     var width: CGFloat
     private var frameWidth: CGFloat { width / 6 }
     
     var body: some View {
         ZStack(alignment: .center) {
-            HStack {
-                UploadButton(objCaptureViewModel: viewModel)
-                    .scaleEffect(2)
-                    .frame(width: frameWidth)
-                    .padding()
+            VStack {
                 Spacer()
+                HStack {
+                    UploadButton(objCaptureViewModel: viewModel)
+                        .scaleEffect(1.5)
+                        .frame(width: frameWidth)
+                        .padding()
+                    Spacer()
+                }
             }
             HStack {
                 Spacer()
-                TopInfoPanelView(lensPos: viewModel.lensPos)
-                    .padding()
+                VStack {
+                    TopInfoPanelView(lensPos: viewModel.lensPos)
+                        .padding()
+                    GoToModelPlatformButton(page: page)
+                }
                 Spacer()
             }
-            HStack {
+            VStack {
                 Spacer()
-                CaptureModeMenu(objCaptureViewModel: viewModel)
-                    .scaleEffect(2)
-                    .frame(width: frameWidth)
-                    .padding()
+                HStack {
+                    Spacer()
+                    CaptureModeMenu(objCaptureViewModel: viewModel)
+                        .scaleEffect(1.5)
+                        .frame(width: frameWidth)
+                        .padding()
+                }
+                
             }
         }
     }

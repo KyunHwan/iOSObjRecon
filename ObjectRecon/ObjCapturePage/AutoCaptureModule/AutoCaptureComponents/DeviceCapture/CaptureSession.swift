@@ -10,6 +10,7 @@ import AVFoundation
 
 class CaptureSession: NSObject {
     private(set) var session: AVCaptureSession
+    private var sessionConfigured: Bool
     
     // MARK: Inputs to Session
     @objc private(set) var inputCamera: AVCaptureDeviceInput
@@ -27,6 +28,8 @@ class CaptureSession: NSObject {
         self.videoDataOutputManager = VideoDataOutputManager(with: outputAugmentor)
         self.lensPos = 0
         
+        sessionConfigured = false
+        
         super.init()
         configurePublishers()
     }
@@ -34,7 +37,10 @@ class CaptureSession: NSObject {
     func startRunning() {
         if !session.isRunning {
             Task {
-                configureSession()
+                if !sessionConfigured {
+                    sessionConfigured = true
+                    configureSession()
+                }
                 session.startRunning()
             }
         }
