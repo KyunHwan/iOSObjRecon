@@ -55,6 +55,7 @@
 		D0C85BA42B6C6C8C00C1BB94 /* ARModelPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BA32B6C6C8C00C1BB94 /* ARModelPresentationView.swift */; };
 		D0C85BA82B6C83C000C1BB94 /* ARModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BA72B6C83C000C1BB94 /* ARModelManager.swift */; };
 		D0C85BAB2B6CA05800C1BB94 /* CaptureProgressBarIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C85BAA2B6CA05800C1BB94 /* CaptureProgressBarIndicatorView.swift */; };
+		D0CD21E32B7ADFC40015C068 /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD21E22B7ADFC40015C068 /* AuthenticationHelper.swift */; };
 		D0D953832B6097F200E9FB71 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D953822B6097F200E9FB71 /* DirectoryManager.swift */; };
 		D0D953862B60F5E800E9FB71 /* ObjCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */; };
 		D0EB37872B5DDED100A54AA7 /* ObjectReconApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */; };
@@ -117,6 +118,7 @@
 		D0C85BA32B6C6C8C00C1BB94 /* ARModelPresentationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARModelPresentationView.swift; sourceTree = "<group>"; };
 		D0C85BA72B6C83C000C1BB94 /* ARModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelManager.swift; sourceTree = "<group>"; };
 		D0C85BAA2B6CA05800C1BB94 /* CaptureProgressBarIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureProgressBarIndicatorView.swift; sourceTree = "<group>"; };
+		D0CD21E22B7ADFC40015C068 /* AuthenticationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
 		D0CEEFB52B61272E001B79A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D0D953822B6097F200E9FB71 /* DirectoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryManager.swift; sourceTree = "<group>"; };
 		D0D953852B60F5E800E9FB71 /* ObjCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCaptureView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				741DE2132B730AF2009EBF08 /* FireStorageHelper.swift */,
+				D0CD21E22B7ADFC40015C068 /* AuthenticationHelper.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -361,6 +364,13 @@
 			path = AuditoryCaptureFeedback;
 			sourceTree = "<group>";
 		};
+		D0CD21E42B7ADFCA0015C068 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		D0D953842B60F58600E9FB71 /* ObjCaptureViewComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +403,7 @@
 		D0EB37852B5DDED100A54AA7 /* ObjectRecon */ = {
 			isa = PBXGroup;
 			children = (
+				D0CD21E42B7ADFCA0015C068 /* New Group */,
 				D0CEEFB52B61272E001B79A1 /* Info.plist */,
 				741DE2172B731814009EBF08 /* GoogleService-Info.plist */,
 				D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */,
@@ -578,6 +589,7 @@
 				D0C85BAB2B6CA05800C1BB94 /* CaptureProgressBarIndicatorView.swift in Sources */,
 				D0C85B882B6C5FB700C1BB94 /* CaptureProgressBarViewModel.swift in Sources */,
 				D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */,
+				D0CD21E32B7ADFC40015C068 /* AuthenticationHelper.swift in Sources */,
 				D0C85B922B6C668500C1BB94 /* CaptureButtonPanelView.swift in Sources */,
 				D0A4D16B2B677A2B007961DA /* DeviceMotionProvider.swift in Sources */,
 				D01D771D2B70DC270064C4B5 /* TopInfoPanelView.swift in Sources */,
