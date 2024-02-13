@@ -69,7 +69,7 @@ extension CaptureProgressBarViewModel {
     // Function to update the progress of a bar based on the angle at which a photo was taken
     func updateProgressIndicator(ZRotation: Float, XRotation: Float) {
         // Only get the rotation around the z-axis (ie. vertical axis)
-        var id = findHorizontalRegion(ZRotation: ZRotation)
+        let id = findHorizontalRegion(ZRotation: ZRotation)
         
         if Constants.numCaptureBars == 2 {
             updateTopBottom(XRotation: XRotation, id: id)
