@@ -23,6 +23,7 @@
 		D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D77172B7071D50064C4B5 /* ButtonParameters.swift */; };
 		D01D771D2B70DC270064C4B5 /* TopInfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */; };
 		D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */; };
+		D080CEDC2B7C2C8200850F13 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D080CEDB2B7C2C8200850F13 /* FirebaseAuth */; };
 		D0822F572B7201DC00E081C1 /* CaptureModeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */; };
 		D0822F5D2B723DC800E081C1 /* ObjCaptureInstructionVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D0822F5C2B723DC100E081C1 /* ObjCaptureInstructionVid.mp4 */; };
 		D08728E62B68D95400D61CBF /* VideoDataOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08728E52B68D95400D61CBF /* VideoDataOutputManager.swift */; };
@@ -142,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				741DE20E2B730946009EBF08 /* FirebaseStorage in Frameworks */,
+				D080CEDC2B7C2C8200850F13 /* FirebaseAuth in Frameworks */,
 				741DE1D92B7308BD009EBF08 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +217,13 @@
 				D0B4B1492B7311440098CB3B /* ObjPresentationPlatformViewComponents */,
 			);
 			path = ObjPresentationPlatformPage;
+			sourceTree = "<group>";
+		};
+		D080CEDA2B7C2C8200850F13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D08728E22B68C8C400D61CBF /* CameraPreviewView */ = {
@@ -364,13 +373,6 @@
 			path = AuditoryCaptureFeedback;
 			sourceTree = "<group>";
 		};
-		D0CD21E42B7ADFCA0015C068 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		D0D953842B60F58600E9FB71 /* ObjCaptureViewComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +391,7 @@
 			children = (
 				D0EB37852B5DDED100A54AA7 /* ObjectRecon */,
 				D0EB37842B5DDED100A54AA7 /* Products */,
+				D080CEDA2B7C2C8200850F13 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -403,7 +406,6 @@
 		D0EB37852B5DDED100A54AA7 /* ObjectRecon */ = {
 			isa = PBXGroup;
 			children = (
-				D0CD21E42B7ADFCA0015C068 /* New Group */,
 				D0CEEFB52B61272E001B79A1 /* Info.plist */,
 				741DE2172B731814009EBF08 /* GoogleService-Info.plist */,
 				D0EB37862B5DDED100A54AA7 /* ObjectReconApp.swift */,
@@ -500,6 +502,7 @@
 			packageProductDependencies = (
 				741DE1D82B7308BD009EBF08 /* ZIPFoundation */,
 				741DE20D2B730946009EBF08 /* FirebaseStorage */,
+				D080CEDB2B7C2C8200850F13 /* FirebaseAuth */,
 			);
 			productName = ObjectRecon;
 			productReference = D0EB37832B5DDED100A54AA7 /* ObjectRecon.app */;
@@ -862,6 +865,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 741DE1DA2B730946009EBF08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		D080CEDB2B7C2C8200850F13 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 741DE1DA2B730946009EBF08 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
