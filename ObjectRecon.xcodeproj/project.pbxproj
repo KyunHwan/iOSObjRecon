@@ -37,6 +37,8 @@
 		D0AB95C82B74B28F007740E7 /* ObjPresentationPlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */; };
 		D0AB95D02B74BEA7007740E7 /* PageNavigationControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */; };
 		D0AB95D22B74C431007740E7 /* GoToModelPlatformButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95D12B74C431007740E7 /* GoToModelPlatformButton.swift */; };
+		D0ADDA622B7C3F17005480C8 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADDA612B7C3F17005480C8 /* AuthenticationView.swift */; };
+		D0ADDA652B7C3F4F005480C8 /* EmailAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADDA642B7C3F4F005480C8 /* EmailAuthenticationView.swift */; };
 		D0B4B14B2B7311630098CB3B /* ObjContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */; };
 		D0B4B14D2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14C2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift */; };
 		D0B4B14F2B7311FA0098CB3B /* ObjPresentationPlatformModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14E2B7311FA0098CB3B /* ObjPresentationPlatformModel.swift */; };
@@ -99,6 +101,8 @@
 		D0AB95C62B74B1EB007740E7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNavigationControllerView.swift; sourceTree = "<group>"; };
 		D0AB95D12B74C431007740E7 /* GoToModelPlatformButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToModelPlatformButton.swift; sourceTree = "<group>"; };
+		D0ADDA612B7C3F17005480C8 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		D0ADDA642B7C3F4F005480C8 /* EmailAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthenticationView.swift; sourceTree = "<group>"; };
 		D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformView.swift; sourceTree = "<group>"; };
 		D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjContainerView.swift; sourceTree = "<group>"; };
 		D0B4B14C2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformViewModel.swift; sourceTree = "<group>"; };
@@ -302,6 +306,23 @@
 			path = FileManager;
 			sourceTree = "<group>";
 		};
+		D0ADDA602B7C3ECD005480C8 /* AuthenticationPage */ = {
+			isa = PBXGroup;
+			children = (
+				D0ADDA612B7C3F17005480C8 /* AuthenticationView.swift */,
+				D0ADDA632B7C3F3A005480C8 /* AuthenticationSubViews */,
+			);
+			path = AuthenticationPage;
+			sourceTree = "<group>";
+		};
+		D0ADDA632B7C3F3A005480C8 /* AuthenticationSubViews */ = {
+			isa = PBXGroup;
+			children = (
+				D0ADDA642B7C3F4F005480C8 /* EmailAuthenticationView.swift */,
+			);
+			path = AuthenticationSubViews;
+			sourceTree = "<group>";
+		};
 		D0B4B1492B7311440098CB3B /* ObjPresentationPlatformViewComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +433,7 @@
 				D0AB95C62B74B1EB007740E7 /* RootView.swift */,
 				D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */,
 				741DE2192B731E78009EBF08 /* Firebase */,
+				D0ADDA602B7C3ECD005480C8 /* AuthenticationPage */,
 				D0FA08F52B6B6A3E008FB3C5 /* ObjCaptureInstructionPage */,
 				D0A4D1792B67ABD1007961DA /* ObjCapturePage */,
 				D06B83662B69E50C008393A3 /* ObjPresentationPlatformPage */,
@@ -599,9 +621,11 @@
 				D0C85B992B6C679600C1BB94 /* FlashSwitchButton.swift in Sources */,
 				D0D953832B6097F200E9FB71 /* DirectoryManager.swift in Sources */,
 				D0D953862B60F5E800E9FB71 /* ObjCaptureView.swift in Sources */,
+				D0ADDA622B7C3F17005480C8 /* AuthenticationView.swift in Sources */,
 				D0C85B872B6C5FB700C1BB94 /* CaptureProgressBarView.swift in Sources */,
 				D0EB37AD2B5E762100A54AA7 /* PhotoCaptureSettings.swift in Sources */,
 				D00F49392B7443DD00E856A9 /* ObjARModelViewModel.swift in Sources */,
+				D0ADDA652B7C3F4F005480C8 /* EmailAuthenticationView.swift in Sources */,
 				D0EB37872B5DDED100A54AA7 /* ObjectReconApp.swift in Sources */,
 				D0EB37A42B5E5A7800A54AA7 /* CaptureSession.swift in Sources */,
 				D0C85B8E2B6C660A00C1BB94 /* BlurViewModel.swift in Sources */,

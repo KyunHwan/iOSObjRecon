@@ -9,6 +9,7 @@ import SwiftUI
 import AVKit
 
 struct ObjCaptureInstructionView: View {
+    @EnvironmentObject var auth: AuthenticationHelper
     @StateObject private var objCaptureInstVid = ObjCaptureInstructionViewModel()
     var page: AppPage
     
@@ -32,8 +33,23 @@ struct ObjCaptureInstructionView: View {
                         .background(ButtonConstants.backgroundColor)
                         .foregroundStyle(ButtonConstants.fontColor)
                         .cornerRadius(ButtonConstants.cornerRadius)
-                        .padding()
+                        .padding(.horizontal)
                 }
+            }
+            VStack {
+                HStack {
+                    Button {
+                        auth.signOut()
+                    } label: {
+                        Text("< Sign Out")
+                            .font(.headline)
+                            .foregroundStyle(.blue)
+                            .padding(.leading)
+                    }
+                    Spacer()
+                }
+
+                Spacer()
             }
         }
     }

@@ -11,6 +11,7 @@ struct TopPanelView: View {
     @ObservedObject var viewModel: ObjCaptureViewModel
     //@Binding var path: [AppPage]
     var page: AppPage
+    
     var width: CGFloat
     private var frameWidth: CGFloat { width / 6 }
     
@@ -30,7 +31,6 @@ struct TopPanelView: View {
                 Spacer()
                 VStack {
                     TopInfoPanelView(lensPos: viewModel.lensPos)
-                        .padding()
                     GoToModelPlatformButton(page: page)
                 }
                 Spacer()

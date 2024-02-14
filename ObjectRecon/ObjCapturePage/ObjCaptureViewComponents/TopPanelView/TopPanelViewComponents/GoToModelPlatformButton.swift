@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GoToModelPlatformButton: View {
     var page: AppPage
+    
     var body: some View {
         VStack {
             NavigationLink {

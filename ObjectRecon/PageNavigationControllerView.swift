@@ -13,9 +13,9 @@ struct PageNavigationControllerView: View {
     
     var body: some View {
         switch page {
-        case .instruction:
-            ObjCaptureInstructionView(page: .instruction)//path: $path)
         case .authentication:
+            AuthenticationView(page: .authentication)//path: $path)
+        case .instruction:
             ObjCaptureInstructionView(page: .instruction)//path: $path)
         case .photoCapture:
             ObjCaptureView(page: .photoCapture)//path: $path)
@@ -26,9 +26,9 @@ struct PageNavigationControllerView: View {
     
     static func pageTransition(from page: AppPage) -> AppPage {
         switch page {
-        case .instruction:
-            return .photoCapture
         case .authentication:
+            return .instruction
+        case .instruction:
             return .photoCapture
         case .photoCapture:
             return .reconPresentation

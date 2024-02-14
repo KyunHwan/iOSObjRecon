@@ -8,12 +8,25 @@
 import SwiftUI
 
 struct RootView: View {
-    //@State private var navigationPath: [AppPage] = []
+    //@State private var navigationPath: [AppPage] = [.instruction]
+    @StateObject var auth = AuthenticationHelper()
     
     var body: some View {
-        NavigationStack() {//path: $navigationPath) {
-            PageNavigationControllerView(page: .instruction)
+        ZStack {
+            NavigationStack {
+                PageNavigationControllerView(page: .authentication)
+            }
+            .environmentObject(auth)
         }
-        
+        .task {
+            // TODO: Check for log in
+            auth.checkSignedIn()
+        }
+        .fullScreenCover(isPresented: $auth.signedIn) {
+            NavigationStack{
+                PageNavigationControllerView(page: .instruction)
+            }
+            .environmentObject(auth)
+        }
     }
 }
