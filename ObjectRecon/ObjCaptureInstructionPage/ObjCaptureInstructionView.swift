@@ -41,18 +41,20 @@ struct ObjCaptureInstructionView: View {
                     Button {
                         auth.signOut()
                     } label: {
-                        Text("< Sign Out")
+                        signOutButtonLabel
                             .font(.headline)
                             .foregroundStyle(.blue)
-                            .padding(.leading)
                     }
                     Spacer()
                 }
-
+                
                 Spacer()
             }
         }
     }
+    
+    private var signOutButtonLabel: Text { Text(Image(systemName: "chevron.backward")) + Text(" Sign Out") }
+    
 }
 
 // MARK: Constants {

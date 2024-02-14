@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import GoogleSignIn
+import GoogleSignInSwift
+import AuthenticationServices
 
 struct AuthenticationView: View {
     @EnvironmentObject var auth: AuthenticationHelper
@@ -35,10 +38,22 @@ struct AuthenticationView: View {
             
             Button {
                 Task {
-                    try await auth.signIn(withEmail: email, password: password)
+                    try await auth.signInEmail(withEmail: email, password: password)
                 }
             } label: {
                 emailSignInButtonLayout
+            }
+            
+            Button {
+                Task {
+                    do {
+                        try await auth.signInGoogle()
+                    } catch {
+                        print(error)
+                    }
+                }
+            } label: {
+                googleSignInButtonLayout
             }
             
             HStack {
@@ -64,7 +79,7 @@ struct AuthenticationView: View {
     }
 }
 
-// Email Authentication Button Layout
+// MARK: Email Authentication Button Layout
 extension AuthenticationView {
     private var emailSignInText: some View { Text(Image(systemName: "envelope.fill")) + Text("  Sign in with email") }
     private var emailSignInButtonLayout: some View {
@@ -78,4 +93,18 @@ extension AuthenticationView {
     }
     
     private var emailSignUpText: some View { Text("Join now") }
+}
+
+// MARK: Google Authentication Button Layout
+extension AuthenticationView {
+    private var googleSignInText: some View { Text(Image("google")) + Text("  Sign in with Google") }
+    private var googleSignInButtonLayout: some View {
+        googleSignInText
+            .font(.headline)
+            .frame(maxWidth: .infinity)
+            .frame(height: 55)
+            .background(.white)
+            .foregroundStyle(.black)
+            .cornerRadius(10)
+    }
 }

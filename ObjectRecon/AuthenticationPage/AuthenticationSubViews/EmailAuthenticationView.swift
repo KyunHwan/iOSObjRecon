@@ -44,7 +44,7 @@ struct EmailAuthenticationView: View {
             
             Button {
                 Task {
-                    try await auth.signUp(withEmail: email, password: password, confirmPasswordWith: passwordConfirm)
+                    try await auth.signUpEmail(withEmail: email, password: password, confirmPasswordWith: passwordConfirm)
                     if !auth.signUpErrorPopup { dismiss() }
                 }
             } label: {
