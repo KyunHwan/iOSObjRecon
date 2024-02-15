@@ -10,6 +10,9 @@ import SwiftUI
 struct TopInfoPanelView: View {
     var lensPos: Float
     var body: some View {
-        Image("AppLogo")
+        Image("Richeeze")
+            .resizable()
+            .scaledToFit()
+            .padding(.horizontal)
     }
 }

@@ -18,57 +18,46 @@ struct AuthenticationView: View {
     @State private var password: String = ""
     
     var body: some View {
-        VStack {
-            Spacer()
-            TextField("  Email", text: $email)
-                .font(.headline)
-                .frame(maxWidth: .infinity)
-                .frame(height: 55)
-                .background(.gray)
-                .foregroundStyle(.white)
-                .cornerRadius(10)
+        ZStack {
+            Color(red: 1.0, green: 153.0/255.0, blue: 0.0)
             
-            SecureField("  Password", text: $password)
-                .font(.headline)
-                .frame(maxWidth: .infinity)
-                .frame(height: 55)
-                .background(.gray)
-                .foregroundStyle(.white)
-                .cornerRadius(10)
-            
-            Button {
-                Task {
-                    try await auth.signInEmail(withEmail: email, password: password)
-                }
-            } label: {
-                emailSignInButtonLayout
-            }
-            
-            Button {
-                Task {
-                    do {
-                        try await auth.signInGoogle()
-                    } catch {
-                        print(error)
-                    }
-                }
-            } label: {
-                googleSignInButtonLayout
-            }
-            
-            HStack {
+            VStack {
                 Spacer()
-                Text("New to Juvee? ")
-                NavigationLink {
-                    EmailAuthenticationView()
-                } label: {
-                    emailSignUpText
+                Image("Richeeze")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.horizontal)
+                TextField("  Email", text: $email)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 55)
+                    .background(.gray)
+                    .foregroundStyle(.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                
+                SecureField("  Password", text: $password)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 55)
+                    .background(.gray)
+                    .foregroundStyle(.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                
+                emailSignInButton
+                
+                googleSignInButton
+                
+                HStack {
+                    Spacer()
+                    signUpView
+                    Spacer()
                 }
+                
                 Spacer()
+                
             }
-            
-            Spacer()
-            
         }
         .ignoresSafeArea(.keyboard)
         .onTapGesture { }
@@ -90,9 +79,32 @@ extension AuthenticationView {
             .background(.red)
             .foregroundStyle(.white)
             .cornerRadius(10)
+            .padding(.horizontal)
     }
     
     private var emailSignUpText: some View { Text("Join now") }
+    
+    private var emailSignInButton: some View { 
+        Button {
+            Task {
+                try await auth.signInEmail(withEmail: email, password: password)
+            }
+        } label: {
+            emailSignInButtonLayout
+        }
+    }
+    
+    @ViewBuilder
+    private var signUpView: some View {
+        Text("New to Richeeze? ")
+            .font(.headline)
+            .foregroundStyle(.black)
+        NavigationLink {
+            EmailSignUpView()
+        } label: {
+            emailSignUpText
+        }
+    }
 }
 
 // MARK: Google Authentication Button Layout
@@ -106,5 +118,20 @@ extension AuthenticationView {
             .background(.white)
             .foregroundStyle(.black)
             .cornerRadius(10)
+            .padding(.horizontal)
+    }
+    
+    private var googleSignInButton: some View {
+        Button {
+            Task {
+                do {
+                    try await auth.signInGoogle()
+                } catch {
+                    print(error)
+                }
+            }
+        } label: {
+            googleSignInButtonLayout
+        }
     }
 }

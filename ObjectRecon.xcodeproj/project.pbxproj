@@ -39,7 +39,7 @@
 		D0AB95D02B74BEA7007740E7 /* PageNavigationControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */; };
 		D0AB95D22B74C431007740E7 /* GoToModelPlatformButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95D12B74C431007740E7 /* GoToModelPlatformButton.swift */; };
 		D0ADDA622B7C3F17005480C8 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADDA612B7C3F17005480C8 /* AuthenticationView.swift */; };
-		D0ADDA652B7C3F4F005480C8 /* EmailAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADDA642B7C3F4F005480C8 /* EmailAuthenticationView.swift */; };
+		D0ADDA652B7C3F4F005480C8 /* EmailSIgnUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADDA642B7C3F4F005480C8 /* EmailSIgnUpView.swift */; };
 		D0ADDA682B7C9B2F005480C8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = D0ADDA672B7C9B2F005480C8 /* GoogleSignIn */; };
 		D0ADDA6A2B7C9B2F005480C8 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D0ADDA692B7C9B2F005480C8 /* GoogleSignInSwift */; };
 		D0B4B14B2B7311630098CB3B /* ObjContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */; };
@@ -106,7 +106,7 @@
 		D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNavigationControllerView.swift; sourceTree = "<group>"; };
 		D0AB95D12B74C431007740E7 /* GoToModelPlatformButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToModelPlatformButton.swift; sourceTree = "<group>"; };
 		D0ADDA612B7C3F17005480C8 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
-		D0ADDA642B7C3F4F005480C8 /* EmailAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthenticationView.swift; sourceTree = "<group>"; };
+		D0ADDA642B7C3F4F005480C8 /* EmailSIgnUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSIgnUpView.swift; sourceTree = "<group>"; };
 		D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformView.swift; sourceTree = "<group>"; };
 		D0B4B14A2B7311630098CB3B /* ObjContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjContainerView.swift; sourceTree = "<group>"; };
 		D0B4B14C2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPresentationPlatformViewModel.swift; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 		D0ADDA632B7C3F3A005480C8 /* AuthenticationSubViews */ = {
 			isa = PBXGroup;
 			children = (
-				D0ADDA642B7C3F4F005480C8 /* EmailAuthenticationView.swift */,
+				D0ADDA642B7C3F4F005480C8 /* EmailSIgnUpView.swift */,
 			);
 			path = AuthenticationSubViews;
 			sourceTree = "<group>";
@@ -636,7 +636,7 @@
 				D0C85B872B6C5FB700C1BB94 /* CaptureProgressBarView.swift in Sources */,
 				D0EB37AD2B5E762100A54AA7 /* PhotoCaptureSettings.swift in Sources */,
 				D00F49392B7443DD00E856A9 /* ObjARModelViewModel.swift in Sources */,
-				D0ADDA652B7C3F4F005480C8 /* EmailAuthenticationView.swift in Sources */,
+				D0ADDA652B7C3F4F005480C8 /* EmailSIgnUpView.swift in Sources */,
 				D0EB37872B5DDED100A54AA7 /* ObjectReconApp.swift in Sources */,
 				D0EB37A42B5E5A7800A54AA7 /* CaptureSession.swift in Sources */,
 				D0C85B8E2B6C660A00C1BB94 /* BlurViewModel.swift in Sources */,
