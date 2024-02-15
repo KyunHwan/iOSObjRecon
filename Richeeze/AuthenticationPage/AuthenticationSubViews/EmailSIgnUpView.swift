@@ -14,6 +14,7 @@ struct EmailSignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var passwordConfirm: String = ""
+    @FocusState private var focusedField: SignUpField?
     
     var body: some View {
         ZStack { GeometryReader { geometry in
@@ -28,6 +29,8 @@ struct EmailSignUpView: View {
                     
                     TextField("  Email", text: $email)
                         .scenePadding(.leading)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
@@ -35,6 +38,7 @@ struct EmailSignUpView: View {
                         .foregroundStyle(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        .focused($focusedField, equals: .email)
                     
                     SecureField("  Password", text: $password)
                         .scenePadding(.leading)
@@ -47,6 +51,7 @@ struct EmailSignUpView: View {
                         .foregroundStyle(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        .focused($focusedField, equals: .password)
                     
                     SecureField("  Confirm Password", text: $passwordConfirm)
                         .scenePadding(.leading)
@@ -59,6 +64,7 @@ struct EmailSignUpView: View {
                         .foregroundStyle(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        .focused($focusedField, equals: .confirmPassword)
                     
                     Button {
                         Task {
@@ -76,7 +82,7 @@ struct EmailSignUpView: View {
         }
         }
         .ignoresSafeArea(.keyboard)
-        .onTapGesture {  }
+        .onTapGesture { focusedField = nil }
         .alert(auth.errorMessage, isPresented: $auth.signUpErrorPopup) {
             Button("OK", role: .cancel) {
             }
@@ -86,6 +92,11 @@ struct EmailSignUpView: View {
             password = ""
             passwordConfirm = ""
         }
+    }
+    enum SignUpField: Hashable {
+        case email
+        case password
+        case confirmPassword
     }
 }
 

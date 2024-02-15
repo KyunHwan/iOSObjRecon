@@ -17,6 +17,8 @@ struct AuthenticationView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     
+    @FocusState private var focusedField: LoginField?
+    
     var body: some View {
         ZStack { GeometryReader { geometry in
             Color(red: 1.0, green: 153.0/255.0, blue: 0.0)
@@ -39,6 +41,7 @@ struct AuthenticationView: View {
                         .foregroundStyle(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        .focused($focusedField, equals: .email)
                         
                     
                     SecureField("  Password", text: $password)
@@ -53,6 +56,7 @@ struct AuthenticationView: View {
                         .foregroundStyle(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        .focused($focusedField, equals: .password)
                         
                     
                     emailSignInButton
@@ -74,7 +78,9 @@ struct AuthenticationView: View {
             
         }
         .ignoresSafeArea(.keyboard)
-        .onTapGesture { }
+        .onTapGesture { 
+            focusedField = nil
+        }
         .alert(auth.errorMessage, isPresented: $auth.signInErrorPopup) {
             Button("OK", role: .cancel) {
             }
@@ -83,6 +89,11 @@ struct AuthenticationView: View {
             email = ""
             password = ""
         }
+    }
+    
+    enum LoginField: Hashable {
+        case email
+        case password
     }
 }
 
