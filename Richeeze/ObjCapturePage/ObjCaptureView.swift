@@ -46,6 +46,7 @@ struct ObjCaptureView: View {
                 
                 if viewModel.isUploading { uploadProgressViewSection() }
             }
+            .sensoryFeedback(.impact(flexibility: .soft, intensity: 1), trigger: viewModel.numPhotosTaken)
             .task {
                 viewModel.startAutoSession()
             }

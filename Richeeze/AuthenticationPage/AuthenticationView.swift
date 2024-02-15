@@ -43,7 +43,6 @@ struct AuthenticationView: View {
                         .padding(.horizontal)
                         .focused($focusedField, equals: .email)
                         
-                    
                     SecureField("  Password", text: $password)
                         .scenePadding(.leading)
                         .safeAreaPadding(.leading, 1)
@@ -58,7 +57,6 @@ struct AuthenticationView: View {
                         .padding(.horizontal)
                         .focused($focusedField, equals: .password)
                         
-                    
                     emailSignInButton
                     
                     googleSignInButton
