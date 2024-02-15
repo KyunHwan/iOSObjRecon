@@ -18,6 +18,7 @@ struct ObjInfoView: View {
             .background(ObjInfoViewConstants.backgroundColor)
             .foregroundStyle(ObjInfoViewConstants.fontColor)
             .cornerRadius(ObjInfoViewConstants.cornerRadius)
+            .padding(ObjInfoViewConstants.paddingDir)
     }
 }
 
@@ -29,6 +30,7 @@ extension ObjInfoView {
         static let backgroundColor: Color = .white
         static let fontColor: Color = .black
         static let cornerRadius: CGFloat = 5
+        static let paddingDir: Edge.Set = [.horizontal]
     }
 }
 

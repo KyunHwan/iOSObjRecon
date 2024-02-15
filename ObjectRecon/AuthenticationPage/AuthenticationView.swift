@@ -18,46 +18,50 @@ struct AuthenticationView: View {
     @State private var password: String = ""
     
     var body: some View {
-        ZStack {
+        ZStack { GeometryReader { geometry in
             Color(red: 1.0, green: 153.0/255.0, blue: 0.0)
-            
-            VStack {
-                Spacer()
-                Image("Richeeze")
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.horizontal)
-                TextField("  Email", text: $email)
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 55)
-                    .background(.gray)
-                    .foregroundStyle(.white)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                
-                SecureField("  Password", text: $password)
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 55)
-                    .background(.gray)
-                    .foregroundStyle(.white)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                
-                emailSignInButton
-                
-                googleSignInButton
-                
-                HStack {
+            ScrollView {
+                VStack {
                     Spacer()
-                    signUpView
+                    Image("Richeeze")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.horizontal)
+                    TextField("  Email", text: $email)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 55)
+                        .background(.gray)
+                        .foregroundStyle(.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    
+                    SecureField("  Password", text: $password)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 55)
+                        .background(.gray)
+                        .foregroundStyle(.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    
+                    emailSignInButton
+                    
+                    googleSignInButton
+                    
+                    HStack {
+                        Spacer()
+                        signUpView
+                        Spacer()
+                    }
+                    
                     Spacer()
+                    
                 }
-                
-                Spacer()
-                
+                .frame(minHeight: geometry.size.height)
             }
+        }
+            
         }
         .ignoresSafeArea(.keyboard)
         .onTapGesture { }
@@ -84,7 +88,7 @@ extension AuthenticationView {
     
     private var emailSignUpText: some View { Text("Join now") }
     
-    private var emailSignInButton: some View { 
+    private var emailSignInButton: some View {
         Button {
             Task {
                 try await auth.signInEmail(withEmail: email, password: password)
