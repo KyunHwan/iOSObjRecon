@@ -18,6 +18,7 @@ final class ObjCaptureViewModel: ObservableObject {
     @Published private(set) var isFlashOn: Bool
     @Published private(set) var deviceOrientation: simd_quatf
     @Published private(set) var numPhotosTaken: UInt32
+    @Published private(set) var captureModeLetter: String
     
     @Published private(set) var lensPos: Float
     @Published private(set) var accelMag: Double
@@ -43,6 +44,8 @@ final class ObjCaptureViewModel: ObservableObject {
         isFlashOn = false
         deviceOrientation = simd_quatf()
         numPhotosTaken = 0
+        captureModeLetter = "A"
+        
         lensPos = 0
         accelMag = 0
         detectionBox = CGRect()
@@ -121,15 +124,38 @@ extension ObjCaptureViewModel {
 extension ObjCaptureViewModel {
     
     func setAutoCaptureMode() {
+        captureModeLetter = "A"
         autoCaptureManager.setAutoCaptureMode()
     }
     
     func setManualCaptureMode() {
+        captureModeLetter = "M"
         autoCaptureManager.setManualCaptureMode()
     }
     
     func captureConditionsMet(lensPos: Float, accelMag: Double, box: CGRect, confidence: Float) -> Bool {
         autoCaptureManager.captureConditionsMet(lensPos: lensPos, accelMag: accelMag, box: box, confidence: confidence)
+    }
+    
+    func lensPosConditionMet(for lensPos: Float) -> Bool {
+        autoCaptureManager.lensPosConditionMet(for: lensPos)
+    }
+    
+    func accelMagConditionMet(for accelMag: Double) -> Bool {
+        autoCaptureManager.accelMagConditionMet(for: accelMag)
+    }
+    
+    func detectionConditionsMet(box: CGRect, confidence: Float) -> Bool {
+        autoCaptureManager.detectionBoxConditionsMet(for: box) &&
+        autoCaptureManager.detectionConfidenceMet(for: confidence)
+    }
+    
+    func detectionBoxConditionsMet(for box: CGRect) -> Bool {
+        autoCaptureManager.detectionBoxConditionsMet(for: box)
+    }
+    
+    func detectionConfidenceMet(for confidence: Float) -> Bool {
+        autoCaptureManager.detectionConfidenceMet(for: confidence)
     }
     
     func playMusic() {

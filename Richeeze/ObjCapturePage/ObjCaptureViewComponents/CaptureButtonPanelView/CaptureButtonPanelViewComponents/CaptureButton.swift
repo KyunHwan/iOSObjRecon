@@ -17,13 +17,14 @@ struct CaptureButton: View {
             objCaptureViewModel.captureFrame()
             arModelManager.resetInitialOrientation(using: objCaptureViewModel.deviceOrientation)
         }, label: {
-            ManualCaptureButtonView()
+            ManualCaptureButtonView(objCaptureViewModel: objCaptureViewModel)
         })
     }
 }
 
 /// This is a helper view for the `CaptureButton`. It implements the shape for manual capture mode.
 struct ManualCaptureButtonView: View {
+    @ObservedObject var objCaptureViewModel: ObjCaptureViewModel
     var body: some View {
         ZStack {
             Circle()
@@ -33,6 +34,12 @@ struct ManualCaptureButtonView: View {
                        alignment: .center)
             Circle()
                 .foregroundColor(Color.white)
+                .frame(width: ButtonParameters.innerDiameter,
+                       height: ButtonParameters.innerDiameter,
+                       alignment: .center)
+            Text(objCaptureViewModel.captureModeLetter)
+                .font(.largeTitle)
+                .foregroundColor(.black)
                 .frame(width: ButtonParameters.innerDiameter,
                        height: ButtonParameters.innerDiameter,
                        alignment: .center)

@@ -15,6 +15,7 @@ struct ObjCaptureView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                /*
                 background
                     .background(viewModel.captureConditionsMet(
                         lensPos: viewModel.lensPos,
@@ -24,7 +25,8 @@ struct ObjCaptureView: View {
                                 Color(uiColor: backgroundColor(with: 1)) :
                                     Color(uiColor: backgroundColor(with: 0)))
                     .opacity(0.65)
-                
+                 */
+                Color(red: 1.0, green: 153.0/255.0, blue: 0.0).edgesIgnoringSafeArea(.all)
                 VStack {
                     TopPanelView(viewModel: viewModel, 
                                  page: page,
@@ -46,7 +48,7 @@ struct ObjCaptureView: View {
                 
                 if viewModel.isUploading { uploadProgressViewSection() }
             }
-            .sensoryFeedback(.impact(flexibility: .soft, intensity: 1), trigger: viewModel.numPhotosTaken)
+            .sensoryFeedback(.impact(flexibility: .rigid, intensity: 1.0), trigger: viewModel.numPhotosTaken)
             .task {
                 viewModel.startAutoSession()
             }
@@ -139,10 +141,30 @@ extension ObjCaptureView {
     }
     
     @ViewBuilder
+    private func captureConditionIndicator() -> some View {
+        VStack {
+            Spacer()
+            Text("Camera too far")
+                .foregroundStyle(.red)
+                .opacity(viewModel.lensPosConditionMet(for: viewModel.lensPos) ? 0 : 1)
+            Text("Moving too fast")
+                .foregroundStyle(.red)
+                .opacity(viewModel.accelMagConditionMet(for: viewModel.accelMag) ? 0 : 1)
+            Text("Object not detected")
+                .foregroundStyle(.red)
+                .opacity(viewModel.detectionConditionsMet(box: viewModel.detectionBox, confidence: viewModel.detectionConfidence) ? 0 : 1)
+            Spacer()
+        }
+    }
+    
+    @ViewBuilder
     private func blurViewWithARSection(geometry: GeometryProxy) -> some View {
         VStack {
             ZStack {
                 blurView(geometry: geometry)
+                fitToPage(captureConditionIndicator(),
+                          geometry: geometry, aspectRatio: ViewParameter.aspectRatio/4,
+                          alignment: .top, priority: 2.0)
             }
             Spacer()
             ZStack {

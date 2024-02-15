@@ -153,33 +153,33 @@ extension AutoCaptureManager {
     private func captureConditionsMet() -> Bool {
         lensPosConditionMet(for: self.captureSession.lensPos) &&
         accelMagConditionMet(for: self.deviceMotion.accelMag) &&
-        detectionConditionMet()
+        detectionConditionsMet()
     }
     
     /// Detection Condition Checker
-    private func detectionConditionMet() -> Bool {
+    func detectionConditionsMet() -> Bool {
         detectionConfidenceMet(for: self.detector.detectionConfidence) &&
         detectionBoxConditionsMet(for: self.detector.objBoundingBox)
     }
     
     /// Lens Position Condition Checker
-    private func lensPosConditionMet(for lensPos: Float) -> Bool {
+    func lensPosConditionMet(for lensPos: Float) -> Bool {
         lensPos < AutoCaptureConditions.lensPosThreshold
     }
     
     /// Acceleration Magnitude Condition Checker
-    private func accelMagConditionMet(for accelMag: Double) -> Bool {
+    func accelMagConditionMet(for accelMag: Double) -> Bool {
         accelMag < AutoCaptureConditions.accelMagThreshold
     }
     
-    private func detectionBoxConditionsMet(for box: CGRect) -> Bool {
+    func detectionBoxConditionsMet(for box: CGRect) -> Bool {
         box.maxY > AutoCaptureConditions.detectionBoxMaxYThreshold &&
         box.minY < AutoCaptureConditions.detectionBoxMinYThreshold &&
         box.maxX > AutoCaptureConditions.detectionBoxMaxXThreshold &&
         box.minX < AutoCaptureConditions.detectionBoxMinXThreshold
     }
     
-    private func detectionConfidenceMet(for confidence: Float) -> Bool {
+    func detectionConfidenceMet(for confidence: Float) -> Bool {
         confidence > AutoCaptureConditions.detectionConfidenceTheshold
     }
 }

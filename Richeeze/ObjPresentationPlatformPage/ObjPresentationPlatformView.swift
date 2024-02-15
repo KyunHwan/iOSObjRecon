@@ -12,7 +12,7 @@ struct ObjPresentationPlatformView: View {
     
     var body: some View {
         ZStack { GeometryReader { geometry in
-            Color(red: 1.0, green: 153.0/255.0, blue: 0.0)
+            Color(red: 1.0, green: 153.0/255.0, blue: 0.0).edgesIgnoringSafeArea(.all)
             let columnGridItems = [GridItem(.flexible())]
             VStack {
                 //NavigationStack {
