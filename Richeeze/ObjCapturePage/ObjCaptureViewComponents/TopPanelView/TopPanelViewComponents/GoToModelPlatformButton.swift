@@ -15,7 +15,7 @@ struct GoToModelPlatformButton: View {
             NavigationLink {
                 PageNavigationControllerView(page: PageNavigationControllerView.pageTransition(from: page))//path: $path, page: .reconPresentation)
             } label: {
-                Text("View 3D Models")
+                Text("Gallery ") + Text(Image(systemName: "chevron.forward"))
             }
         }
     }

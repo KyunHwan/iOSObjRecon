@@ -81,7 +81,7 @@ struct EmailSignUpView: View {
             }
         }
         }
-        .ignoresSafeArea(.keyboard)
+        .ignoresSafeArea(.all)
         .onTapGesture { focusedField = nil }
         .alert(auth.errorMessage, isPresented: $auth.signUpErrorPopup) {
             Button("OK", role: .cancel) {

@@ -36,24 +36,40 @@ struct ObjCaptureInstructionView: View {
                         .padding(.horizontal)
                 }
             }
-            VStack {
-                HStack {
-                    Button {
-                        auth.signOut()
-                    } label: {
-                        signOutButtonLabel
-                            .font(.headline)
-                            .foregroundStyle(.blue)
-                    }
-                    Spacer()
-                }
-                
-                Spacer()
+            /*
+             VStack {
+             HStack {
+             Button {
+             auth.signOut()
+             } label: {
+             signOutButtonLabel
+             .font(.headline)
+             .foregroundStyle(.blue)
+             }
+             Spacer()
+             }
+             
+             Spacer()
+             }
+             */
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                signOutButton
             }
         }
     }
     
     private var signOutButtonLabel: Text { Text(Image(systemName: "chevron.backward")) + Text(" Sign Out") }
+    
+    private var signOutButton: some View {
+        Button {
+            auth.signOut()
+        } label: {
+            signOutButtonLabel
+                .foregroundStyle(.blue)
+        }
+    }
     
 }
 

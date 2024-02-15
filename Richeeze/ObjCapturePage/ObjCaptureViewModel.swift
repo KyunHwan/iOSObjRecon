@@ -19,6 +19,7 @@ final class ObjCaptureViewModel: ObservableObject {
     @Published private(set) var deviceOrientation: simd_quatf
     @Published private(set) var numPhotosTaken: UInt32
     @Published private(set) var captureModeLetter: String
+    @Published private(set) var capturing: Bool
     
     @Published private(set) var lensPos: Float
     @Published private(set) var accelMag: Double
@@ -45,6 +46,7 @@ final class ObjCaptureViewModel: ObservableObject {
         deviceOrientation = simd_quatf()
         numPhotosTaken = 0
         captureModeLetter = "A"
+        capturing = false
         
         lensPos = 0
         accelMag = 0
@@ -175,6 +177,7 @@ extension ObjCaptureViewModel {
     }
     
     func captureFrame() {
+        capturing.toggle()
         autoCaptureManager.captureFrame()
     }
 }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TopInfoPanelView: View {
-    var lensPos: Float
     var body: some View {
         Image("Richeeze")
             .resizable()

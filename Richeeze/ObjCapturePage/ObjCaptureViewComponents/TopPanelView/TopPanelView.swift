@@ -25,27 +25,24 @@ struct TopPanelView: View {
                         .frame(width: frameWidth)
                         .padding()
                     Spacer()
-                }
-            }
-            HStack {
-                Spacer()
-                VStack {
-                    TopInfoPanelView(lensPos: viewModel.lensPos)
-                    GoToModelPlatformButton(page: page)
-                }
-                Spacer()
-            }
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
                     CaptureModeMenu(objCaptureViewModel: viewModel)
                         .scaleEffect(1.5)
                         .frame(width: frameWidth)
                         .padding()
                 }
-                
             }
+            HStack {
+                Spacer()
+                VStack {
+                    TopInfoPanelView()
+                    Text(viewModel.capturing ? "Capturing" : "Ready to Capture")
+                        .foregroundColor(viewModel.capturing ? .red : .green)
+                }
+                Spacer()
+            }
+        }
+        .toolbar {
+            GoToModelPlatformButton(page: page)
         }
     }
 }
