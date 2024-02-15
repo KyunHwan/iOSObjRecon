@@ -25,7 +25,9 @@ struct EmailSignUpView: View {
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
+                    
                     TextField("  Email", text: $email)
+                        .scenePadding(.leading)
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
@@ -35,6 +37,9 @@ struct EmailSignUpView: View {
                         .padding(.horizontal)
                     
                     SecureField("  Password", text: $password)
+                        .scenePadding(.leading)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
@@ -44,6 +49,9 @@ struct EmailSignUpView: View {
                         .padding(.horizontal)
                     
                     SecureField("  Confirm Password", text: $passwordConfirm)
+                        .scenePadding(.leading)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)

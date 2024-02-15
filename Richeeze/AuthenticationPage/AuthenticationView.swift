@@ -29,6 +29,9 @@ struct AuthenticationView: View {
                         .padding(.horizontal)
                     
                     TextField("  Email", text: $email)
+                        .scenePadding(.leading)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
@@ -36,8 +39,13 @@ struct AuthenticationView: View {
                         .foregroundStyle(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        
                     
                     SecureField("  Password", text: $password)
+                        .scenePadding(.leading)
+                        .safeAreaPadding(.leading, 1)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
@@ -45,6 +53,7 @@ struct AuthenticationView: View {
                         .foregroundStyle(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        
                     
                     emailSignInButton
                     
