@@ -69,6 +69,10 @@ struct AuthenticationView: View {
             Button("OK", role: .cancel) {
             }
         }
+        .onDisappear {
+            email = ""
+            password = ""
+        }
     }
 }
 

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>546601604225-igh05jnn3a5ht7ugj2l45cce69c33rhi.apps.googleusercontent.com</string>
+	<string>546601604225-ja67ohpl719r2tq6q6ev29uitqpeqptm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.546601604225-igh05jnn3a5ht7ugj2l45cce69c33rhi</string>
+	<string>com.googleusercontent.apps.546601604225-ja67ohpl719r2tq6q6ev29uitqpeqptm</string>
 	<key>API_KEY</key>
 	<string>AIzaSyA6Lk_1rrzwaTJ9EOjgy8TgOWc_bdxt82c</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.canadian.peter.ObjectRecon</string>
+	<string>com.canadian.peter.Richeeze</string>
 	<key>PROJECT_ID</key>
 	<string>basiccamphototest</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:546601604225:ios:d793f4e30e39325d392980</string>
+	<string>1:546601604225:ios:6e5b52cbc36492c3392980</string>
 </dict>
 </plist>

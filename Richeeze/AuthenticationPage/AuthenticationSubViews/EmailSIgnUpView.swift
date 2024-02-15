@@ -73,6 +73,11 @@ struct EmailSignUpView: View {
             Button("OK", role: .cancel) {
             }
         }
+        .onDisappear {
+            email = ""
+            password = ""
+            passwordConfirm = ""
+        }
     }
 }
 

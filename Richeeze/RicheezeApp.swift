@@ -12,7 +12,7 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 @main
-struct ObjectReconApp: App {
+struct RicheezeApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
