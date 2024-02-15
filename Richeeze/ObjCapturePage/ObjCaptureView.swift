@@ -12,6 +12,11 @@ struct ObjCaptureView: View {
     @StateObject private var arModelManager = ARModelManager()
     var page: AppPage
     
+    init(page: AppPage) {
+        self.page = page
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
