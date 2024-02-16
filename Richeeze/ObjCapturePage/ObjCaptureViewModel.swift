@@ -194,19 +194,21 @@ extension ObjCaptureViewModel {
 extension ObjCaptureViewModel {
         
     func uploadButtonPressed() {
-        isUploading = true
-              
-        autoCaptureManager.uploadCaptureFolderToFirebase { progress in
-            Task {
-                await MainActor.run {
-                    self.uploadProgress = progress
+        if !isUploading {
+            isUploading = true
+            
+            autoCaptureManager.uploadCaptureFolderToFirebase { progress in
+                Task {
+                    await MainActor.run {
+                        self.uploadProgress = progress
+                    }
                 }
-            }
-        } completionHandler: { fileName in
-            print("Upload completed successfully to fire stroage ! : \(fileName)")
-            Task {
-                await MainActor.run {
-                    self.isUploading = false
+            } completionHandler: { fileName in
+                print("Upload completed successfully to fire stroage ! : \(fileName)")
+                Task {
+                    await MainActor.run {
+                        self.isUploading = false
+                    }
                 }
             }
         }
