@@ -18,5 +18,6 @@ struct UploadButton: View {
                 .labelStyle(.iconOnly)
                 .foregroundColor(objCaptureViewModel.isUploading ? .red : .yellow)
         })
+        .disabled(!objCaptureViewModel.canUpload)
     }
 }

@@ -196,7 +196,7 @@ extension AutoCaptureManager {
 // MARK: Firebase Upload
 extension AutoCaptureManager {
     
-    func uploadCapFolderToFirebase(progressHandler: @escaping (Double) -> Void, completionHandler: @escaping (String) -> Void) {
+    func uploadCaptureFolderToFirebase(progressHandler: @escaping (Double) -> Void, completionHandler: @escaping (String) -> Void) {
         
         guard let lastCapFolder = directoryManager.dirPath else {
             print("There's no capture folder to upload !")
@@ -225,6 +225,7 @@ extension AutoCaptureManager {
                 compressionMethod: .none,
                 progress: nil
             )
+            
             print("New file created : \(zipURL)")
             
             FireStorageHelper.writeFileToFireStorage(to: zipURL, progressHandler: progressHandler, completionHandler: completionHandler)

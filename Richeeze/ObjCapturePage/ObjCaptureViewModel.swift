@@ -18,6 +18,7 @@ final class ObjCaptureViewModel: ObservableObject {
     @Published private(set) var isFlashOn: Bool
     @Published private(set) var deviceOrientation: simd_quatf
     @Published private(set) var numPhotosTaken: UInt32
+    var canUpload: Bool { numPhotosTaken > 0 }
     @Published private(set) var captureModeLetter: String
     @Published private(set) var capturing: Bool
     
@@ -195,14 +196,18 @@ extension ObjCaptureViewModel {
     func uploadButtonPressed() {
         isUploading = true
               
-        autoCaptureManager.uploadCapFolderToFirebase { progress in
-            DispatchQueue.main.async {
-                self.uploadProgress = progress
+        autoCaptureManager.uploadCaptureFolderToFirebase { progress in
+            Task {
+                await MainActor.run {
+                    self.uploadProgress = progress
+                }
             }
         } completionHandler: { fileName in
             print("Upload completed successfully to fire stroage ! : \(fileName)")
-            DispatchQueue.main.async {
-                self.isUploading = false
+            Task {
+                await MainActor.run {
+                    self.isUploading = false
+                }
             }
         }
     }
