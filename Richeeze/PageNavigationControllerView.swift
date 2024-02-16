@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PageNavigationControllerView: View {
-    //@Binding var path: [AppPage]
     var page: AppPage
     
     var body: some View {

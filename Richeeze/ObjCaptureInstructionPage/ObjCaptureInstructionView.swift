@@ -36,22 +36,6 @@ struct ObjCaptureInstructionView: View {
                         .padding(.horizontal)
                 }
             }
-            /*
-             VStack {
-             HStack {
-             Button {
-             auth.signOut()
-             } label: {
-             signOutButtonLabel
-             .font(.headline)
-             .foregroundStyle(.blue)
-             }
-             Spacer()
-             }
-             
-             Spacer()
-             }
-             */
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
