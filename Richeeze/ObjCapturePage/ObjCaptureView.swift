@@ -167,11 +167,8 @@ extension ObjCaptureView {
         VStack {
             ZStack {
                 blurView(geometry: geometry)
-                if viewModel.capturing {
-                    fitToPage(captureConditionIndicator(),
-                              geometry: geometry, aspectRatio: ViewParameter.aspectRatio/4,
-                              alignment: .top, priority: 2.0)
-                }
+                Text(viewModel.capturing ? "Capturing" : "Ready to Capture")
+                    .foregroundColor(viewModel.capturing ? .red : .green)
             }
             Spacer()
             ZStack {

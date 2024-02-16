@@ -77,7 +77,7 @@ struct AuthenticationView: View {
         }
         .ignoresSafeArea(.keyboard)
         .onTapGesture { 
-            focusedField = nil
+            endEditing()
         }
         .alert(auth.errorMessage, isPresented: $auth.signInErrorPopup) {
             Button("OK", role: .cancel) {
@@ -160,5 +160,12 @@ extension AuthenticationView {
         } label: {
             googleSignInButtonLayout
         }
+    }
+}
+
+// MARK: End keyboard input state
+extension AuthenticationView {
+    private func endEditing() {
+        focusedField = nil
     }
 }

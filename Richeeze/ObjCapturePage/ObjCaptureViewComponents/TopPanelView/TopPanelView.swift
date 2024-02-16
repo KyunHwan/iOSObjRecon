@@ -23,20 +23,19 @@ struct TopPanelView: View {
                     UploadButton(objCaptureViewModel: viewModel)
                         .scaleEffect(1.5)
                         .frame(width: frameWidth)
-                        .padding()
+                        .padding(.horizontal)
                     Spacer()
                     CaptureModeMenu(objCaptureViewModel: viewModel)
                         .scaleEffect(1.5)
                         .frame(width: frameWidth)
-                        .padding()
+                        .padding(.horizontal)
                 }
             }
             HStack {
                 Spacer()
                 VStack {
                     TopInfoPanelView()
-                    Text(viewModel.capturing ? "Capturing" : "Ready to Capture")
-                        .foregroundColor(viewModel.capturing ? .red : .green)
+                    Spacer()
                 }
                 Spacer()
             }

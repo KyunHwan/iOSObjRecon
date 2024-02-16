@@ -82,7 +82,7 @@ struct EmailSignUpView: View {
         }
         }
         .ignoresSafeArea(.all)
-        .onTapGesture { focusedField = nil }
+        .onTapGesture { endEditing() }
         .alert(auth.errorMessage, isPresented: $auth.signUpErrorPopup) {
             Button("OK", role: .cancel) {
             }
@@ -112,5 +112,12 @@ extension EmailSignUpView {
             .foregroundStyle(.white)
             .cornerRadius(10)
             .padding(.horizontal)
+    }
+}
+
+// MARK: End keyboard input state
+extension EmailSignUpView {
+    private func endEditing() {
+        focusedField = nil
     }
 }
