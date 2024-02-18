@@ -54,7 +54,6 @@ struct ObjCaptureInstructionView: View {
                 .foregroundStyle(.blue)
         }
     }
-    
 }
 
 // MARK: Constants {
