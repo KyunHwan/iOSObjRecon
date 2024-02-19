@@ -12,11 +12,6 @@ struct ObjCaptureView: View {
     @StateObject private var arModelManager = ARModelManager()
     var page: AppPage
     
-    init(page: AppPage) {
-        self.page = page
-        UIApplication.shared.isIdleTimerDisabled = true
-    }
-    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -56,9 +51,11 @@ struct ObjCaptureView: View {
             .sensoryFeedback(.impact(flexibility: .rigid, intensity: 1.0), trigger: viewModel.numPhotosTaken)
             .task {
                 viewModel.startAutoSession()
+                UIApplication.shared.isIdleTimerDisabled = true
             }
             .onDisappear {
                 viewModel.stopAutoSession()
+                UIApplication.shared.isIdleTimerDisabled = false
             }
         }
     }

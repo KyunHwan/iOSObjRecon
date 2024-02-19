@@ -31,32 +31,17 @@ struct AuthenticationView: View {
                         .padding(.horizontal)
                     
                     TextField("  Email", text: $email)
-                        .scenePadding(.leading)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
-                        .background(.brown)
-                        .foregroundStyle(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .focused($focusedField, equals: .email)
-                        
+                        .withDefaultTextFieldFormat(backgroundColor: .brown,
+                                                 fontColor: .white,
+                                                 focusField: .email,
+                                                 focusedField: $focusedField)
+                    
                     SecureField("  Password", text: $password)
-                        .scenePadding(.leading)
-                        .safeAreaPadding(.leading, 1)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
-                        .background(.brown)
-                        .foregroundStyle(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .focused($focusedField, equals: .password)
-                        
+                        .withDefaultTextFieldFormat(backgroundColor: .brown,
+                                                 fontColor: .white,
+                                                 focusField: .password,
+                                                 focusedField: $focusedField)
+                    
                     emailSignInButton
                     
                     googleSignInButton
@@ -76,7 +61,7 @@ struct AuthenticationView: View {
             
         }
         .ignoresSafeArea(.keyboard)
-        .onTapGesture { 
+        .onTapGesture {
             endEditing()
         }
         .alert(auth.errorMessage, isPresented: $auth.signInErrorPopup) {
@@ -100,13 +85,7 @@ extension AuthenticationView {
     private var emailSignInText: some View { Text(Image(systemName: "envelope.fill")) + Text("  Sign in with email") }
     private var emailSignInButtonLayout: some View {
         emailSignInText
-            .font(.headline)
-            .frame(maxWidth: .infinity)
-            .frame(height: 55)
-            .background(.red)
-            .foregroundStyle(.white)
-            .cornerRadius(10)
-            .padding(.horizontal)
+            .withDefaultButtonFormat(backgroundColor: .red, fontColor: .white)
     }
     
     private var emailSignUpText: some View { Text("Join now") }
@@ -139,13 +118,7 @@ extension AuthenticationView {
     private var googleSignInText: some View { Text(Image("google")) + Text("  Sign in with Google") }
     private var googleSignInButtonLayout: some View {
         googleSignInText
-            .font(.headline)
-            .frame(maxWidth: .infinity)
-            .frame(height: 55)
-            .background(.white)
-            .foregroundStyle(.black)
-            .cornerRadius(10)
-            .padding(.horizontal)
+            .withDefaultButtonFormat(backgroundColor: .white, fontColor: .black)
     }
     
     private var googleSignInButton: some View {
@@ -165,7 +138,5 @@ extension AuthenticationView {
 
 // MARK: End keyboard input state
 extension AuthenticationView {
-    private func endEditing() {
-        focusedField = nil
-    }
+    private func endEditing() { focusedField = nil }
 }

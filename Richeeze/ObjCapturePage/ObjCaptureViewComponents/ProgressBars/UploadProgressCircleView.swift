@@ -14,23 +14,35 @@ struct UploadProgressCircleView: View {
         ZStack {
             Circle()
                 .stroke(
-                    Color.pink.opacity(0.5),
-                    lineWidth: 30
+                    Constants.circleColor.opacity(Constants.opacity),
+                    lineWidth: Constants.lineWidth
                 )
             Circle()
-                .trim(from: 0, to: progress)
+                .trim(from: Constants.trimStart, to: progress)
                 .stroke(
-                    Color.pink,
+                    Constants.circleColor,
                     style: StrokeStyle(
-                        lineWidth: 30,
-                        lineCap: .round
+                        lineWidth: Constants.lineWidth,
+                        lineCap: Constants.lineCap
                     )
                 )
-                .rotationEffect(.degrees(-90))
+                .rotationEffect(Constants.angle)
                 // 1
-                .animation(.easeOut, value: progress)
+                .animation(Constants.animationStyle, value: progress)
 
         }
+    }
+}
+
+extension UploadProgressCircleView {
+    struct Constants {
+        static let circleColor: Color = Color.pink
+        static let opacity: Double = 0.5
+        static let lineWidth: CGFloat = 30
+        static let trimStart: CGFloat = 0.0
+        static let lineCap: CGLineCap = .round
+        static let angle: Angle = .degrees(-90)
+        static let animationStyle: Animation = .easeOut
     }
 }
 

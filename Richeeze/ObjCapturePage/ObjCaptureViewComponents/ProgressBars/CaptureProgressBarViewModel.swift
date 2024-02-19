@@ -89,22 +89,22 @@ extension CaptureProgressBarViewModel {
     }
     
     private func updateTopBottom(XRotation: Float, id: Float) {
-        if XRotation > 90 {
+        if XRotation > Constants.thresholdAngle {
             photoCaptureTopProgressBar.incrementProgress(for: Int(id))
         }
-        else if 90 >= XRotation {
+        else if Constants.thresholdAngle >= XRotation {
             photoCaptureBottomProgressBar.incrementProgress(for: Int(id))
         }
     }
     
     private func updateTopCenterBottom(XRotation: Float, id: Float) {
-        if XRotation >= 95 {
+        if XRotation >= Constants.highThresholdAngle {
             photoCaptureTopProgressBar.incrementProgress(for: Int(id))
         }
-        else if 85 < XRotation && XRotation < 95 {
+        else if Constants.lowThresholdAngle < XRotation && XRotation < Constants.highThresholdAngle {
             photoCaptureCenterProgressBar.incrementProgress(for: Int(id))
         }
-        else if 85 >= XRotation {
+        else if Constants.lowThresholdAngle >= XRotation {
             photoCaptureBottomProgressBar.incrementProgress(for: Int(id))
         }
     }
@@ -119,5 +119,12 @@ extension CaptureProgressBarViewModel {
         static let photoCaptureHRegionRange: Float = 60 // in degrees
         static let numPhotoCaptureVRegions: CGFloat = 3
         static let photoCaptureVRegionRange: Float = 9 // in degrees
+        
+        // 3 Progress Bars
+        static let lowThresholdAngle: Float = 85
+        static let highThresholdAngle: Float = 95
+        
+        // 2 Progress Bars
+        static let thresholdAngle: Float = 90
     }
 }

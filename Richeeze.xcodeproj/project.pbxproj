@@ -22,6 +22,7 @@
 		D00F493C2B74449A00E856A9 /* ObjInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F493B2B74449A00E856A9 /* ObjInfoView.swift */; };
 		D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D77172B7071D50064C4B5 /* ButtonParameters.swift */; };
 		D01D771D2B70DC270064C4B5 /* TopInfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */; };
+		D0456DCC2B83110F00E589F0 /* CustomAuthenticationPageModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0456DCB2B83110F00E589F0 /* CustomAuthenticationPageModifiers.swift */; };
 		D05B6EC92B63A872002FCFBA /* PhotoCaptureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */; };
 		D080CEDC2B7C2C8200850F13 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D080CEDB2B7C2C8200850F13 /* FirebaseAuth */; };
 		D0822F572B7201DC00E081C1 /* CaptureModeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */; };
@@ -90,6 +91,7 @@
 		D00F493B2B74449A00E856A9 /* ObjInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjInfoView.swift; sourceTree = "<group>"; };
 		D01D77172B7071D50064C4B5 /* ButtonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParameters.swift; sourceTree = "<group>"; };
 		D01D771C2B70DC270064C4B5 /* TopInfoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopInfoPanelView.swift; sourceTree = "<group>"; };
+		D0456DCB2B83110F00E589F0 /* CustomAuthenticationPageModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthenticationPageModifiers.swift; sourceTree = "<group>"; };
 		D05B6EC82B63A872002FCFBA /* PhotoCaptureExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureExtensions.swift; sourceTree = "<group>"; };
 		D0822F562B7201DC00E081C1 /* CaptureModeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureModeMenu.swift; sourceTree = "<group>"; };
 		D0822F5C2B723DC100E081C1 /* ObjCaptureInstructionVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ObjCaptureInstructionVid.mp4; sourceTree = "<group>"; };
@@ -206,6 +208,14 @@
 			path = TopPanelView;
 			sourceTree = "<group>";
 		};
+		D0456DCA2B8310D700E589F0 /* CustomAuthenticationPageModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				D0456DCB2B83110F00E589F0 /* CustomAuthenticationPageModifiers.swift */,
+			);
+			path = CustomAuthenticationPageModifiers;
+			sourceTree = "<group>";
+		};
 		D05B6EC52B621627002FCFBA /* PhotoCaptureHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +325,7 @@
 			children = (
 				D0ADDA612B7C3F17005480C8 /* AuthenticationView.swift */,
 				D0ADDA632B7C3F3A005480C8 /* AuthenticationSubViews */,
+				D0456DCA2B8310D700E589F0 /* CustomAuthenticationPageModifiers */,
 			);
 			path = AuthenticationPage;
 			sourceTree = "<group>";
@@ -600,6 +611,7 @@
 			files = (
 				D0AB95C82B74B28F007740E7 /* ObjPresentationPlatformView.swift in Sources */,
 				D0C85BA42B6C6C8C00C1BB94 /* ARModelPresentationView.swift in Sources */,
+				D0456DCC2B83110F00E589F0 /* CustomAuthenticationPageModifiers.swift in Sources */,
 				D0B4B14D2B7311870098CB3B /* ObjPresentationPlatformViewModel.swift in Sources */,
 				D0A4D16E2B677DA4007961DA /* DeviceMotionExtensions.swift in Sources */,
 				D0C85B902B6C663800C1BB94 /* BlurView.swift in Sources */,

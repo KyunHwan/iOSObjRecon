@@ -28,43 +28,22 @@ struct EmailSignUpView: View {
                         .padding(.horizontal)
                     
                     TextField("  Email", text: $email)
-                        .scenePadding(.leading)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
-                        .background(.brown)
-                        .foregroundStyle(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .focused($focusedField, equals: .email)
+                        .withDefaultTextFieldFormat(backgroundColor: .brown,
+                                                    fontColor: .white,
+                                                    focusField: .email,
+                                                    focusedField: $focusedField)
                     
                     SecureField("  Password", text: $password)
-                        .scenePadding(.leading)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
-                        .background(.brown)
-                        .foregroundStyle(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .focused($focusedField, equals: .password)
+                        .withDefaultTextFieldFormat(backgroundColor: .brown,
+                                                    fontColor: .white,
+                                                    focusField: .password,
+                                                    focusedField: $focusedField)
                     
                     SecureField("  Confirm Password", text: $passwordConfirm)
-                        .scenePadding(.leading)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
-                        .background(.brown)
-                        .foregroundStyle(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .focused($focusedField, equals: .confirmPassword)
+                        .withDefaultTextFieldFormat(backgroundColor: .brown,
+                                                    fontColor: .white,
+                                                    focusField: .confirmPassword,
+                                                    focusedField: $focusedField)
                     
                     Button {
                         Task {
@@ -104,14 +83,7 @@ struct EmailSignUpView: View {
 extension EmailSignUpView {
     private var emailSignUpText: some View { Text(Image(systemName: "envelope.fill")) + Text("  Sign up with email") }
     private var emailSignUpButtonLayout: some View {
-        emailSignUpText
-            .font(.headline)
-            .frame(maxWidth: .infinity)
-            .frame(height: 55)
-            .background(.red)
-            .foregroundStyle(.white)
-            .cornerRadius(10)
-            .padding(.horizontal)
+        emailSignUpText.withDefaultButtonFormat(backgroundColor: .red, fontColor: .white)
     }
 }
 
