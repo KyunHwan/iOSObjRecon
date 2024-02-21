@@ -40,7 +40,8 @@ class PhotoCaptureManager {
 extension PhotoCaptureManager {
     private func save(_ photo: AVCapturePhoto, at path: URL) {
         let photoData = photo.fileDataRepresentation()
-        DirectoryManager.createFile(at: path, contents: photoData)
+        //DirectoryManager.createFile(at: path, contents: photoData)
+        DirectoryManager.createResizedFile(at: path, contents: photoData)
     }
     
     private func updateDelegateContainer(for delegate: PhotoCaptureProcessor) {

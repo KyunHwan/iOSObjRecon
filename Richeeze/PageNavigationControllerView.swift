@@ -19,7 +19,8 @@ struct PageNavigationControllerView: View {
         case .photoCapture:
             ObjCaptureView(page: .photoCapture)//path: $path)
         case .reconPresentation:
-            ObjPresentationPlatformView()
+            //ObjPresentationPlatformView()
+            MyCapturesView()            
         }
     }
     
