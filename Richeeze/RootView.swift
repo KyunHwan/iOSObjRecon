@@ -14,7 +14,7 @@ struct RootView: View {
     var body: some View {
         ZStack {
             NavigationStack {
-                PageNavigationControllerView(page: .authentication)
+                AuthenticationView(page: .authentication)
             }
             .environmentObject(auth)
         }
@@ -24,7 +24,7 @@ struct RootView: View {
         }
         .fullScreenCover(isPresented: $auth.signedIn) {
             NavigationStack{
-                PageNavigationControllerView(page: .instruction)
+                ObjCaptureInstructionView(page: .instruction)
             }
             .environmentObject(auth)
         }
