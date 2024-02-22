@@ -11,7 +11,6 @@ import AVKit
 struct ObjCaptureInstructionView: View {
     @EnvironmentObject var auth: AuthenticationHelper
     @StateObject private var objCaptureInstVid = ObjCaptureInstructionViewModel()
-    var page: AppPage
     
     var body: some View {
         ZStack {
@@ -24,9 +23,7 @@ struct ObjCaptureInstructionView: View {
                 }
             VStack {
                 Spacer()
-                NavigationLink {
-                    PageNavigationControllerView(page: PageNavigationControllerView.pageTransition(from: page))
-                } label: {
+                NavigationLink(value: AppPage.photoCapture) {
                     Text("Start")
                         .frame(maxWidth: ButtonConstants.infoWindowMaxWidth)
                         .frame(height: ButtonConstants.infoWindowHeight)
@@ -41,7 +38,7 @@ struct ObjCaptureInstructionView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 signOutButton
             }
-        }
+        }        
     }
     
     private var signOutButtonLabel: Text { Text(Image(systemName: "chevron.backward")) + Text(" Sign Out") }

@@ -12,7 +12,6 @@ import AuthenticationServices
 
 struct AuthenticationView: View {
     @EnvironmentObject var auth: AuthenticationHelper
-    let page: AppPage
     
     @State private var email: String = ""
     @State private var password: String = ""

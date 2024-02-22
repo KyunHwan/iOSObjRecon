@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct GoToModelPlatformButton: View {
-    var page: AppPage
     
     var body: some View {
         VStack {
-            NavigationLink {
-                PageNavigationControllerView(page: PageNavigationControllerView.pageTransition(from: page))//path: $path, page: .reconPresentation)
-            } label: {
+            NavigationLink(value: AppPage.reconPresentation) {
                 Text("Gallery ") + Text(Image(systemName: "chevron.forward"))
             }
         }

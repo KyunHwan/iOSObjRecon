@@ -44,7 +44,6 @@
 		D0A9E2742B5F44DA006B7CA8 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */; };
 		D0AB95C72B74B1EB007740E7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95C62B74B1EB007740E7 /* RootView.swift */; };
 		D0AB95C82B74B28F007740E7 /* ObjPresentationPlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4B1472B72F57F0098CB3B /* ObjPresentationPlatformView.swift */; };
-		D0AB95D02B74BEA7007740E7 /* PageNavigationControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */; };
 		D0AB95D22B74C431007740E7 /* GoToModelPlatformButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB95D12B74C431007740E7 /* GoToModelPlatformButton.swift */; };
 		D0ADDA622B7C3F17005480C8 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADDA612B7C3F17005480C8 /* AuthenticationView.swift */; };
 		D0ADDA652B7C3F4F005480C8 /* EmailSIgnUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADDA642B7C3F4F005480C8 /* EmailSIgnUpView.swift */; };
@@ -116,7 +115,6 @@
 		D0A4D1772B67AB89007961DA /* AutoCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCaptureManager.swift; sourceTree = "<group>"; };
 		D0A9E2732B5F44DA006B7CA8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		D0AB95C62B74B1EB007740E7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNavigationControllerView.swift; sourceTree = "<group>"; };
 		D0AB95D12B74C431007740E7 /* GoToModelPlatformButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToModelPlatformButton.swift; sourceTree = "<group>"; };
 		D0ADDA612B7C3F17005480C8 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		D0ADDA642B7C3F4F005480C8 /* EmailSIgnUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSIgnUpView.swift; sourceTree = "<group>"; };
@@ -474,7 +472,6 @@
 				74D662E72B85E196001618BF /* GoogleService-Info.plist */,
 				D0EB37862B5DDED100A54AA7 /* RicheezeApp.swift */,
 				D0AB95C62B74B1EB007740E7 /* RootView.swift */,
-				D0AB95CF2B74BEA7007740E7 /* PageNavigationControllerView.swift */,
 				741DE2192B731E78009EBF08 /* Firebase */,
 				D0ADDA602B7C3ECD005480C8 /* AuthenticationPage */,
 				D0FA08F52B6B6A3E008FB3C5 /* ObjCaptureInstructionPage */,
@@ -690,7 +687,6 @@
 				D0EB37A62B5E695200A54AA7 /* PhotoCaptureManager.swift in Sources */,
 				D01D77182B7071D50064C4B5 /* ButtonParameters.swift in Sources */,
 				D0822F572B7201DC00E081C1 /* CaptureModeMenu.swift in Sources */,
-				D0AB95D02B74BEA7007740E7 /* PageNavigationControllerView.swift in Sources */,
 				D0EB37AF2B5E763700A54AA7 /* PhotoCaptureProcessor.swift in Sources */,
 				D0C85BA82B6C83C000C1BB94 /* ARModelManager.swift in Sources */,
 				D0A4D1702B67A9CE007961DA /* MLDetector.swift in Sources */,
@@ -835,7 +831,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Richeeze/Preview Content\"";
-				DEVELOPMENT_TEAM = LT7W972XTY;
+				DEVELOPMENT_TEAM = QWR6HRKW6J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Richeeze/Info.plist;
@@ -870,7 +866,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Richeeze/Preview Content\"";
-				DEVELOPMENT_TEAM = LT7W972XTY;
+				DEVELOPMENT_TEAM = QWR6HRKW6J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Richeeze/Info.plist;

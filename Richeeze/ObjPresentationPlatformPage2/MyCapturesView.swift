@@ -30,9 +30,8 @@ struct MyCapturesView: View {
                     ForEach(viewModel.scans.sorted(by: { lhs, rhs in
                         lhs.scanId > rhs.scanId
                     }), id: \.self) { scan in
-                        if let thumbUrl = scan.thumbnailPathUrl,
-                           let scanResultPath = scan.scanResultPath {
-                            NavigationLink(value: scanResultPath) {
+                        if let thumbUrl = scan.thumbnailPathUrl {
+                            NavigationLink(value: scan) {
                                 MyCapturesCellView(thumbnailPath: thumbUrl)
                             }
                         }
@@ -41,9 +40,6 @@ struct MyCapturesView: View {
                 .padding(10) // !!!!!
             }
             .navigationTitle("My Captures")
-            .navigationDestination(for: String.self) { scanResultPath in
-                FireModel3DView(scanResultPath: scanResultPath)
-            }
             .task {
                 try? await viewModel.getAllScans()
             }

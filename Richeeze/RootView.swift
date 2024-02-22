@@ -7,14 +7,19 @@
 
 import SwiftUI
 
+enum AppPage: String {
+    case instruction
+    case photoCapture
+    case reconPresentation
+}
+
 struct RootView: View {
-    //@State private var navigationPath: [AppPage] = [.instruction]
     @StateObject var auth = AuthenticationHelper()
     
     var body: some View {
         ZStack {
             NavigationStack {
-                AuthenticationView(page: .authentication)
+                AuthenticationView()
             }
             .environmentObject(auth)
         }
@@ -24,7 +29,23 @@ struct RootView: View {
         }
         .fullScreenCover(isPresented: $auth.signedIn) {
             NavigationStack{
-                ObjCaptureInstructionView(page: .instruction)
+                ObjCaptureInstructionView()
+                    .navigationDestination(for: AppPage.self) { page in
+                        switch page {
+                        case .instruction:
+                            ObjCaptureInstructionView()
+                        case .photoCapture:
+                            ObjCaptureView()
+                        case .reconPresentation:
+                            //ObjPresentationPlatformView()
+                            MyCapturesView()
+                        }
+                    }
+                    .navigationDestination(for: Scan.self) { scan in
+                        if let scanResultPath = scan.scanResultPath {
+                            FireModel3DView(scanResultPath: scanResultPath)
+                        }
+                    }
             }
             .environmentObject(auth)
         }

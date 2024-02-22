@@ -10,7 +10,6 @@ import SwiftUI
 struct ObjCaptureView: View {
     @StateObject private var viewModel = ObjCaptureViewModel()
     @StateObject private var arModelManager = ARModelManager()
-    var page: AppPage
     
     var body: some View {
         GeometryReader { geometry in
@@ -28,8 +27,7 @@ struct ObjCaptureView: View {
                  */
                 Color(red: 1.0, green: 153.0/255.0, blue: 0.0).edgesIgnoringSafeArea(.all)
                 VStack {
-                    TopPanelView(viewModel: viewModel, 
-                                 page: page,
+                    TopPanelView(viewModel: viewModel,
                                  width: geometry.size.width)
                     
                     Spacer()
