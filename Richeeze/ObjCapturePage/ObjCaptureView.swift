@@ -25,7 +25,7 @@ struct ObjCaptureView: View {
                                     Color(uiColor: backgroundColor(with: 0)))
                     .opacity(0.65)
                  */
-                Color(red: 1.0, green: 153.0/255.0, blue: 0.0).edgesIgnoringSafeArea(.all)
+                Color("CheezeColor").edgesIgnoringSafeArea(.all)
                 VStack {
                     TopPanelView(viewModel: viewModel,
                                  width: geometry.size.width)
@@ -163,7 +163,7 @@ extension ObjCaptureView {
             ZStack {
                 blurView(geometry: geometry)
                 Text(viewModel.capturing ? "Capturing" : "Ready to Capture")
-                    .foregroundColor(viewModel.capturing ? .red : .green)
+                    .foregroundColor(viewModel.capturing ? Color("SecondaryAccentColor") : Color("BluePurpleColor"))
             }
             Spacer()
             ZStack {

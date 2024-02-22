@@ -24,7 +24,7 @@ struct FireModel3DView: View {
     
     var body: some View {
         ZStack {
-            Color(red: 1.0, green: 153.0/255.0, blue: 0.0).edgesIgnoringSafeArea(.all)
+            Color("CheezeColor").edgesIgnoringSafeArea(.all)
             VStack {
                 if let filePathUrl {
                     Model3DView(file: filePathUrl)
@@ -35,6 +35,7 @@ struct FireModel3DView: View {
                     ProgressView()
                 }
             }
+            .navigationTitle("3D Model View")
             .onAppear {
                 Task {
                     do {

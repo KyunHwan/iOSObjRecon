@@ -24,7 +24,7 @@ struct MyCapturesView: View {
      
     var body: some View {
         ZStack {
-            Color(red: 1.0, green: 153.0/255.0, blue: 0.0).edgesIgnoringSafeArea(.all)
+            Color("CheezeColor").edgesIgnoringSafeArea(.all)
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(viewModel.scans.sorted(by: { lhs, rhs in
@@ -39,13 +39,9 @@ struct MyCapturesView: View {
                 }
                 .padding(10) // !!!!!
             }
-            .navigationTitle("My Captures")
+            .navigationTitle("Captures")
             .task {
                 try? await viewModel.getAllScans()
-            }
-            .onAppear {
-                UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-                UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
             }
         }
     }

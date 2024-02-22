@@ -17,20 +17,24 @@ struct MyCapturesCellView: View {
         let frameHeight = frameWidth / aspectRatio
         VStack(alignment: .leading) {
             AsyncImage(url: URL(string: thumbnailPath), transaction: Transaction(animation: .default)) { phase in
-                if let image = phase.image {
-                    image
+                switch phase {
+                case .empty:
+                    //ProgressView()
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundColor(Color.yellow.opacity(0.5))
+                case .success(let returnedImage):
+                    returnedImage
                         .resizable()
                         .scaledToFill()
                         .frame(width: frameWidth, height: frameHeight)
                         .cornerRadius(10)
-                } else if phase.error != nil {
+                case .failure:
                     Color.blue // Indicates an error.
                     Text("\(phase.error?.localizedDescription ?? "")")
                     //let _ = print("AsyncImage Error : \(phase.error?.localizedDescription ?? "")")
-                } else {
-                    //ProgressView()
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color.yellow.opacity(0.5))
+                default:
+                    Color.green // Indicates an error.
+                    Text("\(phase.error?.localizedDescription ?? "")")
                 }
             }
             .frame(width: frameWidth, height: frameHeight)
@@ -40,11 +44,11 @@ struct MyCapturesCellView: View {
                 Text(thumbnailPath)
                     .lineLimit(1)
                     .font(.headline)
-                    .foregroundColor(Color.white.opacity(0.8))
+                    .foregroundColor(Color("DarkPurpleColor"))
                 Text("@Richeeze.com")
             }
             .font(.callout)
-            .foregroundColor(Color.brown)
+            .foregroundColor(Color("SecondaryAccentColor"))
         }
     }
 }
