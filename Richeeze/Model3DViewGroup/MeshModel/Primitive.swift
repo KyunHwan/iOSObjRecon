@@ -13,7 +13,6 @@ extension Model {
         let mesh = Mesh(mdlMesh: mdlMesh, mtkMesh: mtkMesh)
         self.init()
         self.meshes = [mesh]
-        self.name = name
     }
     
     static func createMesh(primitiveType: Primitive) -> MDLMesh {
