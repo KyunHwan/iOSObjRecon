@@ -10,6 +10,7 @@ import MetalKit
 struct ModelScene {
     var models: [Model] = []
     
+    var magnifyScale: Float = 1.0
     var trackballQuat: Array<Float> = [0.0, 0.0, 0.0, 1.0]
     var viewMatrix: matrix_float4x4 = matrix_identity_float4x4
     var projectionMatrix: matrix_float4x4 = matrix_identity_float4x4

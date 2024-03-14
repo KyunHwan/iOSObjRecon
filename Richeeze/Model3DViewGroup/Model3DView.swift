@@ -11,7 +11,8 @@ import Metal
 
 struct Model3DView: View {
     @State private var metalView = MTKView()
-    @State private var modelController: ModelController?
+    @State private var modelCtr: ModelController?
+    @State private var lastMagnification: Float = 1
     //var named: String?
     var file: URL?
     
@@ -22,9 +23,9 @@ struct Model3DView: View {
             
             Model3DViewRepresentable(metalView: $metalView)
                 .onAppear {
-                    modelController = ModelController(metalView: metalView)
+                    modelCtr = ModelController(metalView: metalView)
                     if let file {
-                        modelController?.loadModel(file: file)
+                        modelCtr?.loadModel(file: file)
                     }
                     isFirst = true
                 }
@@ -34,15 +35,16 @@ struct Model3DView: View {
                             if isFirst {
                                 isFirst = false
                             } else {
-                                //let _ = print("w: \(reader.size.width), h: \(reader.size.height)")
-                                let lastX = 2.0 * (Float(lastPos.x) / Float(reader.size.width)) - 1.0
-                                let lastY = 2.0 * (Float(reader.size.height - lastPos.y) / Float(reader.size.height)) - 1.0
-                                let curX = 2.0 * (Float(value.location.x) / Float(reader.size.width)) - 1.0
-                                let curY = 2.0 * (Float(reader.size.height - value.location.y) / Float(reader.size.height)) - 1.0
+                                let viewWidth = reader.size.width
+                                let viewHeight = reader.size.height
+                                let lastX = 2.0 * (Float(lastPos.x) / Float(viewWidth)) - 1.0
+                                let lastY = 2.0 * (Float(viewHeight - lastPos.y) / Float(viewHeight)) - 1.0
+                                let curX = 2.0 * (Float(value.location.x) / Float(viewWidth)) - 1.0
+                                let curY = 2.0 * (Float(viewHeight - value.location.y) / Float(viewHeight)) - 1.0
                                 //let _ = print("     curX: \(curX), curY: \(curY)")
                                 
                                 var curQuat: Array<Float> = [0, 0, 0, 0]
-                                modelController?.scene.trackballQuat.withUnsafeMutableBufferPointer { trackQuatPointer in
+                                modelCtr?.scene.trackballQuat.withUnsafeMutableBufferPointer { trackQuatPointer in
                                     curQuat.withUnsafeMutableBufferPointer { curQuatPointer in
                                         trackball(curQuatPointer.baseAddress, lastX, lastY, curX, curY)
                                         add_quats(curQuatPointer.baseAddress, trackQuatPointer.baseAddress, trackQuatPointer.baseAddress)
@@ -53,8 +55,19 @@ struct Model3DView: View {
                         }
                         .onEnded { value in
                             isFirst = true
+                        })
+                .gesture(
+                    MagnifyGesture()
+                        .onChanged{ value in
+                            if let modelCtr {
+                                modelCtr.scene.magnifyScale = lastMagnification * Float(value.magnification)
+                            }
                         }
-                )
+                        .onEnded {_ in
+                            if let modelCtr {
+                                lastMagnification = modelCtr.scene.magnifyScale
+                            }
+                        })
         }
     }
 }

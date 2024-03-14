@@ -110,10 +110,12 @@ extension Renderer {
         let trackballQuat = scene.trackballQuat
         let trackballMat = simd_float4x4(simd_quatf(ix: trackballQuat[0], iy: trackballQuat[1], iz: trackballQuat[2], r: trackballQuat[3])).transpose
         
+        let magnifyScaleMat = float4x4(scaling: scene.magnifyScale)
+        
         for model in scene.models {
             params.tiling = model.tiling
             params.renderMode = model.renderMode
-            uniforms.modelMatrix = trackballMat * model.transform.modelMatrix
+            uniforms.modelMatrix = trackballMat * magnifyScaleMat * model.transform.modelMatrix
             uniforms.normalMatrix = uniforms.modelMatrix.upperLeft
             
             renderEncoder.setVertexBytes(&uniforms, length: MemoryLayout<Uniforms>.stride, index: UniformsBuffer.index)
