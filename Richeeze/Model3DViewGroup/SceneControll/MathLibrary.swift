@@ -143,7 +143,7 @@ extension float4x4 {
     init(orthographicWithLeft left: Float, top: Float, right: Float, bottom: Float, near: Float, far: Float) {
         let X = float4(2 / (right - left), 0, 0, 0)
         let Y = float4(0, 2 / (top - bottom), 0, 0)
-        let Z = float4(0, 0, 1 / (near - far), 0) // MTEST : let Z = float4(0, 0, 1 / (far - near), 0)
+        let Z = float4(0, 0, 1 / (far - near), 0)
         let W = float4(
             (left + right) / (left - right),
             (top + bottom) / (bottom - top),

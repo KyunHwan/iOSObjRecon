@@ -67,14 +67,16 @@ class Model: Transformable {
         }
         
         // mesh transform 적당히? 조절.
+        if boundScale != 0.0 {
+            transform.scale = 8.0 / boundScale
+        }
         if assetURL.pathExtension.lowercased() == "obj" || assetURL.pathExtension.lowercased() == "ply" {
             renderMode = 1 // no texture, color vertex
-            transform.rotation = [0.0, Float.pi, 0.0]
+            transform.rotation = [0.0, 0.0, Float.pi]
         }
-        if boundScale != 0.0 {
-            transform.scale = 1.0 / boundScale
+        else { // for USDZ
+            transform.position = -transform.scale * boundCenter
         }
-        transform.position = -transform.scale * boundCenter
     }
 }
 

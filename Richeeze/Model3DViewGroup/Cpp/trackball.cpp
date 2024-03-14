@@ -232,7 +232,8 @@ tb_project_to_sphere(float r, float x, float y)
         t = r / 1.41421356237309504880;
         z = t*t / d;
     }
-    return z;
+    //return z;
+    return -z; // MTEST : opengl 과 다르게 기본좌표계 lhs 이면 z값 음수가 맞을듯.
 }
 
 /*

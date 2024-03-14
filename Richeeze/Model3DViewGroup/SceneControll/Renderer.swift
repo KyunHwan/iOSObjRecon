@@ -81,8 +81,8 @@ extension Renderer {
         params.lightCount = UInt32(scene.lighting.lights.count)
         params.cameraPosition = scene.cameraPosition
         
-        renderEncoder.setFrontFacing(.counterClockwise) // MTEST
-        renderEncoder.setCullMode(.back)
+//        renderEncoder.setFrontFacing(.clockwise)
+//        renderEncoder.setCullMode(.back)
         renderEncoder.setDepthStencilState(depthStencilState)
         renderEncoder.setRenderPipelineState(pipelineState)
         

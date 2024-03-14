@@ -33,23 +33,23 @@ struct ModelScene {
         let aspectRatio = Float(size.width / size.height)
         
         // MTEST
-//        let target: float3 = [0, 0, 0]
-//        viewMatrix = float4x4(eye: cameraPosition, center: target, up: [0, 1, 0])
-//        let fov = Float(30).degreesToRadians
-//        let near: Float = 0.1
-//        let far: Float = 100
-//        projectionMatrix = float4x4(projectionFov: fov, near: near, far: far, aspect: aspectRatio)
+        let target: float3 = [0, 0, 0]
+        viewMatrix = float4x4(eye: cameraPosition, center: target, up: [0, 1, 0])
+        let fov = Float(30).degreesToRadians
+        let near: Float = 0.1
+        let far: Float = 100
+        projectionMatrix = float4x4(projectionFov: fov, near: near, far: far, aspect: aspectRatio)
 
         //print("viewMatrix = \(viewMatrix)")
         
-        viewMatrix = matrix_identity_float4x4
-        let canvasWidth: Float = 1.0
-        let canvasHeight = canvasWidth / aspectRatio
-        projectionMatrix = float4x4(orthographicWithLeft: -canvasWidth / 2,
-                                        top: canvasHeight / 2,
-                                        right: canvasWidth / 2,
-                                        bottom: -canvasHeight / 2,
-                                        near: -2,
-                                        far: 2)
+//        viewMatrix = matrix_identity_float4x4
+//        let canvasWidth: Float = 8.0
+//        let canvasHeight = canvasWidth / aspectRatio
+//        projectionMatrix = float4x4(orthographicWithLeft: -canvasWidth / 2,
+//                                        top: canvasHeight / 2,
+//                                        right: canvasWidth / 2,
+//                                        bottom: -canvasHeight / 2,
+//                                        near: -10,
+//                                        far: 10)
     }
 }
