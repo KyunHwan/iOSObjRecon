@@ -6,13 +6,10 @@
 //
 
 import SwiftUI
-import Model3DView
 
 struct FireModel3DView: View {
     var scanResultPath: String
     @State var filePathUrl: URL? = nil
-    //@State var camera = OrthographicCamera()
-    @State var camera = PerspectiveCamera(fov: .degrees(30))
     
 //    init(scanResultPath: String, filePathUrl: URL? = nil, camera: PerspectiveCamera = PerspectiveCamera(fov: .degrees(30))) {
 //        self.scanResultPath = scanResultPath
@@ -28,9 +25,6 @@ struct FireModel3DView: View {
             VStack {
                 if let filePathUrl {
                     Model3DView(file: filePathUrl)
-                    //.transform(rotate: Euler(y: .degrees(0)), scale: 0.5, translate: [0.0, 0, 0])
-                        .transform(scale: 0.3)
-                        .cameraControls(OrbitControls(camera: $camera, sensitivity: 0.5))
                 } else {
                     ProgressView()
                 }

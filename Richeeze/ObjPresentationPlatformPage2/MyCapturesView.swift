@@ -40,6 +40,13 @@ struct MyCapturesView: View {
                 .padding(10) // !!!!!
             }
             .navigationTitle("Captures")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Image(systemName: "gear")
+                }
+            }
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
             .task {
                 try? await viewModel.getAllScans()
             }
