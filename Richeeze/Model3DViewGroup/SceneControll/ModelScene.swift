@@ -29,6 +29,24 @@ struct ModelScene {
         models = [Model(file: file)] // 우선 싱글모델만 지원.
     }
     
+    mutating func updateQuat(viewSize: CGSize, lastPos: CGPoint, curPos: CGPoint) {
+        let viewWidth = viewSize.width
+        let viewHeight = viewSize.height
+        let lastX = 2.0 * (Float(lastPos.x) / Float(viewWidth)) - 1.0
+        let lastY = 2.0 * (Float(viewHeight - lastPos.y) / Float(viewHeight)) - 1.0
+        let curX = 2.0 * (Float(curPos.x) / Float(viewWidth)) - 1.0
+        let curY = 2.0 * (Float(viewHeight - curPos.y) / Float(viewHeight)) - 1.0
+        //let _ = print("     curX: \(curX), curY: \(curY)")
+        
+        var curQuat: Array<Float> = [0, 0, 0, 0]
+        trackballQuat.withUnsafeMutableBufferPointer { trackQuatPointer in
+            curQuat.withUnsafeMutableBufferPointer { curQuatPointer in
+                trackball(curQuatPointer.baseAddress, lastX, lastY, curX, curY)
+                add_quats(curQuatPointer.baseAddress, trackQuatPointer.baseAddress, trackQuatPointer.baseAddress)
+            }
+        }
+    }
+    
     mutating func update(size: CGSize) {
         
         let aspectRatio = Float(size.width / size.height)

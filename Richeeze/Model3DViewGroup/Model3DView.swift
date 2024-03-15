@@ -12,13 +12,13 @@ import Metal
 struct Model3DView: View {
     @State private var metalView = MTKView()
     @State private var modelCtr: ModelController?
-    @State private var lastMagnification: Float = 1
     //var named: String?
     var file: URL?
     
     var body: some View {
         GeometryReader { reader in
             var lastPos: CGPoint = .zero
+            var lastMagnification: Float = 1.0
             var isFirst = true
             
             Model3DViewRepresentable(metalView: $metalView)
@@ -35,21 +35,7 @@ struct Model3DView: View {
                             if isFirst {
                                 isFirst = false
                             } else {
-                                let viewWidth = reader.size.width
-                                let viewHeight = reader.size.height
-                                let lastX = 2.0 * (Float(lastPos.x) / Float(viewWidth)) - 1.0
-                                let lastY = 2.0 * (Float(viewHeight - lastPos.y) / Float(viewHeight)) - 1.0
-                                let curX = 2.0 * (Float(value.location.x) / Float(viewWidth)) - 1.0
-                                let curY = 2.0 * (Float(viewHeight - value.location.y) / Float(viewHeight)) - 1.0
-                                //let _ = print("     curX: \(curX), curY: \(curY)")
-                                
-                                var curQuat: Array<Float> = [0, 0, 0, 0]
-                                modelCtr?.scene.trackballQuat.withUnsafeMutableBufferPointer { trackQuatPointer in
-                                    curQuat.withUnsafeMutableBufferPointer { curQuatPointer in
-                                        trackball(curQuatPointer.baseAddress, lastX, lastY, curX, curY)
-                                        add_quats(curQuatPointer.baseAddress, trackQuatPointer.baseAddress, trackQuatPointer.baseAddress)
-                                    }
-                                }
+                                modelCtr?.scene.updateQuat(viewSize: reader.size, lastPos: lastPos, curPos: value.location)
                             }
                             lastPos = value.location
                         }
